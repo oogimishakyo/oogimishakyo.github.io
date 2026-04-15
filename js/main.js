@@ -167,18 +167,24 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // news.json を取得。fetchが使えない環境（ローカルfile://）はフォールバックを使用
+  // news.json を取得（相対パスで指定）
+  // ローカル(file://)・GitHub Pages 両対応。失敗時はインラインデータにフォールバック
   fetch('./data/news.json')
     .then(r => {
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      if (!r.ok) {
+        throw new Error(`HTTP ${r.status} ${r.statusText} — ./data/news.json`);
+      }
       return r.json();
     })
     .then(data => {
+      if (!data || typeof data !== 'object') {
+        throw new Error('news.json のデータ形式が不正です');
+      }
       newsData = data;
       renderNews(currentTab);
     })
-    .catch(() => {
-      // GitHub Pages以外（ローカルプレビュー等）でもお知らせを表示
+    .catch(err => {
+      console.error('[お知らせ] JSON取得に失敗しました。インラインデータで表示します。', err);
       newsData = FALLBACK_NEWS;
       renderNews(currentTab);
     });
