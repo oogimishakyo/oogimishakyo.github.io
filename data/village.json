@@ -1,0 +1,23 @@
+{
+  "_comment": "大宜味村の基本データ。大宜味村役場HP（https://www.vill.oogimi.okinawa.jp/）を参照して手動更新してください。",
+  "_updated": "2026-04-15",
+  "_source": "大宜味村役場 住民基本台帳",
+  "population": {
+    "total": 2902,
+    "display": "2,902",
+    "unit": "人",
+    "label": "村の人口"
+  },
+  "elderly_rate": {
+    "value": 42,
+    "display": "42",
+    "suffix": "%超",
+    "label": "65歳以上比率"
+  },
+  "households": {
+    "total": 1697,
+    "display": "1,697",
+    "unit": "世帯",
+    "label": "世帯数"
+  }
+}
