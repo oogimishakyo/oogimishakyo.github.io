@@ -76,6 +76,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--white);
   box-shadow: var(--shadow-sm);
   height: var(--header-h);
+  overflow: hidden;
   transition: box-shadow var(--transition);
 }
 .site-header.scrolled { box-shadow: var(--shadow-md); }
@@ -97,10 +98,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-decoration: none;
 }
 .logo-img {
-  width: 48px;
-  height: 48px;
+  height: 44px;
+  width: auto;
+  max-height: 44px;
   object-fit: contain;
   flex-shrink: 0;
+  display: block;
 }
 .logo-text { line-height: 1.25; }
 .logo-pref {
@@ -1015,7 +1018,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-bottom { flex-direction: column; text-align: center; }
   .cta-banner-btns { flex-direction: column; align-items: center; }
   .about-stats { grid-template-columns: 1fr 1fr; }
-  .logo-img { width: 40px; height: 40px; }
+  .logo-img { height: 36px; max-height: 36px; width: auto; }
   .header-logo .logo-name { font-size: 0.85em; }
 }
 
