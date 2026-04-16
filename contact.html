@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社会福祉協議会へのお問い合わせ。お電話・メールでお気軽にご相談ください。受付時間：平日9:00〜17:15">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,お問い合わせ,相談,電話,メール">
+  <meta property="og:title" content="お問い合わせ | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="まずはお気軽にご相談ください。お電話・メールフォームでお問い合わせいただけます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/contact.html">
+  <title>お問い合わせ | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before { content: "›"; margin: 0 8px; color: #aaa; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label { font-size: 0.8em; letter-spacing: 0.15em; opacity: 0.8; margin-bottom: 12px; }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .page-hero-sub { font-size: 0.95em; opacity: 0.85; margin: 0; }
+
+    /* コンテンツラップ */
+    .contact-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* セクション見出し */
+    .contact-section { margin-bottom: 64px; }
+    .contact-section-title {
+      font-size: 1.15em;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #dde8de;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .contact-section-title-icon { font-size: 1.2em; }
+
+    /* ── お問い合わせ方法 2カラム ── */
+    .contact-methods {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .contact-method-card {
+      border-radius: 14px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .contact-method-card.tel-card {
+      background: linear-gradient(135deg, #e8f5ee 0%, #f0faf5 100%);
+      border: 1px solid #c8e8d4;
+    }
+    .contact-method-card.mail-card {
+      background: linear-gradient(135deg, #eaf0fa 0%, #f3f6fd 100%);
+      border: 1px solid #c5d6f0;
+    }
+    .contact-method-icon {
+      font-size: 2em;
+      margin-bottom: 12px;
+    }
+    .contact-method-type {
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .contact-method-label {
+      font-size: 1.05em;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+    .tel-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.9em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      text-decoration: none;
+      line-height: 1;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+    .tel-number:hover { color: var(--primary); text-decoration: underline; }
+    .tel-hours {
+      font-size: 0.83em;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    .tel-note {
+      font-size: 0.78em;
+      color: #888;
+    }
+    .mail-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #2c5fac;
+      color: var(--white);
+      font-size: 0.95em;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .mail-btn:hover { background: #1e4a8a; transform: translateY(-1px); }
+    .mail-note {
+      font-size: 0.78em;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* ── よくある相談内容 ── */
+    .faq-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .faq-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .faq-card-icon {
+      font-size: 1.6em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .faq-card-body {}
+    .faq-card-title {
+      font-size: 0.95em;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .faq-card-text {
+      font-size: 0.82em;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ── アクセス ── */
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .access-info {}
+    .access-info-item {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eef2ee;
+      font-size: 0.9em;
+    }
+    .access-info-item:first-child { padding-top: 0; }
+    .access-info-label {
+      font-weight: 700;
+      color: var(--primary-dark);
+      min-width: 5em;
+      flex-shrink: 0;
+    }
+    .access-info-val {
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .access-map {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      background: #e8eee8;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .access-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .access-map-placeholder {
+      text-align: center;
+      color: #888;
+      font-size: 0.85em;
+      padding: 20px;
+    }
+
+    /* 注意書きボックス */
+    .notice-box {
+      background: #fffbe6;
+      border: 1px solid #f0d060;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.85em;
+      color: #6b5a00;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .notice-box::before {
+      content: "📌 ";
+    }
+
+    @media (max-width: 700px) {
+      .contact-methods { grid-template-columns: 1fr; }
+      .faq-cards { grid-template-columns: 1fr; }
+      .access-grid { grid-template-columns: 1fr; }
+      .contact-method-card { padding: 24px 20px; }
+      .tel-number { font-size: 1.6em; }
+      .page-hero { padding: 44px 20px; }
+      .contact-wrap { padding: 36px 16px 60px; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <div class="header-logo">
+        <a href="/" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">寄付・支援<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html" aria-current="page">アクセス</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="service.html" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/><path d="M10 17s7-4.5 7-9a5 5 0 00-10 0c0 4.5 3 9 3 9z" opacity=".4"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">寄付・支援<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html" aria-current="page">アクセス</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="service.html" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">お問い合わせ</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">CONTACT</p>
+      <h1 class="page-hero-title">お問い合わせ</h1>
+      <p class="page-hero-sub">まずはお気軽にご相談ください</p>
+    </div>
+
+    <div class="contact-wrap">
+
+      <!-- 注意書き -->
+      <p class="notice-box">
+        相談内容の秘密は厳守します。どんな小さなことでもお気軽にお声がけください。「どこに相談すればよいか分からない」という方もお電話・メールでご連絡ください。
+      </p>
+
+      <!-- ──────────────────────────────
+           1. お問い合わせ方法
+      ─────────────────────────────── -->
+      <section class="contact-section" id="contact-methods" aria-labelledby="methods-heading">
+        <h2 class="contact-section-title" id="methods-heading">
+          <span class="contact-section-title-icon" aria-hidden="true">📬</span>お問い合わせ方法
+        </h2>
+
+        <div class="contact-methods">
+
+          <!-- 電話 -->
+          <div class="contact-method-card tel-card">
+            <div class="contact-method-icon" aria-hidden="true">📞</div>
+            <p class="contact-method-type">PHONE</p>
+            <p class="contact-method-label">お電話でのお問い合わせ</p>
+            <a href="tel:0980443800" class="tel-number" aria-label="電話番号 0980-44-3800">
+              0980-44-3800
+            </a>
+            <p class="tel-hours">受付時間：平日 9:00〜17:15</p>
+            <p class="tel-note">土・日・祝日・年末年始はお休みです</p>
+          </div>
+
+          <!-- メール・フォーム -->
+          <div class="contact-method-card mail-card">
+            <div class="contact-method-icon" aria-hidden="true">✉️</div>
+            <p class="contact-method-type">MAIL / FORM</p>
+            <p class="contact-method-label">メール・フォームでのお問い合わせ</p>
+            <a href="#" class="mail-btn" target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">📝</span> お問い合わせフォームへ
+            </a>
+            <p class="mail-note">
+              24時間受け付けています。<br>
+              返信は平日（9:00〜17:15）となります。<br>
+              メールでのご連絡は
+              <a href="mailto:info@oogimishakyo.or.jp" style="color:#2c5fac;">info@oogimishakyo.or.jp</a>
+              まで。
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────
+           2. よくある相談内容
+      ─────────────────────────────── -->
+      <section class="contact-section" id="faq" aria-labelledby="faq-heading">
+        <h2 class="contact-section-title" id="faq-heading">
+          <span class="contact-section-title-icon" aria-hidden="true">💭</span>よくある相談内容
+        </h2>
+
+        <div class="faq-cards">
+
+          <div class="faq-card">
+            <span class="faq-card-icon" aria-hidden="true">👴</span>
+            <div class="faq-card-body">
+              <p class="faq-card-title">高齢の親の介護について相談したい</p>
+              <p class="faq-card-text">
+                介護サービスの利用方法・申請手続き・在宅での支援についてご相談いただけます。
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <span class="faq-card-icon" aria-hidden="true">🏠</span>
+            <div class="faq-card-body">
+              <p class="faq-card-title">生活費が苦しく困っている</p>
+              <p class="faq-card-text">
+                生活福祉資金の貸付やフード支援など、生活困窮に関するご相談をお受けします。
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <span class="faq-card-icon" aria-hidden="true">♿</span>
+            <div class="faq-card-body">
+              <p class="faq-card-title">障がいのある方の支援について知りたい</p>
+              <p class="faq-card-text">
+                移動支援・相談支援・日常生活のサポートなど、障がい福祉サービスをご案内します。
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <span class="faq-card-icon" aria-hidden="true">💬</span>
+            <div class="faq-card-body">
+              <p class="faq-card-title">どこに相談すればいいか分からない</p>
+              <p class="faq-card-text">
+                「何から始めたらいいか分からない」という方も、まずお電話ください。一緒に考えます。
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────
+           3. アクセス
+      ─────────────────────────────── -->
+      <section class="contact-section" id="access" aria-labelledby="access-heading">
+        <h2 class="contact-section-title" id="access-heading">
+          <span class="contact-section-title-icon" aria-hidden="true">📍</span>所在地・アクセス
+        </h2>
+
+        <div class="access-grid">
+
+          <div class="access-info">
+            <div class="access-info-item">
+              <span class="access-info-label">法人名</span>
+              <span class="access-info-val">社会福祉法人 大宜味村社会福祉協議会</span>
+            </div>
+            <div class="access-info-item">
+              <span class="access-info-label">住所</span>
+              <span class="access-info-val">
+                〒905-1303<br>
+                沖縄県国頭郡大宜味村<br>字喜如嘉320番地
+              </span>
+            </div>
+            <div class="access-info-item">
+              <span class="access-info-label">電話</span>
+              <span class="access-info-val">
+                <a href="tel:0980443800" style="color:var(--primary); font-weight:700;">0980-44-3800</a>
+              </span>
+            </div>
+            <div class="access-info-item">
+              <span class="access-info-label">メール</span>
+              <span class="access-info-val">
+                <a href="mailto:info@oogimishakyo.or.jp" style="color:var(--primary);">info@oogimishakyo.or.jp</a>
+              </span>
+            </div>
+            <div class="access-info-item">
+              <span class="access-info-label">受付時間</span>
+              <span class="access-info-val">平日 9:00〜17:15<br>（土・日・祝日・年末年始を除く）</span>
+            </div>
+            <div class="access-info-item">
+              <span class="access-info-label">移転予定</span>
+              <span class="access-info-val">令和8年度初頭に旧大宜味小学校跡地へ移転予定</span>
+            </div>
+          </div>
+
+          <div class="access-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.123456789!2d128.1234567!3d26.6987654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e52b5a5a5a5a5a%3A0x0!2z5aSn5a246KGM56CU56m25Lya56S-5YCZ5oqW5Lya56S-5Zyw5pa55YyW!5e0!3m2!1sja!2sjp!4v1234567890"
+              title="大宜味村社会福祉協議会 地図"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /contact-wrap -->
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo-area">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 4 L28 14 L26 14 L26 27 L6 27 L6 14 L4 14 Z" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 27 L12 20 Q12 17 16 17 Q20 17 20 20 L20 27" fill="white" fill-opacity="0.85"/>
+                <path d="M16 12 C16 12 13 9.5 13 8 C13 6.8 14 6 15 6.5 C15.5 6.8 16 7.5 16 7.5 C16 7.5 16.5 6.8 17 6.5 C18 6 19 6.8 19 8 C19 9.5 16 12 16 12Z" fill="white"/>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-pref">社会福祉法人</span>
+              <span class="footer-logo-name">大宜味村社会福祉協議会</span>
+            </div>
+          </div>
+          <address class="footer-address">
+            〒905-1303<br>
+            沖縄県国頭郡大宜味村字喜如嘉320番地<br>
+            <a href="tel:0980443800">TEL：0980-44-3800</a><br>
+            <a href="mailto:info@oogimishakyo.or.jp">info@oogimishakyo.or.jp</a>
+          </address>
+          <div class="footer-tel" aria-label="電話番号">
+            <span class="footer-tel-label">TEL</span>
+            <a href="tel:0980443800" style="color:white;">0980-44-3800</a>
+          </div>
+          <div class="footer-hours">受付時間：平日 9:00〜17:15</div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">事業・サービス</div>
+          <ul class="footer-link-list">
+            <li><a href="service.html#transport">移動支援サービス</a></li>
+            <li><a href="service.html#prevention">介護予防事業</a></li>
+            <li><a href="service.html#consultation">相談・生活支援</a></li>
+            <li><a href="#">障がい者支援</a></li>
+            <li><a href="#">生活困窮支援</a></li>
+            <li><a href="#">子ども・子育て支援</a></li>
+            <li><a href="#">地域活動・ボランティア</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">社協について</div>
+          <ul class="footer-link-list">
+            <li><a href="about.html">理念・ミッション</a></li>
+            <li><a href="about.html#goals">重点目標</a></li>
+            <li><a href="about.html#businesses">主な事業</a></li>
+            <li><a href="about.html#organization">組織運営</a></li>
+            <li><a href="about.html#new-office">新事務所情報</a></li>
+            <li><a href="#">社協だより</a></li>
+            <li><a href="#">採用情報</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">サポート</div>
+          <ul class="footer-link-list">
+            <li><a href="contact.html">お問い合わせ</a></li>
+            <li><a href="#">サービス利用の流れ</a></li>
+            <li><a href="#">ボランティア登録</a></li>
+            <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付・ご支援</a></li>
+            <li><a href="contact.html#access">アクセス・地図</a></li>
+            <li><a href="#">大宜味村役場</a></li>
+            <li><a href="#">沖縄県社会福祉協議会</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 社会福祉法人 大宜味村社会福祉協議会. All Rights Reserved.
+        </p>
+        <nav class="footer-bottom-links" aria-label="フッターサブナビゲーション">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトマップ</a>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ページトップボタン -->
+  <a href="#" class="page-top" id="page-top" aria-label="ページの先頭へ戻る">
+    <span class="page-top-arrow">&#9650;</span>
+    <span>TOP</span>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
