@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社会福祉協議会からのお知らせ一覧。講座・催しの情報もご覧いただけます。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,お知らせ,講座,催し,イベント">
+  <meta property="og:title" content="お知らせ一覧 | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="大宜味村社協からのお知らせ・講座・催しの情報をご案内します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/news.html">
+  <title>お知らせ一覧 | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    /* パンくずリスト */
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before {
+      content: "›";
+      margin: 0 8px;
+      color: #aaa;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label {
+      font-size: 0.8em;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    /* メインコンテンツ */
+    .news-page-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* カテゴリタブ */
+    .news-tabs-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid #dde8de;
+      margin-bottom: 32px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .news-tabs-bar::-webkit-scrollbar { display: none; }
+    .news-tab-btn {
+      padding: 13px 24px;
+      font-size: 0.9em;
+      font-weight: 700;
+      color: #666;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .news-tab-btn:hover { color: var(--primary); }
+    .news-tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .tab-count {
+      display: inline-block;
+      background: #e8f0e8;
+      color: #555;
+      font-size: 0.75em;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+    .news-tab-btn.active .tab-count {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* お知らせリスト */
+    .news-list-area {
+      min-height: 240px;
+    }
+    .news-item {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid #e8eee8;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .news-item:first-child { border-top: 1px solid #e8eee8; }
+    .news-item:hover { background: #f8faf8; margin: 0 -12px; padding: 18px 12px; }
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .news-date {
+      font-size: 0.85em;
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .news-badge {
+      display: inline-block;
+      font-size: 0.72em;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+    }
+    .badge-news    { background: #e8f5ee; color: #1a6b3a; }
+    .badge-kouza   { background: #e8f0fa; color: #1a4a8a; }
+    .badge-moyooshi { background: #fff0e0; color: #a05a00; }
+
+    .news-title {
+      font-size: 0.97em;
+      color: var(--text-dark);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .news-item:hover .news-title { color: var(--primary); }
+
+    /* 空・ローディング */
+    .news-state {
+      text-align: center;
+      padding: 48px 0;
+      color: #aaa;
+      font-size: 0.95em;
+    }
+
+    /* ページネーション */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .pager-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;
+      padding: 0 14px;
+      border: 1px solid #dde8de;
+      border-radius: 6px;
+      background: var(--white);
+      color: #555;
+      font-size: 0.88em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+    .pager-btn:hover:not(:disabled):not(.active) {
+      background: #f0f8f2;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .pager-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+    .pager-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .pager-info {
+      font-size: 0.82em;
+      color: #888;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .news-page-wrap { padding: 32px 16px 60px; }
+      .news-item { flex-direction: column; gap: 6px; }
+      .news-meta { gap: 8px; }
+      .page-hero { padding: 44px 20px; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- ロゴ -->
+      <div class="header-logo">
+        <a href="/" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- グローバルナビ（PC） -->
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html" aria-current="page">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">寄付・支援<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+
+      <!-- ヘッダーコントロール -->
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="service.html" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/><path d="M10 17s7-4.5 7-9a5 5 0 00-10 0c0 4.5 3 9 3 9z" opacity=".4"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <!-- ハンバーガー（スマホ） -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html" aria-current="page">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">寄付・支援<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="service.html" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">お知らせ一覧</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">NEWS</p>
+      <h1 class="page-hero-title">お知らせ</h1>
+    </div>
+
+    <div class="news-page-wrap">
+
+      <!-- カテゴリタブ -->
+      <div class="news-tabs-bar" role="tablist" aria-label="お知らせカテゴリ">
+        <button class="news-tab-btn active" role="tab" aria-selected="true"  data-cat="all"      id="tab-all">すべて<span class="tab-count" id="count-all">0</span></button>
+        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="news"     id="tab-news">お知らせ<span class="tab-count" id="count-news">0</span></button>
+        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="kouza"    id="tab-kouza">講座<span class="tab-count" id="count-kouza">0</span></button>
+        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="moyooshi" id="tab-moyooshi">催し<span class="tab-count" id="count-moyooshi">0</span></button>
+      </div>
+
+      <!-- お知らせリスト -->
+      <div class="news-list-area" id="news-list-area" aria-live="polite" aria-atomic="true">
+        <p class="news-state">読み込み中…</p>
+      </div>
+
+      <!-- ページネーション -->
+      <nav class="pagination" id="pagination" aria-label="ページナビゲーション"></nav>
+
+    </div><!-- /news-page-wrap -->
+
+    <!-- CTAバナー -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-banner-inner">
+          <h2 class="cta-banner-title" id="cta-heading">まずは、お気軽にご相談ください</h2>
+          <p class="cta-banner-sub">
+            サービスのご利用方法・各種手続き・生活上のお悩みなど、どんなことでもお声がけください。<br>
+            大宜味村社協のスタッフが丁寧にご案内します。
+          </p>
+          <div class="cta-banner-btns">
+            <a href="tel:0980443800" class="cta-btn-primary">📞 お電話でのお問い合わせ</a>
+            <a href="mailto:info@oogimishakyo.or.jp" class="cta-btn-secondary">✉ メールでお問い合わせ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo-area">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 4 L28 14 L26 14 L26 27 L6 27 L6 14 L4 14 Z" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 27 L12 20 Q12 17 16 17 Q20 17 20 20 L20 27" fill="white" fill-opacity="0.85"/>
+                <path d="M16 12 C16 12 13 9.5 13 8 C13 6.8 14 6 15 6.5 C15.5 6.8 16 7.5 16 7.5 C16 7.5 16.5 6.8 17 6.5 C18 6 19 6.8 19 8 C19 9.5 16 12 16 12Z" fill="white"/>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-pref">社会福祉法人</span>
+              <span class="footer-logo-name">大宜味村社会福祉協議会</span>
+            </div>
+          </div>
+          <address class="footer-address">
+            〒905-1303<br>
+            沖縄県国頭郡大宜味村字喜如嘉320番地<br>
+            <a href="tel:0980443800">TEL：0980-44-3800</a><br>
+            <a href="mailto:info@oogimishakyo.or.jp">info@oogimishakyo.or.jp</a>
+          </address>
+          <div class="footer-tel" aria-label="電話番号">
+            <span class="footer-tel-label">TEL</span>
+            <a href="tel:0980443800" style="color:white;">0980-44-3800</a>
+          </div>
+          <div class="footer-hours">受付時間：平日 9:00〜17:15</div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">事業・サービス</div>
+          <ul class="footer-link-list">
+            <li><a href="service.html#transport">移動支援サービス</a></li>
+            <li><a href="service.html#prevention">介護予防事業</a></li>
+            <li><a href="service.html#consultation">相談・生活支援</a></li>
+            <li><a href="#">障がい者支援</a></li>
+            <li><a href="#">生活困窮支援</a></li>
+            <li><a href="#">子ども・子育て支援</a></li>
+            <li><a href="#">地域活動・ボランティア</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">社協について</div>
+          <ul class="footer-link-list">
+            <li><a href="about.html">理念・ミッション</a></li>
+            <li><a href="about.html#goals">重点目標</a></li>
+            <li><a href="about.html#businesses">主な事業</a></li>
+            <li><a href="about.html#organization">組織運営</a></li>
+            <li><a href="about.html#new-office">新事務所情報</a></li>
+            <li><a href="#">社協だより</a></li>
+            <li><a href="#">採用情報</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">サポート</div>
+          <ul class="footer-link-list">
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">サービス利用の流れ</a></li>
+            <li><a href="#">ボランティア登録</a></li>
+            <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付・ご支援</a></li>
+            <li><a href="#">アクセス・地図</a></li>
+            <li><a href="#">大宜味村役場</a></li>
+            <li><a href="#">沖縄県社会福祉協議会</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /footer-inner -->
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 社会福祉法人 大宜味村社会福祉協議会. All Rights Reserved.
+        </p>
+        <nav class="footer-bottom-links" aria-label="フッターサブナビゲーション">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトマップ</a>
+          <a href="#">お問い合わせ</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ページトップボタン -->
+  <a href="#" class="page-top" id="page-top" aria-label="ページの先頭へ戻る">
+    <span class="page-top-arrow">&#9650;</span>
+    <span>TOP</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ===== フォールバック用インラインデータ =====
+    var FALLBACK_DATA = {
+      news: [
+        { date: "2026-04-10", category: "お知らせ", title: "令和8年度 事業計画書を掲載しました", url: "#" },
+        { date: "2026-04-01", category: "お知らせ", title: "令和8年度 社協だより「おおぎみ」第1号を発行しました", url: "#" },
+        { date: "2026-03-25", category: "お知らせ", title: "在宅安心カーの利用受付を開始しました", url: "#" },
+        { date: "2026-03-15", category: "お知らせ", title: "生活福祉資金の貸付相談について（令和8年度）", url: "#" },
+        { date: "2026-02-28", category: "お知らせ", title: "ランドセル支給のご案内（令和8年度 新小学1年生対象）", url: "#" }
+      ],
+      kouza: [
+        { date: "2026-04-20", category: "講座", title: "がんじゅう教室（4月）参加者募集のお知らせ", url: "#" },
+        { date: "2026-04-15", category: "講座", title: "介護予防講座「健康体操で元気に！」開催のご案内", url: "#" },
+        { date: "2026-04-05", category: "講座", title: "ボランティア入門講座（5月開催）参加者募集", url: "#" },
+        { date: "2026-03-20", category: "講座", title: "発達相談サポート講座「子育てのヒント」開催報告", url: "#" },
+        { date: "2026-03-10", category: "講座", title: "移動支援従事者研修のご案内", url: "#" }
+      ],
+      moyooshi: [
+        { date: "2026-04-29", category: "催し", title: "くがにサロン 春の交流会のご案内", url: "#" },
+        { date: "2026-04-18", category: "催し", title: "フードパントリー（食料支援）配布会 4月のお知らせ", url: "#" },
+        { date: "2026-04-12", category: "催し", title: "大宜味共同店ネットワーク 春まつり参加のご案内", url: "#" },
+        { date: "2026-03-22", category: "催し", title: "地域福祉活動 ボランティア清掃イベント 開催報告", url: "#" },
+        { date: "2026-03-05", category: "催し", title: "令和7年度 社協総会 開催のご案内", url: "#" }
+      ]
+    };
+
+    // ===== ニュースアプリ =====
+    (function () {
+      var PER_PAGE = 10;
+      var allItems  = [];
+      var filtered  = [];
+      var currentCat  = 'all';
+      var currentPage = 1;
+
+      // カテゴリ設定
+      var CAT_MAP = {
+        news:     { label: 'お知らせ', cls: 'badge-news' },
+        kouza:    { label: '講座',     cls: 'badge-kouza' },
+        moyooshi: { label: '催し',     cls: 'badge-moyooshi' }
+      };
+
+      // YYYY-MM-DD → YYYY.MM.DD
+      function fmtDate(d) {
+        return d.replace(/-/g, '.');
+      }
+
+      // カテゴリキー取得
+      function catKey(item) {
+        if (item.category === 'お知らせ') return 'news';
+        if (item.category === '講座')     return 'kouza';
+        if (item.category === '催し')     return 'moyooshi';
+        return 'news';
+      }
+
+      // データをフラット化して日付降順ソート
+      function flatten(data) {
+        var arr = [];
+        ['news', 'kouza', 'moyooshi'].forEach(function (k) {
+          if (Array.isArray(data[k])) {
+            data[k].forEach(function (item) { arr.push(item); });
+          }
+        });
+        arr.sort(function (a, b) { return b.date.localeCompare(a.date); });
+        return arr;
+      }
+
+      // カウントバッジ更新
+      function updateCounts(items) {
+        var counts = { news: 0, kouza: 0, moyooshi: 0 };
+        items.forEach(function (item) { counts[catKey(item)]++; });
+        document.getElementById('count-all').textContent    = items.length;
+        document.getElementById('count-news').textContent   = counts.news;
+        document.getElementById('count-kouza').textContent  = counts.kouza;
+        document.getElementById('count-moyooshi').textContent = counts.moyooshi;
+      }
+
+      // リスト描画
+      function renderList() {
+        var area = document.getElementById('news-list-area');
+        var start = (currentPage - 1) * PER_PAGE;
+        var page  = filtered.slice(start, start + PER_PAGE);
+
+        if (filtered.length === 0) {
+          area.innerHTML = '<p class="news-state">該当するお知らせはありません。</p>';
+          document.getElementById('pagination').innerHTML = '';
+          return;
+        }
+
+        var html = '';
+        page.forEach(function (item) {
+          var ck  = catKey(item);
+          var cfg = CAT_MAP[ck];
+          html += '<a href="' + item.url + '" class="news-item">';
+          html +=   '<span class="news-meta">';
+          html +=     '<span class="news-date">' + fmtDate(item.date) + '</span>';
+          html +=     '<span class="news-badge ' + cfg.cls + '">' + cfg.label + '</span>';
+          html +=   '</span>';
+          html +=   '<span class="news-title">' + item.title + '</span>';
+          html += '</a>';
+        });
+        area.innerHTML = html;
+
+        renderPagination();
+      }
+
+      // ページネーション描画
+      function renderPagination() {
+        var pag    = document.getElementById('pagination');
+        var total  = Math.ceil(filtered.length / PER_PAGE);
+        if (total <= 1) { pag.innerHTML = ''; return; }
+
+        var html = '';
+        // 前へ
+        html += '<button class="pager-btn" id="pager-prev" aria-label="前のページ"'
+              + (currentPage === 1 ? ' disabled' : '') + '>◀ 前へ</button>';
+
+        // ページ番号（最大7ボタン表示）
+        var range = pageRange(currentPage, total);
+        range.forEach(function (p) {
+          if (p === '…') {
+            html += '<span style="padding:0 4px;color:#aaa;line-height:40px;">…</span>';
+          } else {
+            html += '<button class="pager-btn' + (p === currentPage ? ' active' : '')
+                  + '" data-page="' + p + '" aria-label="' + p + 'ページ目"'
+                  + (p === currentPage ? ' aria-current="page"' : '') + '>' + p + '</button>';
+          }
+        });
+
+        // 次へ
+        html += '<button class="pager-btn" id="pager-next" aria-label="次のページ"'
+              + (currentPage === total ? ' disabled' : '') + '>次へ ▶</button>';
+
+        html += '<span class="pager-info">' + currentPage + ' / ' + total + 'ページ</span>';
+
+        pag.innerHTML = html;
+
+        // ページ番号クリック
+        pag.querySelectorAll('[data-page]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            goPage(parseInt(this.dataset.page));
+          });
+        });
+        var prev = document.getElementById('pager-prev');
+        var next = document.getElementById('pager-next');
+        if (prev) prev.addEventListener('click', function () { goPage(currentPage - 1); });
+        if (next) next.addEventListener('click', function () { goPage(currentPage + 1); });
+      }
+
+      // ページ番号レンジ生成
+      function pageRange(cur, total) {
+        if (total <= 7) {
+          var arr = [];
+          for (var i = 1; i <= total; i++) arr.push(i);
+          return arr;
+        }
+        var pages = [1];
+        if (cur > 3) pages.push('…');
+        for (var p = Math.max(2, cur - 1); p <= Math.min(total - 1, cur + 1); p++) pages.push(p);
+        if (cur < total - 2) pages.push('…');
+        pages.push(total);
+        return pages;
+      }
+
+      // ページ移動
+      function goPage(p) {
+        currentPage = p;
+        renderList();
+        document.getElementById('news-list-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // タブ切り替え
+      function setTab(cat) {
+        currentCat  = cat;
+        currentPage = 1;
+        filtered = cat === 'all'
+          ? allItems.slice()
+          : allItems.filter(function (item) { return catKey(item) === cat; });
+
+        document.querySelectorAll('.news-tab-btn').forEach(function (btn) {
+          var active = btn.dataset.cat === cat;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+
+        renderList();
+      }
+
+      // タブボタンにイベント登録
+      document.querySelectorAll('.news-tab-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { setTab(this.dataset.cat); });
+      });
+
+      // データ読み込み
+      function init(data) {
+        allItems = flatten(data);
+        updateCounts(allItems);
+        setTab('all');
+      }
+
+      fetch('data/news.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error('fetch failed');
+          return r.json();
+        })
+        .then(function (data) { init(data); })
+        .catch(function () { init(FALLBACK_DATA); });
+
+    })();
+  </script>
+</body>
+</html>
