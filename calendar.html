@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社協が管理するつどい室の予約カレンダーです。地域住民の交流・ボランティア活動・各種会合にご利用いただけます。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,つどい室,予約,カレンダー,多目的室">
+  <meta property="og:title" content="つどい室 予約カレンダー | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="大宜味村社協が管理する多目的室の予約状況をご確認いただけます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/calendar.html">
+  <title>つどい室 予約カレンダー | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before { content: "›"; margin: 0 8px; color: #aaa; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label { font-size: 0.8em; letter-spacing: 0.15em; opacity: 0.8; margin-bottom: 12px; }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+    .page-hero-sub { font-size: 0.92em; opacity: 0.85; margin: 0; line-height: 1.7; }
+
+    /* メインラップ */
+    .calendar-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* 施設説明カード */
+    .room-info-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      border-left: 5px solid var(--primary);
+    }
+    .room-info-icon {
+      font-size: 2.4em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .room-info-body {}
+    .room-info-name {
+      font-size: 1.15em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin: 0 0 12px;
+    }
+    .room-info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88em;
+    }
+    .room-info-table tr {
+      border-bottom: 1px solid #eef2ee;
+    }
+    .room-info-table tr:last-child { border-bottom: none; }
+    .room-info-table th {
+      text-align: left;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding: 7px 16px 7px 0;
+      white-space: nowrap;
+      width: 6em;
+    }
+    .room-info-table td {
+      color: var(--text-mid);
+      padding: 7px 0;
+      line-height: 1.6;
+    }
+
+    /* セクション見出し */
+    .cal-section { margin-bottom: 48px; }
+    .cal-section-title {
+      font-size: 1.05em;
+      font-weight: 900;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #dde8de;
+    }
+    .cal-section-title-icon { font-size: 1.15em; }
+
+    /* カレンダー埋め込み */
+    .calendar-container {
+      border-radius: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+      background: var(--white);
+    }
+    .calendar-container iframe {
+      display: block;
+      width: 100%;
+      min-width: 600px;
+      height: 600px;
+      border: none;
+    }
+    .calendar-note {
+      margin-top: 12px;
+      font-size: 0.8em;
+      color: #888;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    /* 予約・お問い合わせ */
+    .booking-card {
+      background: linear-gradient(135deg, #e8f5ee 0%, #f2fbf5 100%);
+      border: 1px solid #c8e8d4;
+      border-radius: 14px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .booking-icon {
+      font-size: 2.8em;
+      flex-shrink: 0;
+    }
+    .booking-body {}
+    .booking-label {
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .booking-title {
+      font-size: 1em;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .booking-tel {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.7em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .booking-tel:hover { color: var(--primary); text-decoration: underline; }
+    .booking-meta {
+      margin-top: 8px;
+      font-size: 0.83em;
+      color: #555;
+    }
+    .booking-org {
+      font-size: 0.8em;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 680px) {
+      .calendar-wrap { padding: 36px 16px 60px; }
+      .page-hero { padding: 44px 20px; }
+      .room-info-card { flex-direction: column; gap: 12px; padding: 22px 20px; }
+      .booking-card { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
+      .booking-tel { font-size: 1.4em; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <div class="header-logo">
+        <a href="/" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">寄付・支援<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html#access">アクセス</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="service.html" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/><path d="M10 17s7-4.5 7-9a5 5 0 00-10 0c0 4.5 3 9 3 9z" opacity=".4"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="service.html">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">寄付・支援<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html#access">アクセス</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="service.html" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">つどい室 予約カレンダー</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">ROOM CALENDAR</p>
+      <h1 class="page-hero-title">つどい室 予約カレンダー</h1>
+      <p class="page-hero-sub">大宜味村社協が管理する多目的室の予約状況をご確認いただけます</p>
+    </div>
+
+    <div class="calendar-wrap">
+
+      <!-- ──────────────────────────────
+           1. つどい室について
+      ─────────────────────────────── -->
+      <div class="room-info-card" role="region" aria-label="つどい室について">
+        <div class="room-info-icon" aria-hidden="true">🏠</div>
+        <div class="room-info-body">
+          <h2 class="room-info-name">つどい室</h2>
+          <table class="room-info-table">
+            <tr>
+              <th scope="row">所在地</th>
+              <td>旧大宜味小学校跡地（令和8年度移転後の新拠点内）</td>
+            </tr>
+            <tr>
+              <th scope="row">用途</th>
+              <td>地域住民の交流・ボランティア活動・各種会合など</td>
+            </tr>
+            <tr>
+              <th scope="row">管理</th>
+              <td>大宜味村社会福祉協議会</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────
+           2. 予約カレンダー
+      ─────────────────────────────── -->
+      <section class="cal-section" id="calendar" aria-labelledby="calendar-heading">
+        <h2 class="cal-section-title" id="calendar-heading">
+          <span class="cal-section-title-icon" aria-hidden="true">📅</span>予約カレンダー
+        </h2>
+
+        <div class="calendar-container">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=c_18804sa8hs9pcjr0joh8er33bfhn8%40resource.calendar.google.com&ctz=Asia%2FTokyo"
+            title="つどい室 予約カレンダー"
+            width="800"
+            height="600"
+            frameborder="0"
+            scrolling="no"
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="calendar-note">
+          <span aria-hidden="true">ℹ️</span>
+          スマートフォンでは横にスクロールしてご覧いただけます。予約済みの日時は色付きで表示されます。
+        </p>
+      </section>
+
+      <!-- ──────────────────────────────
+           3. 予約・お問い合わせ
+      ─────────────────────────────── -->
+      <section class="cal-section" id="booking" aria-labelledby="booking-heading">
+        <h2 class="cal-section-title" id="booking-heading">
+          <span class="cal-section-title-icon" aria-hidden="true">📞</span>予約・お問い合わせ
+        </h2>
+
+        <div class="booking-card">
+          <div class="booking-icon" aria-hidden="true">📋</div>
+          <div class="booking-body">
+            <p class="booking-label">RESERVATION</p>
+            <p class="booking-title">予約・利用のお申込みはお電話またはご来所にて承ります</p>
+            <a href="tel:0980443800" class="booking-tel" aria-label="電話番号 0980-44-3800">
+              <span aria-hidden="true">📞</span>0980-44-3800
+            </a>
+            <p class="booking-meta">受付時間：平日 9:00〜17:15（土・日・祝日を除く）</p>
+            <p class="booking-org">大宜味村社会福祉協議会</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /calendar-wrap -->
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo-area">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 4 L28 14 L26 14 L26 27 L6 27 L6 14 L4 14 Z" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 27 L12 20 Q12 17 16 17 Q20 17 20 20 L20 27" fill="white" fill-opacity="0.85"/>
+                <path d="M16 12 C16 12 13 9.5 13 8 C13 6.8 14 6 15 6.5 C15.5 6.8 16 7.5 16 7.5 C16 7.5 16.5 6.8 17 6.5 C18 6 19 6.8 19 8 C19 9.5 16 12 16 12Z" fill="white"/>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-pref">社会福祉法人</span>
+              <span class="footer-logo-name">大宜味村社会福祉協議会</span>
+            </div>
+          </div>
+          <address class="footer-address">
+            〒905-1303<br>
+            沖縄県国頭郡大宜味村字喜如嘉320番地<br>
+            <a href="tel:0980443800">TEL：0980-44-3800</a><br>
+            <a href="mailto:info@oogimishakyo.or.jp">info@oogimishakyo.or.jp</a>
+          </address>
+          <div class="footer-tel" aria-label="電話番号">
+            <span class="footer-tel-label">TEL</span>
+            <a href="tel:0980443800" style="color:white;">0980-44-3800</a>
+          </div>
+          <div class="footer-hours">受付時間：平日 9:00〜17:15</div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">事業・サービス</div>
+          <ul class="footer-link-list">
+            <li><a href="service.html#prevention">高齢者支援（がんじゅう教室）</a></li>
+            <li><a href="service.html#prevention">高齢者支援（くがにサロン）</a></li>
+            <li><a href="service.html#transport">在宅安心カー</a></li>
+            <li><a href="service.html#transport">障がい者支援（移動支援）</a></li>
+            <li><a href="service.html#consultation">障がい者支援（相談支援）</a></li>
+            <li><a href="service.html#consultation">生活困窮支援</a></li>
+            <li><a href="service.html#consultation">子ども・子育て支援</a></li>
+            <li><a href="#">地域活動・ボランティア</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">社協について</div>
+          <ul class="footer-link-list">
+            <li><a href="about.html">理念・ミッション</a></li>
+            <li><a href="about.html#goals">重点目標</a></li>
+            <li><a href="about.html#businesses">主な事業</a></li>
+            <li><a href="about.html#organization">組織運営</a></li>
+            <li><a href="about.html#new-office">新事務所情報</a></li>
+            <li><a href="#">社協だより</a></li>
+            <li><a href="#">採用情報</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">サポート</div>
+          <ul class="footer-link-list">
+            <li><a href="contact.html">お問い合わせ</a></li>
+            <li><a href="calendar.html">つどい室 予約カレンダー</a></li>
+            <li><a href="#">ボランティア登録</a></li>
+            <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付・ご支援</a></li>
+            <li><a href="contact.html#access">アクセス・地図</a></li>
+            <li><a href="#">大宜味村役場</a></li>
+            <li><a href="#">沖縄県社会福祉協議会</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 社会福祉法人 大宜味村社会福祉協議会. All Rights Reserved.
+        </p>
+        <nav class="footer-bottom-links" aria-label="フッターサブナビゲーション">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトマップ</a>
+          <a href="contact.html">お問い合わせ</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ページトップボタン -->
+  <a href="#" class="page-top" id="page-top" aria-label="ページの先頭へ戻る">
+    <span class="page-top-arrow">&#9650;</span>
+    <span>TOP</span>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
