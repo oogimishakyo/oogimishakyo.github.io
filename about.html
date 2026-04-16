@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社会福祉協議会について。理念・ミッション、令和8年度重点目標、主な事業、組織運営、新事務所移転情報をご案内します。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,社協について,理念,事業,組織">
+  <meta property="og:title" content="社協について | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="誰もが安心して、大宜味で暮らし続けられる村へ。大宜味村社協の理念・事業・組織をご紹介します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/about.html">
+  <title>社協について | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    /* パンくずリスト */
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before {
+      content: "›";
+      margin: 0 8px;
+      color: #aaa;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label {
+      font-size: 0.8em;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    /* セクション共通 */
+    .about-page-section {
+      padding: 72px 0;
+    }
+    .about-page-section:nth-child(even) {
+      background: #f8faf8;
+    }
+    .about-page-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: clamp(1.3em, 3vw, 1.8em);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0 0 24px;
+      line-height: 1.4;
+    }
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      background: var(--primary);
+      margin-top: 14px;
+      border-radius: 2px;
+    }
+
+    /* 理念・ミッション */
+    .mission-catch {
+      font-size: clamp(1.2em, 2.8vw, 1.6em);
+      font-weight: 900;
+      color: var(--primary-dark);
+      border-left: 5px solid var(--primary);
+      padding: 16px 20px;
+      background: #f0f8f2;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .mission-text {
+      color: var(--text-mid);
+      line-height: 2;
+      margin-bottom: 16px;
+    }
+
+    /* 重点目標カード */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .goal-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--primary);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .goal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .goal-num {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .goal-icon {
+      font-size: 2em;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .goal-title {
+      font-size: 0.95em;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    /* 事業アコーディオン */
+    .services-accordion {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .accordion-item {
+      border: 1px solid #dde8de;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .accordion-trigger {
+      width: 100%;
+      background: var(--white);
+      border: none;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+    .accordion-trigger:hover,
+    .accordion-trigger[aria-expanded="true"] {
+      background: #f0f8f2;
+    }
+    .accordion-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .accordion-icon {
+      font-size: 1.4em;
+      flex-shrink: 0;
+    }
+    .accordion-cat-name {
+      font-size: 1em;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+    .accordion-count {
+      font-size: 0.75em;
+      color: #888;
+      font-weight: 400;
+    }
+    .accordion-arrow {
+      font-size: 0.8em;
+      color: var(--primary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+    .accordion-trigger[aria-expanded="true"] .accordion-arrow {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      display: none;
+      padding: 4px 20px 20px;
+      background: #fafcfa;
+    }
+    .accordion-body.open {
+      display: block;
+    }
+    .accordion-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .accordion-list li {
+      background: var(--white);
+      border: 1px solid #d0e8d5;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.88em;
+      color: var(--text-mid);
+    }
+    .accordion-list li::before {
+      content: "・";
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 組織運営 */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .org-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 24px 24px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--primary);
+    }
+    .org-card-title {
+      font-size: 0.95em;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+    .org-card-val {
+      font-size: 1.1em;
+      font-weight: 900;
+      color: var(--text-dark);
+    }
+    .org-card-note {
+      font-size: 0.8em;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* 新事務所 */
+    .new-office {
+      background: linear-gradient(135deg, #e8f5ee 0%, #f0faf4 100%);
+      border-radius: 16px;
+      padding: 40px 36px;
+      margin-top: 36px;
+      border: 1px solid #c8e8d4;
+    }
+    .new-office-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.75em;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+    }
+    .new-office-title {
+      font-size: 1.2em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .new-office-text {
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .new-office-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .new-office-feature {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9em;
+      color: var(--text-mid);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .new-office-feature-icon {
+      font-size: 1.2em;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 760px) {
+      .page-hero { padding: 44px 20px; }
+      .goals-grid { grid-template-columns: repeat(2, 1fr); }
+      .org-grid { grid-template-columns: 1fr; }
+      .new-office { padding: 28px 20px; }
+      .new-office-features { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .goals-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- ロゴ -->
+      <div class="header-logo">
+        <a href="/" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- グローバルナビ（PC） -->
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="about.html" aria-current="page">社協について</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="#">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">寄付・支援<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+
+      <!-- ヘッダーコントロール -->
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="index.html#services" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/><path d="M10 17s7-4.5 7-9a5 5 0 00-10 0c0 4.5 3 9 3 9z" opacity=".4"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <!-- ハンバーガー（スマホ） -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li><a href="about.html" aria-current="page">社協について</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="#">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">寄付・支援<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="index.html#services" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">社協について</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">ABOUT US</p>
+      <h1 class="page-hero-title">大宜味村社会福祉協議会について</h1>
+    </div>
+
+    <!-- ──────────────────────────────
+         理念・ミッション
+    ─────────────────────────────── -->
+    <section class="about-page-section" id="mission" aria-labelledby="mission-heading">
+      <div class="about-page-container">
+        <p class="section-eyebrow">MISSION</p>
+        <h2 class="section-heading" id="mission-heading">理念・ミッション</h2>
+
+        <p class="mission-catch">「誰もが安心して、大宜味で暮らし続けられる村へ。」</p>
+
+        <p class="mission-text">
+          大宜味村社会福祉協議会は、住民主体の理念に基づき、村内の皆さまが住み慣れた地域で安心して暮らし続けられるよう、地域における「つながり」と「支え合い」を基盤とした地域づくりを推進しています。
+        </p>
+        <p class="mission-text">
+          生活困窮・高齢・障がい・子育て・ひきこもりなど、複合的な課題に対して包括的かつ継続的な支援体制の整備に取り組んでいます。
+        </p>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         令和8年度 重点目標
+    ─────────────────────────────── -->
+    <section class="about-page-section" id="goals" aria-labelledby="goals-heading">
+      <div class="about-page-container">
+        <p class="section-eyebrow">PRIORITY GOALS</p>
+        <h2 class="section-heading" id="goals-heading">令和8年度 重点目標</h2>
+
+        <div class="goals-grid">
+          <div class="goal-card">
+            <span class="goal-num">重点目標 ①</span>
+            <span class="goal-icon" aria-hidden="true">💴</span>
+            <p class="goal-title">財政基盤の強化</p>
+          </div>
+          <div class="goal-card">
+            <span class="goal-num">重点目標 ②</span>
+            <span class="goal-icon" aria-hidden="true">💬</span>
+            <p class="goal-title">相談支援体制の強化</p>
+          </div>
+          <div class="goal-card">
+            <span class="goal-num">重点目標 ③</span>
+            <span class="goal-icon" aria-hidden="true">🤝</span>
+            <p class="goal-title">地域福祉事業の推進</p>
+          </div>
+          <div class="goal-card">
+            <span class="goal-num">重点目標 ④</span>
+            <span class="goal-icon" aria-hidden="true">🆘</span>
+            <p class="goal-title">災害支援の推進</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         主な事業
+    ─────────────────────────────── -->
+    <section class="about-page-section" id="businesses" aria-labelledby="businesses-heading">
+      <div class="about-page-container">
+        <p class="section-eyebrow">OUR SERVICES</p>
+        <h2 class="section-heading" id="businesses-heading">主な事業</h2>
+
+        <div class="services-accordion" id="services-accordion">
+
+          <!-- 高齢者福祉 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="true" aria-controls="acc-elderly">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">👴</span>
+                <span class="accordion-cat-name">高齢者福祉<span class="accordion-count">（4事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body open" id="acc-elderly">
+              <ul class="accordion-list">
+                <li>がんじゅう教室（介護予防普及啓発事業）</li>
+                <li>くがにサロン（介護予防普及啓発事業）</li>
+                <li>在宅安心カー事業（移動支援）</li>
+                <li>生活支援体制整備事業（生活支援コーディネーター配置）</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 児童福祉 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-children">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">👶</span>
+                <span class="accordion-cat-name">児童福祉<span class="accordion-count">（4事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body" id="acc-children">
+              <ul class="accordion-list">
+                <li>こども園・小中学校との連携及び協働事業</li>
+                <li>児童福祉週間パレード・こいのぼり掲揚式</li>
+                <li>新小学・中学一年生激励事業</li>
+                <li>小・中学校・保護者への発達相談・訪問支援</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 障がい者（児）福祉 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-disability">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">♿</span>
+                <span class="accordion-cat-name">障がい者（児）福祉<span class="accordion-count">（3事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body" id="acc-disability">
+              <ul class="accordion-list">
+                <li>地域生活支援事業（移動支援事業）</li>
+                <li>精神障がい者・身体障がい者の相談支援</li>
+                <li>買い物支援</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 生活困窮支援 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-poverty">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">🏠</span>
+                <span class="accordion-cat-name">生活困窮支援<span class="accordion-count">（3事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body" id="acc-poverty">
+              <ul class="accordion-list">
+                <li>生活福祉資金の貸付業務</li>
+                <li>日常生活自立支援事業</li>
+                <li>フード提供支援</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 地域福祉・ボランティア -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-community">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">🌿</span>
+                <span class="accordion-cat-name">地域福祉・ボランティア<span class="accordion-count">（4事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body" id="acc-community">
+              <ul class="accordion-list">
+                <li>共同店ネットワーク事業</li>
+                <li>ボランティア育成活動</li>
+                <li>ボランティアポイント「おいぽ」導入検討</li>
+                <li>地域住民グループ「たんぽぽの会」支援</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 災害支援 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-disaster">
+              <span class="accordion-trigger-left">
+                <span class="accordion-icon" aria-hidden="true">🆘</span>
+                <span class="accordion-cat-name">災害支援<span class="accordion-count">（3事業）</span></span>
+              </span>
+              <span class="accordion-arrow" aria-hidden="true">▲</span>
+            </button>
+            <div class="accordion-body" id="acc-disaster">
+              <ul class="accordion-list">
+                <li>村防災本部への協力及び連携</li>
+                <li>災害福祉マップの更新</li>
+                <li>大規模災害時のボランティアセンター設置運営</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /services-accordion -->
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         組織運営
+    ─────────────────────────────── -->
+    <section class="about-page-section" id="organization" aria-labelledby="org-heading">
+      <div class="about-page-container">
+        <p class="section-eyebrow">ORGANIZATION</p>
+        <h2 class="section-heading" id="org-heading">組織運営</h2>
+
+        <div class="org-grid">
+          <div class="org-card">
+            <p class="org-card-title">理事会</p>
+            <p class="org-card-val">年3回 開催</p>
+          </div>
+          <div class="org-card">
+            <p class="org-card-title">評議員会</p>
+            <p class="org-card-val">年3回 開催</p>
+          </div>
+          <div class="org-card">
+            <p class="org-card-title">監査</p>
+            <p class="org-card-val">年1回 実施</p>
+          </div>
+          <div class="org-card">
+            <p class="org-card-title">職務会</p>
+            <p class="org-card-val">毎月 開催</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         新事務所について
+    ─────────────────────────────── -->
+    <section class="about-page-section" id="new-office" aria-labelledby="newoffice-heading">
+      <div class="about-page-container">
+        <p class="section-eyebrow">NEW OFFICE</p>
+        <h2 class="section-heading" id="newoffice-heading">新事務所について</h2>
+
+        <div class="new-office">
+          <span class="new-office-badge">令和8年度 移転予定</span>
+          <p class="new-office-title">旧大宜味小学校跡地へ移転・「福祉のプラットフォーム」を整備</p>
+          <p class="new-office-text">
+            令和8年度初頭に、旧大宜味小学校跡地へ移転予定です。新事務所では、村内の福祉相談から地域交流まで、幅広いニーズに対応できる「福祉のプラットフォーム」として以下の機能を整備します。
+          </p>
+          <div class="new-office-features">
+            <div class="new-office-feature">
+              <span class="new-office-feature-icon" aria-hidden="true">🚪</span>
+              <span>個室相談スペース（プライバシーに配慮した総合相談機能）</span>
+            </div>
+            <div class="new-office-feature">
+              <span class="new-office-feature-icon" aria-hidden="true">📦</span>
+              <span>フードバンク専用スペース</span>
+            </div>
+            <div class="new-office-feature">
+              <span class="new-office-feature-icon" aria-hidden="true">🌱</span>
+              <span>ボランティア・地域住民が交流できるフリースペース</span>
+            </div>
+            <div class="new-office-feature">
+              <span class="new-office-feature-icon" aria-hidden="true">💻</span>
+              <span>ICT環境の整備</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         CTAバナー
+    ─────────────────────────────── -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-banner-inner">
+          <h2 class="cta-banner-title" id="cta-heading">まずは、お気軽にご相談ください</h2>
+          <p class="cta-banner-sub">
+            サービスのご利用方法・各種手続き・生活上のお悩みなど、どんなことでもお声がけください。<br>
+            大宜味村社協のスタッフが丁寧にご案内します。
+          </p>
+          <div class="cta-banner-btns">
+            <a href="tel:0980443800" class="cta-btn-primary">
+              📞 お電話でのお問い合わせ
+            </a>
+            <a href="mailto:info@oogimishakyo.or.jp" class="cta-btn-secondary">
+              ✉ メールでお問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- 法人情報 -->
+        <div class="footer-logo-area">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 4 L28 14 L26 14 L26 27 L6 27 L6 14 L4 14 Z" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 27 L12 20 Q12 17 16 17 Q20 17 20 20 L20 27" fill="white" fill-opacity="0.85"/>
+                <path d="M16 12 C16 12 13 9.5 13 8 C13 6.8 14 6 15 6.5 C15.5 6.8 16 7.5 16 7.5 C16 7.5 16.5 6.8 17 6.5 C18 6 19 6.8 19 8 C19 9.5 16 12 16 12Z" fill="white"/>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-pref">社会福祉法人</span>
+              <span class="footer-logo-name">大宜味村社会福祉協議会</span>
+            </div>
+          </div>
+          <address class="footer-address">
+            〒905-1303<br>
+            沖縄県国頭郡大宜味村字喜如嘉320番地<br>
+            <a href="tel:0980443800">TEL：0980-44-3800</a><br>
+            <a href="mailto:info@oogimishakyo.or.jp">info@oogimishakyo.or.jp</a>
+          </address>
+          <div class="footer-tel" aria-label="電話番号">
+            <span class="footer-tel-label">TEL</span>
+            <a href="tel:0980443800" style="color:white;">0980-44-3800</a>
+          </div>
+          <div class="footer-hours">受付時間：平日 9:00〜17:15</div>
+        </div>
+
+        <!-- サービス -->
+        <div class="footer-col">
+          <div class="footer-col-title">事業・サービス</div>
+          <ul class="footer-link-list">
+            <li><a href="#">高齢者支援（がんじゅう教室）</a></li>
+            <li><a href="#">高齢者支援（くがにサロン）</a></li>
+            <li><a href="#">在宅安心カー</a></li>
+            <li><a href="#">障がい者支援（移動支援）</a></li>
+            <li><a href="#">障がい者支援（相談支援）</a></li>
+            <li><a href="#">生活困窮支援</a></li>
+            <li><a href="#">子ども・子育て支援</a></li>
+            <li><a href="#">地域活動・ボランティア</a></li>
+          </ul>
+        </div>
+
+        <!-- 社協について -->
+        <div class="footer-col">
+          <div class="footer-col-title">社協について</div>
+          <ul class="footer-link-list">
+            <li><a href="about.html">理念・ミッション</a></li>
+            <li><a href="about.html#goals">重点目標</a></li>
+            <li><a href="about.html#businesses">主な事業</a></li>
+            <li><a href="about.html#organization">組織運営</a></li>
+            <li><a href="about.html#new-office">新事務所情報</a></li>
+            <li><a href="#">社協だより</a></li>
+            <li><a href="#">採用情報</a></li>
+          </ul>
+        </div>
+
+        <!-- リンク・サポート -->
+        <div class="footer-col">
+          <div class="footer-col-title">サポート</div>
+          <ul class="footer-link-list">
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">サービス利用の流れ</a></li>
+            <li><a href="#">ボランティア登録</a></li>
+            <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付・ご支援</a></li>
+            <li><a href="#">アクセス・地図</a></li>
+            <li><a href="#">大宜味村役場</a></li>
+            <li><a href="#">沖縄県社会福祉協議会</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /footer-inner -->
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 社会福祉法人 大宜味村社会福祉協議会. All Rights Reserved.
+        </p>
+        <nav class="footer-bottom-links" aria-label="フッターサブナビゲーション">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトマップ</a>
+          <a href="#">お問い合わせ</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ページトップボタン -->
+  <a href="#" class="page-top" id="page-top" aria-label="ページの先頭へ戻る">
+    <span class="page-top-arrow">&#9650;</span>
+    <span>TOP</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // アコーディオン
+    document.querySelectorAll('.accordion-trigger').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var bodyId = this.getAttribute('aria-controls');
+        var body = document.getElementById(bodyId);
+        this.setAttribute('aria-expanded', String(!expanded));
+        body.classList.toggle('open', !expanded);
+      });
+    });
+  </script>
+</body>
+</html>
