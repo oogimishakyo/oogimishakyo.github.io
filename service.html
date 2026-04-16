@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社会福祉協議会の支援・サービス案内。移動支援・介護予防・相談支援など各種サービスをご案内します。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,移動支援,介護予防,相談支援,在宅安心カー,くがにサロン,がんじゅう教室">
+  <meta property="og:title" content="支援・サービス案内 | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="移動支援・介護予防・相談支援など、大宜味村社協が提供するサービスをご案内します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/service.html">
+  <title>支援・サービス案内 | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    /* パンくずリスト */
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before {
+      content: "›";
+      margin: 0 8px;
+      color: #aaa;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label {
+      font-size: 0.8em;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0 0 16px;
+    }
+    .page-hero-sub {
+      font-size: 0.95em;
+      opacity: 0.85;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* セクションナビ（アンカーリンク） */
+    .section-nav {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid #e0ebe2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .section-nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .section-nav-inner::-webkit-scrollbar { display: none; }
+    .section-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 16px 22px;
+      font-size: 0.88em;
+      font-weight: 700;
+      color: #555;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .section-nav-btn:hover,
+    .section-nav-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .section-nav-icon { font-size: 1.1em; }
+
+    /* メインレイアウト */
+    .service-page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* セクション見出し */
+    .service-section {
+      margin-bottom: 72px;
+      scroll-margin-top: calc(var(--header-h) + 56px);
+    }
+    .service-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e0ebe2;
+    }
+    .service-section-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary) 0%, #2da870 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3em;
+      flex-shrink: 0;
+    }
+    .service-section-title-wrap {}
+    .service-section-label {
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .service-section-title {
+      font-size: 1.3em;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    /* サービスカードグリッド */
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-cards.two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .service-cards.three-col-wrap {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* サービスカード */
+    .svc-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid var(--primary);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .svc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.11);
+    }
+    .svc-card-head {
+      padding: 20px 20px 0;
+    }
+    .svc-card-name {
+      font-size: 1em;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.4;
+      margin: 0 0 14px;
+    }
+    .svc-card-body {
+      padding: 0 20px 16px;
+      flex: 1;
+    }
+    .svc-detail-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 9px;
+      font-size: 0.85em;
+      line-height: 1.65;
+    }
+    .svc-detail-label {
+      font-weight: 700;
+      color: var(--primary-dark);
+      flex-shrink: 0;
+      min-width: 3em;
+    }
+    .svc-detail-val {
+      color: var(--text-mid);
+    }
+    .svc-note {
+      font-size: 0.78em;
+      color: #888;
+      background: #f5f7f5;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+    .svc-note::before {
+      content: "※ ";
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 問合せフッター */
+    .svc-card-foot {
+      border-top: 1px solid #eef2ee;
+      padding: 14px 20px;
+      background: #f8faf8;
+    }
+    .svc-contact-label {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .svc-contact-name {
+      font-size: 0.82em;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .svc-tel {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.15em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    .svc-tel:hover { color: var(--primary); text-decoration: underline; }
+    .svc-tel-icon { font-size: 1em; }
+
+    /* 料金バッジ */
+    .svc-fee {
+      display: inline-block;
+      background: #e8f5ee;
+      color: var(--primary-dark);
+      font-size: 0.78em;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid #c8e8d4;
+    }
+
+    @media (max-width: 860px) {
+      .service-cards,
+      .service-cards.two-col,
+      .service-cards.three-col-wrap {
+        grid-template-columns: 1fr;
+      }
+      .page-hero { padding: 44px 20px; }
+    }
+    @media (max-width: 600px) {
+      .service-page-wrap { padding: 40px 16px 60px; }
+      .section-nav-btn { padding: 14px 16px; font-size: 0.82em; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- ロゴ -->
+      <div class="header-logo">
+        <a href="/" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- グローバルナビ（PC） -->
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="service.html" aria-current="page">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">寄付・支援<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+
+      <!-- ヘッダーコントロール -->
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="service.html" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/><path d="M10 17s7-4.5 7-9a5 5 0 00-10 0c0 4.5 3 9 3 9z" opacity=".4"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <!-- ハンバーガー（スマホ） -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li><a href="about.html">社協について</a></li>
+          <li><a href="#">お知らせ</a></li>
+          <li><a href="service.html" aria-current="page">事業・サービス</a></li>
+          <li><a href="#">ボランティア</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">寄付・支援<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+            </ul>
+          </li>
+          <li><a href="#">アクセス</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="service.html" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li aria-current="page">支援・サービス案内</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">SERVICES</p>
+      <h1 class="page-hero-title">支援・サービス案内</h1>
+      <p class="page-hero-sub">大宜味村社協が提供するサービスをご案内します。<br>ご不明な点はお気軽にお問い合わせください。</p>
+    </div>
+
+    <!-- セクションナビ -->
+    <nav class="section-nav" aria-label="サービスカテゴリ">
+      <div class="section-nav-inner">
+        <a href="#transport" class="section-nav-btn active" data-nav="transport">
+          <span class="section-nav-icon" aria-hidden="true">🚗</span>移動支援
+        </a>
+        <a href="#prevention" class="section-nav-btn" data-nav="prevention">
+          <span class="section-nav-icon" aria-hidden="true">🌿</span>介護予防
+        </a>
+        <a href="#consultation" class="section-nav-btn" data-nav="consultation">
+          <span class="section-nav-icon" aria-hidden="true">💬</span>相談・生活支援
+        </a>
+      </div>
+    </nav>
+
+    <div class="service-page-wrap">
+
+      <!-- ──────────────────────────────
+           1. 移動支援サービス
+      ─────────────────────────────── -->
+      <section class="service-section" id="transport" aria-labelledby="transport-heading">
+        <div class="service-section-header">
+          <div class="service-section-icon" aria-hidden="true">🚗</div>
+          <div class="service-section-title-wrap">
+            <span class="service-section-label">TRANSPORT SUPPORT</span>
+            <h2 class="service-section-title" id="transport-heading">移動支援サービス</h2>
+          </div>
+        </div>
+
+        <div class="service-cards">
+
+          <!-- 高齢者等買い物支援 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">高齢者等買い物支援事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">65歳以上のみの世帯、または身体障害者手帳1・2級の方</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">店舗までの送迎および店舗内での買い物の同行・見守り</span>
+              </div>
+              <p class="svc-note">利用決定後、社協が事業を受託・実施します</p>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">相談・申請窓口</p>
+              <p class="svc-contact-name">大宜味村地域包括支援センター<br>（大宜味村役場内）</p>
+              <a href="tel:0980443011" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3011
+              </a>
+            </div>
+          </article>
+
+          <!-- 在宅安心カー -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">在宅安心カー事業<br>（高齢者外出支援）</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">概ね65歳以上で一般交通機関の利用が困難な方、概ね60歳以上で身体が不自由な方</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">医療機関・福祉サービス事業所等への送迎（リフト付車両対応）</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">負担</span>
+                <span class="svc-detail-val">実費相当分</span>
+              </div>
+              <p class="svc-note">利用決定後、社協が事業を受託・実施します</p>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">相談・申請窓口</p>
+              <p class="svc-contact-name">大宜味村地域包括支援センター<br>（大宜味村役場内）</p>
+              <a href="tel:0980443011" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3011
+              </a>
+            </div>
+          </article>
+
+          <!-- 障がい者移動支援 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">障がい者移動支援事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">村内在住で社会生活上必要な外出や通所・通学が困難な障がい者・障がい児</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">福祉サービス事業所・医療機関等への送迎（個別支援型・車両移送型）</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">運行日</span>
+                <span class="svc-detail-val">月曜〜金曜（祝祭日・台風等を除く）</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">範囲</span>
+                <span class="svc-detail-val">村内および国頭郡内町村・名護市</span>
+              </div>
+              <p class="svc-note">利用決定後、社協が事業を受託・実施します</p>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">相談・申請窓口</p>
+              <p class="svc-contact-name">大宜味村役場 福祉保健課</p>
+              <a href="tel:0980443003" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3003
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /service-cards -->
+      </section>
+
+      <!-- ──────────────────────────────
+           2. 介護予防事業
+      ─────────────────────────────── -->
+      <section class="service-section" id="prevention" aria-labelledby="prevention-heading">
+        <div class="service-section-header">
+          <div class="service-section-icon" aria-hidden="true">🌿</div>
+          <div class="service-section-title-wrap">
+            <span class="service-section-label">CARE PREVENTION</span>
+            <h2 class="service-section-title" id="prevention-heading">介護予防事業</h2>
+          </div>
+        </div>
+
+        <div class="service-cards two-col">
+
+          <!-- くがにサロン -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">くがにサロン事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">地域で活動場所や居場所がない方向けの交流・介護予防の場</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">開催</span>
+                <span class="svc-detail-val">毎週火曜日 午前中（週1回）</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">高齢者・障がい者・子育て中の方など地域の方どなたでも</span>
+              </div>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">相談・申請窓口</p>
+              <p class="svc-contact-name">大宜味村地域包括支援センター<br>（大宜味村役場内）</p>
+              <a href="tel:0980443011" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3011
+              </a>
+            </div>
+          </article>
+
+          <!-- がんじゅう教室 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">がんじゅう教室事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">介護予防普及啓発のための健康教室・体操教室</span>
+              </div>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">お問い合わせ</p>
+              <p class="svc-contact-name">大宜味村社会福祉協議会</p>
+              <a href="tel:0980443800" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3800
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /service-cards -->
+      </section>
+
+      <!-- ──────────────────────────────
+           3. 相談・生活支援
+      ─────────────────────────────── -->
+      <section class="service-section" id="consultation" aria-labelledby="consultation-heading">
+        <div class="service-section-header">
+          <div class="service-section-icon" aria-hidden="true">💬</div>
+          <div class="service-section-title-wrap">
+            <span class="service-section-label">CONSULTATION &amp; LIVING SUPPORT</span>
+            <h2 class="service-section-title" id="consultation-heading">相談・生活支援</h2>
+          </div>
+        </div>
+
+        <div class="service-cards">
+
+          <!-- 心配ごと相談 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">心配ごと相談事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <span class="svc-fee">予約不要・無料</span>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">介護・福祉・家族・仕事など様々な悩みに対応</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">方法</span>
+                <span class="svc-detail-val">来所・匿名・電話での相談が可能</span>
+              </div>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">お問い合わせ</p>
+              <p class="svc-contact-name">大宜味村社会福祉協議会</p>
+              <a href="tel:0980443800" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3800
+              </a>
+            </div>
+          </article>
+
+          <!-- 日常生活自立支援 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">日常生活自立支援事業<br><small style="font-size:0.8em;font-weight:600;">（福祉サービス利用援助事業）</small></h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">認知症の高齢者・知的障がい・精神障がいのある方など、自分で判断することが困難な方</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">
+                  福祉サービス利用手続きのお手伝い／日常的金銭管理（家賃・公共料金・医療費の支払い、年金受け取りなど）／書類等の預かりサービス（通帳・印鑑・権利証など）
+                </span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">料金</span>
+                <span class="svc-detail-val">
+                  相談まで無料。契約後は1時間1,600円（以降30分ごと500円）、交通費1kmあたり10円<br>
+                  <small>※生活保護受給世帯は1回400円</small>
+                </span>
+              </div>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">お問い合わせ</p>
+              <p class="svc-contact-name">大宜味村社会福祉協議会</p>
+              <a href="tel:0980443800" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3800
+              </a>
+            </div>
+          </article>
+
+          <!-- 生活福祉資金 -->
+          <article class="svc-card">
+            <div class="svc-card-head">
+              <h3 class="svc-card-name">生活福祉資金貸付事業</h3>
+            </div>
+            <div class="svc-card-body">
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">対象</span>
+                <span class="svc-detail-val">低所得世帯・障害者世帯・高齢者世帯（65歳以上）</span>
+              </div>
+              <div class="svc-detail-row">
+                <span class="svc-detail-label">内容</span>
+                <span class="svc-detail-val">資金貸付と相談支援により経済的自立や社会参加を促進</span>
+              </div>
+              <p class="svc-note">貸付制度のため返済計画の検討が必要です</p>
+              <p class="svc-note">他制度（日本学生支援機構・母子父子寡婦福祉資金等）の利用が優先となります</p>
+            </div>
+            <div class="svc-card-foot">
+              <p class="svc-contact-label">お問い合わせ</p>
+              <p class="svc-contact-name">大宜味村社会福祉協議会</p>
+              <a href="tel:0980443800" class="svc-tel">
+                <span class="svc-tel-icon" aria-hidden="true">📞</span>0980-44-3800
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /service-cards -->
+      </section>
+
+    </div><!-- /service-page-wrap -->
+
+    <!-- CTAバナー -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-banner-inner">
+          <h2 class="cta-banner-title" id="cta-heading">まずは、お気軽にご相談ください</h2>
+          <p class="cta-banner-sub">
+            サービスのご利用方法・各種手続き・生活上のお悩みなど、どんなことでもお声がけください。<br>
+            大宜味村社協のスタッフが丁寧にご案内します。
+          </p>
+          <div class="cta-banner-btns">
+            <a href="tel:0980443800" class="cta-btn-primary">
+              📞 お電話でのお問い合わせ
+            </a>
+            <a href="mailto:info@oogimishakyo.or.jp" class="cta-btn-secondary">
+              ✉ メールでお問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+  ==================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo-area">
+          <div class="footer-logo">
+            <div class="footer-logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 4 L28 14 L26 14 L26 27 L6 27 L6 14 L4 14 Z" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 27 L12 20 Q12 17 16 17 Q20 17 20 20 L20 27" fill="white" fill-opacity="0.85"/>
+                <path d="M16 12 C16 12 13 9.5 13 8 C13 6.8 14 6 15 6.5 C15.5 6.8 16 7.5 16 7.5 C16 7.5 16.5 6.8 17 6.5 C18 6 19 6.8 19 8 C19 9.5 16 12 16 12Z" fill="white"/>
+              </svg>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-pref">社会福祉法人</span>
+              <span class="footer-logo-name">大宜味村社会福祉協議会</span>
+            </div>
+          </div>
+          <address class="footer-address">
+            〒905-1303<br>
+            沖縄県国頭郡大宜味村字喜如嘉320番地<br>
+            <a href="tel:0980443800">TEL：0980-44-3800</a><br>
+            <a href="mailto:info@oogimishakyo.or.jp">info@oogimishakyo.or.jp</a>
+          </address>
+          <div class="footer-tel" aria-label="電話番号">
+            <span class="footer-tel-label">TEL</span>
+            <a href="tel:0980443800" style="color:white;">0980-44-3800</a>
+          </div>
+          <div class="footer-hours">受付時間：平日 9:00〜17:15</div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">事業・サービス</div>
+          <ul class="footer-link-list">
+            <li><a href="service.html#transport">移動支援サービス</a></li>
+            <li><a href="service.html#prevention">介護予防事業</a></li>
+            <li><a href="service.html#consultation">相談・生活支援</a></li>
+            <li><a href="#">障がい者支援</a></li>
+            <li><a href="#">生活困窮支援</a></li>
+            <li><a href="#">子ども・子育て支援</a></li>
+            <li><a href="#">地域活動・ボランティア</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">社協について</div>
+          <ul class="footer-link-list">
+            <li><a href="about.html">理念・ミッション</a></li>
+            <li><a href="about.html#goals">重点目標</a></li>
+            <li><a href="about.html#businesses">主な事業</a></li>
+            <li><a href="about.html#organization">組織運営</a></li>
+            <li><a href="about.html#new-office">新事務所情報</a></li>
+            <li><a href="#">社協だより</a></li>
+            <li><a href="#">採用情報</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">サポート</div>
+          <ul class="footer-link-list">
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">サービス利用の流れ</a></li>
+            <li><a href="#">ボランティア登録</a></li>
+            <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付・ご支援</a></li>
+            <li><a href="#">アクセス・地図</a></li>
+            <li><a href="#">大宜味村役場</a></li>
+            <li><a href="#">沖縄県社会福祉協議会</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /footer-inner -->
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 社会福祉法人 大宜味村社会福祉協議会. All Rights Reserved.
+        </p>
+        <nav class="footer-bottom-links" aria-label="フッターサブナビゲーション">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">サイトマップ</a>
+          <a href="#">お問い合わせ</a>
+        </nav>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ページトップボタン -->
+  <a href="#" class="page-top" id="page-top" aria-label="ページの先頭へ戻る">
+    <span class="page-top-arrow">&#9650;</span>
+    <span>TOP</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script>
+    // セクションナビのアクティブ切り替え（スクロール連動）
+    (function () {
+      var sections = ['transport', 'prevention', 'consultation'];
+      var navBtns = document.querySelectorAll('.section-nav-btn');
+      var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 80;
+
+      function onScroll() {
+        var scrollY = window.scrollY + headerH + 70;
+        var current = sections[0];
+        sections.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) current = id;
+        });
+        navBtns.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-nav') === current);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
