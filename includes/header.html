@@ -21,48 +21,102 @@
       <!-- グローバルナビ（PC） -->
       <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
         <ul>
-          <!-- 地域の課題を知る -->
-          <li class="has-dropdown">
-            <a href="issues.html" aria-haspopup="true" aria-expanded="false">地域の課題を知る<span class="nav-arrow" aria-hidden="true">▾</span></a>
-            <ul class="dropdown" role="menu">
-              <li role="none"><a href="issues.html" role="menuitem">大宜味村の現状</a></li>
-              <li role="none"><a href="issue-isolation.html" role="menuitem">社会的孤立・孤独</a></li>
-              <li role="none"><a href="issue-poverty.html" role="menuitem">生活困窮</a></li>
-              <li role="none"><a href="issue-elderly.html" role="menuitem">高齢化・介護</a></li>
-              <li role="none"><a href="issue-transport.html" role="menuitem">移動困難</a></li>
-              <li role="none"><a href="issue-children.html" role="menuitem">子どもの育ちを支える</a></li>
-              <li role="none"><a href="issue-kyodoten.html" role="menuitem">共同売店を守る</a></li>
-              <li role="none"><a href="issue-disaster.html" role="menuitem">災害への備え</a></li>
-              <li role="none"><a href="issue-health.html" role="menuitem">健康寿命</a></li>
-            </ul>
+
+          <!-- ① 地域の課題を知る：メガメニュー -->
+          <li class="has-mega">
+            <a href="issues.html" class="mega-trigger" aria-haspopup="true" aria-expanded="false">
+              地域の課題を知る<span class="nav-arrow" aria-hidden="true">▾</span>
+            </a>
+            <div class="mega-menu" role="region" aria-label="地域の課題を知る メニュー">
+              <div class="mega-inner">
+
+                <div class="mega-col mega-col-featured">
+                  <p class="mega-section-title">初めての方へ</p>
+                  <a href="issues.html" class="mega-intro-card">
+                    <span class="mega-intro-icon" aria-hidden="true">🌿</span>
+                    <span class="mega-intro-text">大宜味村社協が目指す<br>福祉のかたち</span>
+                  </a>
+                </div>
+
+                <div class="mega-col mega-col-main">
+                  <p class="mega-section-title">重点課題</p>
+                  <ul class="mega-links mega-grid">
+                    <li><a href="issue-isolation.html">社会的孤立・孤独</a></li>
+                    <li><a href="issue-poverty.html">生活困窮</a></li>
+                    <li><a href="issue-elderly.html">高齢化・介護</a></li>
+                    <li><a href="issue-transport.html">移動困難</a></li>
+                    <li><a href="issue-children.html">子どもの育ちを支える</a></li>
+                    <li><a href="issue-kyodoten.html">共同売店を守る</a></li>
+                    <li><a href="issue-disaster.html">災害への備え</a></li>
+                    <li><a href="issue-health.html">健康寿命</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
           </li>
 
-          <!-- 地域を支える -->
-          <li class="has-dropdown">
-            <a href="#" aria-haspopup="true" aria-expanded="false">地域を支える<span class="nav-arrow" aria-hidden="true">▾</span></a>
-            <ul class="dropdown" role="menu">
-              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
-              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
-              <li role="none"><a href="volunteer.html" role="menuitem">ボランティアで参加</a></li>
-              <li role="none"><a href="faq.html" role="menuitem">よくある質問</a></li>
-            </ul>
+          <!-- ② 地域を支える：メガメニュー -->
+          <li class="has-mega">
+            <a href="#" class="mega-trigger" aria-haspopup="true" aria-expanded="false">
+              地域を支える<span class="nav-arrow" aria-hidden="true">▾</span>
+            </a>
+            <div class="mega-menu" role="region" aria-label="地域を支える メニュー">
+              <div class="mega-inner">
+
+                <div class="mega-col mega-col-featured">
+                  <p class="mega-section-title">寄付で支える</p>
+                  <ul class="mega-links">
+                    <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+                    <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-col mega-col-main">
+                  <p class="mega-section-title">参加して支える</p>
+                  <ul class="mega-links">
+                    <li><a href="volunteer.html">ボランティアで参加</a></li>
+                    <li><a href="faq.html">よくある質問</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
           </li>
 
-          <!-- 活動ニュース -->
+          <!-- ③ 活動ニュース：単独リンク -->
           <li><a href="news.html">活動ニュース</a></li>
 
-          <!-- 社協について -->
-          <li class="has-dropdown">
-            <a href="about.html" aria-haspopup="true" aria-expanded="false">社協について<span class="nav-arrow" aria-hidden="true">▾</span></a>
-            <ul class="dropdown" role="menu">
-              <li role="none"><a href="about.html" role="menuitem">理念・組織について</a></li>
-              <li role="none"><a href="about.html#goals" role="menuitem">事業計画・報告</a></li>
-              <li role="none"><a href="about.html#finance" role="menuitem">収支決算書</a></li>
-              <li role="none"><a href="about.html#dayori" role="menuitem">社協だより</a></li>
-              <li role="none"><a href="contact.html" role="menuitem">お問い合わせ</a></li>
-              <li role="none"><a href="contact.html#access" role="menuitem">アクセス</a></li>
-            </ul>
+          <!-- ④ 社協について：メガメニュー -->
+          <li class="has-mega">
+            <a href="about.html" class="mega-trigger" aria-haspopup="true" aria-expanded="false">
+              社協について<span class="nav-arrow" aria-hidden="true">▾</span>
+            </a>
+            <div class="mega-menu" role="region" aria-label="社協について メニュー">
+              <div class="mega-inner">
+
+                <div class="mega-col mega-col-featured">
+                  <p class="mega-section-title">法人情報</p>
+                  <ul class="mega-links">
+                    <li><a href="about.html">理念・組織について</a></li>
+                    <li><a href="about.html#goals">事業計画・報告</a></li>
+                    <li><a href="about.html#finance">収支決算書</a></li>
+                    <li><a href="about.html#dayori">社協だより</a></li>
+                  </ul>
+                </div>
+
+                <div class="mega-col mega-col-main">
+                  <p class="mega-section-title">お問い合わせ・アクセス</p>
+                  <ul class="mega-links">
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                    <li><a href="contact.html#access">アクセス</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
           </li>
+
         </ul>
       </nav>
 
