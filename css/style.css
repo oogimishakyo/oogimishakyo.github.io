@@ -490,9 +490,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .slide-content {
   position: relative; z-index: 2;
-  padding: 0 10%;
+  padding: 0 4%;
   color: var(--white);
-  max-width: 700px;
+  max-width: 880px;
 }
 .slide-sub {
   font-size: 0.9em; font-weight: 600;
