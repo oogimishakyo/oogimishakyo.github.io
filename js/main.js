@@ -273,7 +273,63 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ─────────────────────────────────────────
-     8. スクロールアニメーション (Intersection Observer)
+     8. メガメニュー ホバー制御（タイマー方式）
+        position:fixed パネルとナビトリガーの間の
+        ギャップでメニューが消えないよう、
+        mouseenter / mouseleave + 遅延クローズで制御
+  ───────────────────────────────────────── */
+  const megaItems = document.querySelectorAll('.has-mega');
+
+  megaItems.forEach(item => {
+    const panel = item.querySelector('.mega-menu');
+    const trigger = item.querySelector('.mega-trigger');
+    let closeTimer = null;
+
+    function openMenu() {
+      clearTimeout(closeTimer);
+      // 他のメガメニューを閉じる
+      megaItems.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          const t = other.querySelector('.mega-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.add('is-open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function scheduleClose() {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }, 200);
+    }
+
+    // ナビ親要素（li）のホバー
+    item.addEventListener('mouseenter', openMenu);
+    item.addEventListener('mouseleave', scheduleClose);
+
+    // position:fixed パネルのホバー（ギャップをまたいで閉じないよう）
+    if (panel) {
+      panel.addEventListener('mouseenter', () => clearTimeout(closeTimer));
+      panel.addEventListener('mouseleave', scheduleClose);
+    }
+  });
+
+  // ナビ外クリックで全メガメニューを閉じる
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.has-mega')) {
+      megaItems.forEach(item => {
+        item.classList.remove('is-open');
+        const t = item.querySelector('.mega-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     9. スクロールアニメーション (Intersection Observer)
   ───────────────────────────────────────── */
   if ('IntersectionObserver' in window) {
     const targets = document.querySelectorAll(

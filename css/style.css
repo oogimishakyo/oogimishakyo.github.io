@@ -212,7 +212,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform var(--transition);
   vertical-align: middle;
 }
-.has-mega:hover .nav-arrow,
+.has-mega.is-open .nav-arrow,
 .has-mega:focus-within .nav-arrow { transform: rotate(180deg); }
 
 /* メガメニュー本体：ヘッダー直下に固定幅100%で表示 */
@@ -230,7 +230,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.22s ease, transform 0.22s ease;
   z-index: 990;
 }
-.has-mega:hover .mega-menu,
+.has-mega.is-open .mega-menu,
 .has-mega:focus-within .mega-menu {
   opacity: 1;
   pointer-events: auto;
