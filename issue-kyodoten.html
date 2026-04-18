@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="大宜味村における子どもの育ちを支える取り組みと、大宜味村社会福祉協議会の活動をご紹介します。">
-  <title>子どもの育ちを支える | 地域の課題 | 大宜味村社会福祉協議会</title>
+  <meta name="description" content="大宜味村の共同売店（共同店）の現状と、地域のつながりを守る大宜味村社会福祉協議会の取り組みをご紹介します。">
+  <title>共同売店を守る | 地域の課題 | 大宜味村社会福祉協議会</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* common page styles */
     .breadcrumb{background:#f5f7f5;padding:12px 0;font-size:.82em;color:#666}
     .breadcrumb-inner{max-width:1200px;margin:0 auto;padding:0 24px}
     .breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;margin:0;padding:0}
@@ -44,6 +43,24 @@
     .cta-box-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
     .cta-box-btn-primary{background:var(--white);color:var(--primary);padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
     .cta-box-btn-secondary{border:2px solid var(--white);color:var(--white);padding:10px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
+    .kyodoten-highlight {
+      background: linear-gradient(135deg, #e8f5ee, #f0faf4);
+      border-radius: 12px;
+      padding: 24px 28px;
+      border: 1px solid #c8e8d4;
+      margin: 20px 0;
+    }
+    .kyodoten-highlight-title {
+      font-size: 1em;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+    .kyodoten-highlight-text {
+      font-size: .9em;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
     @media(max-width:640px){
       .stat-row{grid-template-columns:1fr 1fr}
       .link-grid{grid-template-columns:1fr}
@@ -63,7 +80,7 @@
         <ol>
           <li><a href="index.html">トップ</a></li>
           <li><a href="issues.html">地域の課題を知る</a></li>
-          <li>子どもの育ちを支える</li>
+          <li>共同売店を守る</li>
         </ol>
       </div>
     </nav>
@@ -71,65 +88,72 @@
     <!-- ページヒーロー -->
     <section class="page-hero">
       <p class="page-hero-label">COMMUNITY ISSUES</p>
-      <h1 class="page-hero-title">子どもの育ちを支える</h1>
-      <p class="page-hero-sub">どんな家庭に生まれても、大宜味の子どもたちが健やかに育つ環境を</p>
+      <h1 class="page-hero-title">共同売店を守る</h1>
+      <p class="page-hero-sub">地域の命綱・共同売店ネットワークを次の世代へ</p>
     </section>
 
     <!-- セクション1：現状 -->
-    <section class="issue-section">
+    <section class="issue-section" aria-labelledby="situation-heading">
       <div class="issue-container">
         <p class="section-eyebrow">CURRENT SITUATION</p>
-        <h2 class="section-heading">大宜味村での現状</h2>
+        <h2 class="section-heading" id="situation-heading">大宜味村での現状</h2>
+
         <div class="stat-row">
           <div class="stat-box">
-            <div class="stat-box-num">2,902人</div>
+            <div class="stat-box-num">2,902<span style="font-size:.6em">人</span></div>
             <div class="stat-box-label">村の人口</div>
           </div>
           <div class="stat-box">
-            <div class="stat-box-num">42%超</div>
+            <div class="stat-box-num">42%<span style="font-size:.6em">超</span></div>
             <div class="stat-box-label">高齢化率</div>
           </div>
           <div class="stat-box">
-            <div class="stat-box-num">1,697世帯</div>
+            <div class="stat-box-num">1,697<span style="font-size:.6em">世帯</span></div>
             <div class="stat-box-label">総世帯数</div>
           </div>
         </div>
-        <p class="body-text">過疎化・人口減少が進む大宜味村において、子育て世帯やひとり親世帯が孤立しないよう、地域全体で子どもの育ちを支える仕組みづくりが求められています。経済的なサポートだけでなく、学用品の支給や地域連携による見守りを通じて、どんな家庭に生まれた子どもも等しく成長できる環境を整えることが社協の大切な使命のひとつです。</p>
+
+        <p class="body-text">
+          大宜味村の共同売店（共同店）は、村民が出資・運営する住民協同の商店であり、日本に現存する最古の住民協同組合型店舗として世界的にも注目されています。買い物の場であるだけでなく、高齢者の見守り・交流・地域情報の発信拠点として、村の福祉を支える「社会インフラ」でもあります。
+        </p>
+        <p class="body-text">
+          しかし、過疎化・高齢化・後継者不足により、各地区の共同売店は運営存続の危機に直面しています。共同売店がなくなることは、買い物の場を失うだけでなく、地域のつながりそのものが失われることを意味します。
+        </p>
+
+        <div class="kyodoten-highlight">
+          <p class="kyodoten-highlight-title">共同売店とは</p>
+          <p class="kyodoten-highlight-text">
+            大宜味村に残る共同売店は、明治時代に村民が自ら出資して設立した住民協同組合型の商店です。物資の乏しかった山間・離島の村で「村民みんなで支え合う」という精神から生まれ、現在も複数の地区で継続しています。地域の高齢者にとっては唯一の買い物場所であり、日々の安否確認の場にもなっています。
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- セクション2：取り組み -->
-    <section class="issue-section">
+    <section class="issue-section" aria-labelledby="approach-heading">
       <div class="issue-container">
         <p class="section-eyebrow">OUR APPROACH</p>
-        <h2 class="section-heading">社協の取り組み</h2>
+        <h2 class="section-heading" id="approach-heading">社協の取り組み</h2>
         <div class="service-list">
           <div class="service-item">
-            <div class="service-item-icon">📚</div>
+            <div class="service-item-icon">🏪</div>
             <div>
-              <div class="service-item-title">赤い羽根文庫の寄贈</div>
-              <div class="service-item-desc">こども園・小学校・中学校へ図書（赤い羽根文庫）を寄贈しています。子どもたちが本と親しめる環境づくりを地域全体で支えています。</div>
+              <div class="service-item-title">共同売店ネットワーク事業</div>
+              <div class="service-item-desc">村内の共同売店をネットワーク化し、情報共有・相互支援の仕組みをつくります。売店を通じた見守り・声かけ活動を福祉活動と結びつけ、地域の支え合いを強化します。</div>
             </div>
           </div>
           <div class="service-item">
-            <div class="service-item-icon">🎒</div>
+            <div class="service-item-icon">🛒</div>
             <div>
-              <div class="service-item-title">入学祝い品（学用品）の支給</div>
-              <div class="service-item-desc">新小学1年生・中学1年生を対象に、入学祝い品として学用品を支給しています。新生活のスタートを地域全体でお祝いします。</div>
-            </div>
-          </div>
-          <div class="service-item">
-            <div class="service-item-icon">🌱</div>
-            <div>
-              <div class="service-item-title">ひとり親世帯へのランドセル寄贈</div>
-              <div class="service-item-desc">経済的に困難なひとり親世帯の新小学1年生を対象に、ランドセルを寄贈しています。すべての子どもが笑顔で入学式を迎えられるよう支援します。</div>
+              <div class="service-item-title">買い物支援との連携</div>
+              <div class="service-item-desc">外出が困難な高齢者への買い物支援において、共同売店と連携した支援体制を整えています。在宅安心カー事業とも組み合わせ、移動困難者の生活を地域で支えます。</div>
             </div>
           </div>
           <div class="service-item">
             <div class="service-item-icon">🤝</div>
             <div>
-              <div class="service-item-title">子育て応援・相談支援</div>
-              <div class="service-item-desc">子育て世帯やひとり親世帯からの相談を受け付け、必要な支援サービスへつなぎます。こども園・小中学校とも連携し、地域全体で子どもの育ちを見守ります。</div>
+              <div class="service-item-title">担い手育成・後継者支援</div>
+              <div class="service-item-desc">共同売店の継続的な運営を支えるため、地域住民への啓発活動や担い手の育成を支援します。大宜味村らしい「共助」の精神を次の世代に伝えます。</div>
             </div>
           </div>
         </div>
@@ -137,14 +161,22 @@
     </section>
 
     <!-- セクション3：関連リンク -->
-    <section class="issue-section">
+    <section class="issue-section" aria-labelledby="related-heading">
       <div class="issue-container">
         <p class="section-eyebrow">RELATED</p>
-        <h2 class="section-heading">関連サービス・ご相談</h2>
+        <h2 class="section-heading" id="related-heading">関連サービス・ご相談</h2>
         <div class="link-grid">
           <a href="service.html" class="link-card">
             <span class="link-card-icon">📋</span>
             <span class="link-card-text">事業・サービス一覧</span>
+          </a>
+          <a href="volunteer.html" class="link-card">
+            <span class="link-card-icon">🤝</span>
+            <span class="link-card-text">ボランティアで参加</span>
+          </a>
+          <a href="issue-transport.html" class="link-card">
+            <span class="link-card-icon">🚐</span>
+            <span class="link-card-text">移動困難の課題を見る</span>
           </a>
           <a href="contact.html" class="link-card">
             <span class="link-card-icon">✉️</span>
@@ -155,14 +187,14 @@
     </section>
 
     <!-- セクション4：CTA -->
-    <section class="issue-section">
+    <section class="issue-section" aria-label="お問い合わせ">
       <div class="issue-container">
         <div class="cta-box">
           <p class="cta-box-title">ご相談・お問い合わせ</p>
-          <p class="cta-box-sub">子どもの育ち・子育てに関するご相談は、お気軽にお問い合わせください。<br>TEL：0980-44-3800（平日 9:00〜17:15）</p>
+          <p class="cta-box-sub">共同売店の支援・地域活動への参加についてのご相談は、お気軽にお問い合わせください。<br>TEL：0980-44-3800（平日 9:00〜17:15）</p>
           <div class="cta-box-btns">
             <a href="contact.html" class="cta-box-btn-primary">お問い合わせ</a>
-            <a href="tel:0980-44-3800" class="cta-box-btn-secondary">電話で相談する</a>
+            <a href="tel:0980443800" class="cta-box-btn-secondary">電話で相談する</a>
           </div>
         </div>
       </div>
