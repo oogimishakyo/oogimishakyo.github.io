@@ -123,7 +123,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Global Nav */
 .global-nav { flex: 1; }
-.global-nav ul {
+.global-nav > ul {
   display: flex; gap: 0; align-items: center;
   justify-content: center;
 }
@@ -218,9 +218,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .has-dropdown:focus-within .nav-arrow { transform: rotate(180deg); }
 
 .dropdown {
+  display: block; /* flex継承を上書きして縦並びに */
   position: absolute; top: calc(100% + 6px); left: 50%;
-  transform: translateX(-50%);
-  min-width: 160px;
+  min-width: 180px;
   background: var(--white);
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
