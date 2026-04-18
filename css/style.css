@@ -76,7 +76,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--white);
   box-shadow: var(--shadow-sm);
   height: var(--header-h);
-  overflow: hidden;
+  overflow: visible; /* hidden にするとドロップダウンがクリップされるため visible に変更 */
   transition: box-shadow var(--transition);
 }
 .site-header.scrolled { box-shadow: var(--shadow-md); }
