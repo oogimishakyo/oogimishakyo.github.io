@@ -1,0 +1,158 @@
+  <!-- スキップリンク -->
+  <a href="#main-content" class="skip-link">本文へ移動</a>
+
+  <!-- ===================================
+       HEADER
+  ==================================== -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- ロゴ -->
+      <div class="header-logo">
+        <a href="/index.html" class="logo-link" aria-label="大宜味村社会福祉協議会 トップページへ" style="overflow:hidden; display:flex; align-items:center;">
+          <img src="images/logo.png" alt="" class="logo-img" aria-hidden="true" style="height:44px; width:auto; max-height:44px; display:block;">
+          <div class="logo-text">
+            <span class="logo-pref">社会福祉法人</span>
+            <span class="logo-name">大宜味村社会福祉協議会</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- グローバルナビ（PC） -->
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <!-- 地域の課題を知る -->
+          <li class="has-dropdown">
+            <a href="issues.html" aria-haspopup="true" aria-expanded="false">地域の課題を知る<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="issues.html" role="menuitem">大宜味村の現状</a></li>
+              <li role="none"><a href="issue-isolation.html" role="menuitem">社会的孤立・孤独</a></li>
+              <li role="none"><a href="issue-poverty.html" role="menuitem">生活困窮</a></li>
+              <li role="none"><a href="issue-elderly.html" role="menuitem">高齢化・介護</a></li>
+              <li role="none"><a href="issue-transport.html" role="menuitem">移動困難</a></li>
+              <li role="none"><a href="issue-children.html" role="menuitem">子どもの貧困</a></li>
+              <li role="none"><a href="issue-disaster.html" role="menuitem">災害への備え</a></li>
+              <li role="none"><a href="issue-health.html" role="menuitem">健康寿命</a></li>
+            </ul>
+          </li>
+
+          <!-- 地域を支える -->
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">地域を支える<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate" role="menuitem" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li role="none"><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" role="menuitem" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+              <li role="none"><a href="volunteer.html" role="menuitem">ボランティアで参加</a></li>
+              <li role="none"><a href="faq.html" role="menuitem">よくある質問</a></li>
+            </ul>
+          </li>
+
+          <!-- 活動ニュース -->
+          <li><a href="news.html">活動ニュース</a></li>
+
+          <!-- 社協について -->
+          <li class="has-dropdown">
+            <a href="about.html" aria-haspopup="true" aria-expanded="false">社協について<span class="nav-arrow" aria-hidden="true">▾</span></a>
+            <ul class="dropdown" role="menu">
+              <li role="none"><a href="about.html" role="menuitem">理念・組織について</a></li>
+              <li role="none"><a href="about.html#goals" role="menuitem">事業計画・報告</a></li>
+              <li role="none"><a href="about.html#finance" role="menuitem">収支決算書</a></li>
+              <li role="none"><a href="about.html#dayori" role="menuitem">社協だより</a></li>
+              <li role="none"><a href="contact.html" role="menuitem">お問い合わせ</a></li>
+              <li role="none"><a href="contact.html#access" role="menuitem">アクセス</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- ヘッダーコントロール -->
+      <div class="header-controls">
+        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+          <span class="font-label">文字サイズ</span>
+          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+        </div>
+        <div class="header-cta">
+          <a href="service.html" class="btn-service">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+            サービスを利用したい
+          </a>
+          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/></svg>
+            寄付・支援をする
+          </a>
+        </div>
+      </div>
+
+      <!-- ハンバーガー（スマホ） -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="モバイルメニュー">
+    <div class="mobile-menu-inner">
+      <nav aria-label="モバイルナビゲーション">
+        <ul class="mobile-nav-list">
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">地域の課題を知る<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="issues.html">大宜味村の現状</a></li>
+              <li><a href="issue-isolation.html">社会的孤立・孤独</a></li>
+              <li><a href="issue-poverty.html">生活困窮</a></li>
+              <li><a href="issue-elderly.html">高齢化・介護</a></li>
+              <li><a href="issue-transport.html">移動困難</a></li>
+              <li><a href="issue-children.html">子どもの貧困</a></li>
+              <li><a href="issue-disaster.html">災害への備え</a></li>
+              <li><a href="issue-health.html">健康寿命</a></li>
+            </ul>
+          </li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">地域を支える<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate" target="_blank" rel="noopener noreferrer">寄付をする</a></li>
+              <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
+              <li><a href="volunteer.html">ボランティアで参加</a></li>
+              <li><a href="faq.html">よくある質問</a></li>
+            </ul>
+          </li>
+          <li><a href="news.html">活動ニュース</a></li>
+          <li class="mobile-has-sub">
+            <button class="mobile-sub-toggle" aria-expanded="false">社協について<span class="mobile-sub-arrow" aria-hidden="true">▾</span></button>
+            <ul class="mobile-sub-list">
+              <li><a href="about.html">理念・組織について</a></li>
+              <li><a href="about.html#goals">事業計画・報告</a></li>
+              <li><a href="about.html#finance">収支決算書</a></li>
+              <li><a href="about.html#dayori">社協だより</a></li>
+              <li><a href="contact.html">お問い合わせ</a></li>
+              <li><a href="contact.html#access">アクセス</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="mobile-cta">
+        <a href="service.html" class="btn-service">サービスを利用したい</a>
+        <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">寄付・支援をする</a>
+      </div>
+      <div class="mobile-font-control" role="group" aria-label="文字サイズ変更">
+        <span class="font-label">文字サイズ：</span>
+        <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+        <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+        <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 画面右端固定サイドバー -->
+  <div class="side-fixed-bar" aria-label="クイックアクション" role="complementary">
+    <a href="https://syncable.biz/associate/oogimishakyo/donate" class="side-fixed-btn side-fixed-donate" target="_blank" rel="noopener noreferrer" aria-label="寄付する">
+      <span>寄付する</span>
+    </a>
+    <a href="service.html" class="side-fixed-btn side-fixed-service" aria-label="サービスを利用したい">
+      <span>サービスを利用したい</span>
+    </a>
+  </div>

@@ -1031,6 +1031,133 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =========================================
+   SIDE FIXED BAR（画面右端固定）
+   ========================================= */
+.side-fixed-bar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.side-fixed-btn {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  padding: 20px 0;
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--white);
+  transition: opacity var(--transition), width var(--transition);
+}
+.side-fixed-btn:hover { opacity: 0.88; color: var(--white); }
+
+.side-fixed-donate {
+  background: #c0392b;
+  border-radius: 8px 0 0 0;
+}
+.side-fixed-service {
+  background: var(--primary);
+  border-radius: 0 0 0 8px;
+}
+
+@media (max-width: 900px) {
+  .side-fixed-bar { display: none; }
+}
+
+/* =========================================
+   FIXED DONATION CTA BANNER（課題ページ下部）
+   ========================================= */
+.fixed-donate-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1a5c38;
+  z-index: 950;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.18);
+}
+
+.fixed-donate-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.fixed-donate-text {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05em;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.fixed-donate-btns {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.fixed-donate-btn-monthly {
+  background: var(--white);
+  color: #1a5c38;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.92em;
+  white-space: nowrap;
+  transition: opacity var(--transition);
+  display: inline-block;
+}
+.fixed-donate-btn-monthly:hover { opacity: 0.88; color: #1a5c38; }
+
+.fixed-donate-btn-once {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.92em;
+  white-space: nowrap;
+  transition: background var(--transition), color var(--transition);
+  display: inline-block;
+}
+.fixed-donate-btn-once:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+/* 課題ページのフッター重なり防止 */
+.has-fixed-cta .site-footer { padding-bottom: 80px; }
+
+@media (max-width: 700px) {
+  .fixed-donate-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  .fixed-donate-text { white-space: normal; font-size: 0.95em; }
+  .fixed-donate-btns { width: 100%; flex-direction: column; gap: 8px; }
+  .fixed-donate-btn-monthly,
+  .fixed-donate-btn-once { text-align: center; }
+}
+
+/* =========================================
    ACCESSIBILITY
    ========================================= */
 :focus-visible {
