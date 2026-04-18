@@ -3,51 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="大宜味村の社会的孤立・孤独の現状と、社協の取り組みをご紹介します。">
+  <meta name="description" content="大宜味村の社会的孤立・孤独の現状と、大宜味村社会福祉協議会の取り組みをご紹介します。くがにサロン・見守り活動・共同店ネットワークで、つながりを守ります。">
   <title>社会的孤立・孤独 | 地域の課題 | 大宜味村社会福祉協議会</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* common page styles */
+    /* ─── 共通ページスタイル ─── */
     .breadcrumb{background:#f5f7f5;padding:12px 0;font-size:.82em;color:#666}
     .breadcrumb-inner{max-width:1200px;margin:0 auto;padding:0 24px}
     .breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;margin:0;padding:0}
     .breadcrumb li+li::before{content:"›";margin:0 8px;color:#aaa}
     .breadcrumb a{color:var(--primary);text-decoration:none}
-    .page-hero{background:linear-gradient(135deg,var(--primary) 0%,#1a5c38 100%);color:var(--white);padding:64px 24px;text-align:center}
-    .page-hero-label{font-size:.8em;letter-spacing:.15em;opacity:.8;margin-bottom:10px}
-    .page-hero-title{font-size:clamp(1.6em,4vw,2.4em);font-weight:900;line-height:1.3;margin:0}
-    .page-hero-sub{font-size:1.05em;opacity:.85;margin-top:12px;line-height:1.6}
-    .issue-section{padding:64px 0}
+    .page-hero{background:linear-gradient(135deg,#1a5c38 0%,#2d7a4f 60%,#3a9060 100%);color:var(--white);padding:72px 24px;text-align:center}
+    .page-hero-label{font-size:.78em;letter-spacing:.18em;opacity:.75;margin-bottom:12px;text-transform:uppercase}
+    .page-hero-title{font-size:clamp(1.8em,5vw,2.8em);font-weight:900;line-height:1.25;margin:0 0 14px}
+    .page-hero-sub{font-size:1.05em;opacity:.88;margin:0;line-height:1.7}
+    .issue-section{padding:72px 0}
     .issue-section:nth-child(even){background:#f8faf8}
-    .issue-container{max-width:900px;margin:0 auto;padding:0 24px}
-    .section-eyebrow{font-size:.75em;font-weight:700;letter-spacing:.15em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
-    .section-heading{font-size:clamp(1.2em,3vw,1.7em);font-weight:900;color:var(--text);margin:0 0 24px;line-height:1.4}
+    .issue-container{max-width:920px;margin:0 auto;padding:0 24px}
+    .section-eyebrow{font-size:.72em;font-weight:700;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
+    .section-heading{font-size:clamp(1.25em,3vw,1.8em);font-weight:900;color:var(--text);margin:0 0 28px;line-height:1.4}
     .section-heading::after{content:"";display:block;width:40px;height:4px;background:var(--primary);margin-top:12px;border-radius:2px}
-    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
-    .stat-box{background:var(--white);border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:3px solid var(--primary)}
-    .stat-box-num{font-size:1.6em;font-weight:900;color:var(--primary-dark)}
-    .stat-box-label{font-size:.8em;color:var(--text-mid);margin-top:4px}
     .body-text{color:var(--text-mid);line-height:2;margin-bottom:16px;font-size:.95em}
-    .service-list{display:flex;flex-direction:column;gap:12px;margin-top:16px}
-    .service-item{background:var(--white);border-radius:10px;padding:20px 24px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:16px;border-left:4px solid var(--primary)}
-    .service-item-icon{font-size:1.6em;flex-shrink:0;margin-top:2px}
-    .service-item-title{font-size:1em;font-weight:800;color:var(--text);margin-bottom:6px}
-    .service-item-desc{font-size:.88em;color:var(--text-mid);line-height:1.8}
-    .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
-    .link-card{background:var(--white);border-radius:8px;padding:16px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06);text-decoration:none;color:var(--text);border:1px solid #e0eee4;transition:all .2s;display:flex;align-items:center;gap:10px}
-    .link-card:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
-    .link-card-icon{font-size:1.3em;flex-shrink:0}
-    .link-card-text{font-size:.9em;font-weight:700}
-    .cta-box{background:linear-gradient(135deg,var(--primary) 0%,#1a5c38 100%);color:var(--white);border-radius:16px;padding:40px 36px;text-align:center}
-    .cta-box-title{font-size:1.2em;font-weight:900;margin-bottom:12px}
-    .cta-box-sub{font-size:.9em;opacity:.88;margin-bottom:24px;line-height:1.8}
-    .cta-box-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    .cta-box-btn-primary{background:var(--white);color:var(--primary);padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
-    .cta-box-btn-secondary{border:2px solid var(--white);color:var(--white);padding:10px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
+
+    /* ─── データカード ─── */
+    .data-block{margin-bottom:36px}
+    .data-block-label{font-size:.78em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;padding:6px 14px;border-radius:4px;display:inline-block}
+    .data-block-label.national{background:#e8f0fe;color:#1a56a0}
+    .data-block-label.okinawa{background:#e8f5ee;color:#1a5c38}
+    .data-grid{display:grid;gap:12px;margin-bottom:8px}
+    .data-grid.col3{grid-template-columns:repeat(3,1fr)}
+    .data-grid.col2{grid-template-columns:repeat(2,1fr)}
+    .data-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+    .data-card.national{border-top:3px solid #1a56a0}
+    .data-card.village{border-top:3px solid var(--primary)}
+    .data-card-num{font-size:1.55em;font-weight:900;line-height:1.2;margin-bottom:6px}
+    .data-card.national .data-card-num{color:#1a56a0}
+    .data-card.village .data-card-num{color:var(--primary-dark)}
+    .data-card-label{font-size:.78em;color:var(--text-mid);line-height:1.5}
+    .data-card-sub{font-size:.72em;color:#999;margin-top:3px}
+
+    /* 沖縄・大宜味村補足リスト */
+    .village-list{background:linear-gradient(135deg,#e8f5ee,#f2fbf5);border:1px solid #c8e8d4;border-radius:12px;padding:20px 24px;margin-bottom:8px}
+    .village-list ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+    .village-list ul li{font-size:.9em;color:#1a4a2e;padding-left:22px;position:relative;line-height:1.7}
+    .village-list ul li::before{content:"▸";position:absolute;left:0;color:var(--primary);font-weight:700}
+
+    .data-source{font-size:.75em;color:#999;margin-top:10px;padding-top:10px;border-top:1px solid #eee}
+
+    /* ─── チェックリスト ─── */
+    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    .checklist-item{background:var(--white);border-radius:10px;padding:16px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:14px;border-left:4px solid #7c3aed}
+    .checklist-icon{width:22px;height:22px;border-radius:5px;background:#7c3aed;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+    .checklist-icon svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .checklist-text{font-size:.93em;color:var(--text);font-weight:600;line-height:1.6}
+    .checklist-note{background:#f5f0ff;border:1px solid #c4b5fd;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:.88em;color:#5b21b6;line-height:1.8;text-align:center}
+
+    /* ─── 支援カード ─── */
+    .support-list{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+    .support-card{background:var(--white);border-radius:12px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-left:5px solid var(--primary)}
+    .support-card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+    .support-card-icon{font-size:1.7em;flex-shrink:0;line-height:1}
+    .support-card-title{font-size:1em;font-weight:900;color:var(--text)}
+    .support-card-badge{display:inline-block;font-size:.7em;font-weight:700;background:var(--primary-light);color:var(--primary-dark);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+    .support-card-desc{font-size:.9em;color:var(--text-mid);line-height:1.9;margin-bottom:8px}
+    .support-card-meta{font-size:.83em;color:var(--primary-dark);font-weight:600;background:var(--primary-light);border-radius:6px;padding:8px 14px;display:inline-block;margin-top:4px}
+
+    /* ─── CTA ─── */
+    .cta-box{background:linear-gradient(135deg,#1a5c38 0%,#2d7a4f 100%);color:var(--white);border-radius:16px;padding:44px 40px;text-align:center}
+    .cta-box-title{font-size:1.3em;font-weight:900;margin-bottom:10px}
+    .cta-box-lead{font-size:.95em;opacity:.9;margin-bottom:6px;line-height:1.7}
+    .cta-tel{font-size:2em;font-weight:900;letter-spacing:.05em;display:block;margin:16px 0 4px}
+    .cta-tel a{color:var(--white);text-decoration:none}
+    .cta-hours{font-size:.82em;opacity:.8;margin-bottom:24px}
+    .cta-note{font-size:.85em;opacity:.85;margin-bottom:28px;line-height:1.8}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .cta-btn-primary{background:var(--white);color:var(--primary);padding:13px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em;transition:opacity .15s}
+    .cta-btn-primary:hover{opacity:.9}
+    .cta-btn-secondary{border:2px solid rgba(255,255,255,.7);color:var(--white);padding:11px 30px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em;transition:border-color .15s}
+    .cta-btn-secondary:hover{border-color:var(--white)}
+
     @media(max-width:640px){
-      .stat-row{grid-template-columns:1fr 1fr}
-      .link-grid{grid-template-columns:1fr}
-      .cta-box{padding:28px 20px}
+      .data-grid.col3{grid-template-columns:1fr 1fr}
+      .data-grid.col2{grid-template-columns:1fr}
+      .cta-box{padding:32px 20px}
+      .cta-tel{font-size:1.6em}
+      .support-card{padding:20px 18px}
     }
   </style>
 </head>
@@ -72,90 +112,220 @@
     <section class="page-hero">
       <p class="page-hero-label">COMMUNITY ISSUES</p>
       <h1 class="page-hero-title">社会的孤立・孤独</h1>
-      <p class="page-hero-sub">孤立・孤独のない大宜味村へ</p>
+      <p class="page-hero-sub">つながりで、大宜味村に「孤立ゼロ」を</p>
     </section>
 
-    <!-- セクション1：現状 -->
-    <section class="issue-section">
+    <!-- ─────────────────────────────
+         セクション1：全国・沖縄の現状
+    ────────────────────────────── -->
+    <section class="issue-section" aria-labelledby="situation-heading">
       <div class="issue-container">
         <p class="section-eyebrow">CURRENT SITUATION</p>
-        <h2 class="section-heading">大宜味村での現状</h2>
-        <div class="stat-row">
-          <div class="stat-box">
-            <div class="stat-box-num">2,902人</div>
-            <div class="stat-box-label">村の人口</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-num">42%超</div>
-            <div class="stat-box-label">高齢化率</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-num">1,697世帯</div>
-            <div class="stat-box-label">総世帯数</div>
+        <h2 class="section-heading" id="situation-heading">「孤立・孤独」は、今や社会全体の問題です</h2>
+
+        <!-- 全国データ -->
+        <div class="data-block">
+          <span class="data-block-label national">全国データ</span>
+          <div class="data-grid col3">
+            <div class="data-card national">
+              <div class="data-card-num">約4<span style="font-size:.6em">割</span></div>
+              <div class="data-card-label">「孤独を感じる」と<br>答えた人の割合</div>
+              <div class="data-card-sub">内閣府「孤独・孤立の実態把握に関する全国調査」</div>
+            </div>
+            <div class="data-card national">
+              <div class="data-card-num">約39<span style="font-size:.55em">%</span></div>
+              <div class="data-card-label">2040年の単独世帯割合<br>（全世帯に占める割合）</div>
+              <div class="data-card-sub">国立社会保障・人口問題研究所</div>
+            </div>
+            <div class="data-card national">
+              <div class="data-card-num">3万<span style="font-size:.55em">人以上</span></div>
+              <div class="data-card-label">年間の孤立死<br>（自宅での孤独死）推計</div>
+              <div class="data-card-sub">孤独死現状レポートより</div>
+            </div>
           </div>
         </div>
-        <p class="body-text">大宜味村では高齢化が急速に進み、独居高齢者の増加や地域のつながりの希薄化が懸念されています。かつては共同店を中心とした地域コミュニティが機能していましたが、生活スタイルの変化や若者の離村によって、孤立しがちな高齢者が増えています。ひきこもりや孤独死の防止も村全体の重要な課題です。</p>
+
+        <!-- 沖縄・大宜味村データ -->
+        <div class="data-block">
+          <span class="data-block-label okinawa">沖縄・大宜味村の現状</span>
+          <div class="data-grid col2" style="margin-bottom:12px">
+            <div class="data-card village">
+              <div class="data-card-num">42<span style="font-size:.55em">%超</span></div>
+              <div class="data-card-label">大宜味村の高齢化率<br><span style="color:#dc2626;">全国平均（約29%）を大きく上回る</span></div>
+              <div class="data-card-sub">令和5年度 住民基本台帳</div>
+            </div>
+            <div class="data-card village">
+              <div class="data-card-num">2,902<span style="font-size:.55em">人</span></div>
+              <div class="data-card-label">大宜味村の人口<br>（減少傾向が続く）</div>
+              <div class="data-card-sub">令和5年度 住民基本台帳</div>
+            </div>
+          </div>
+          <div class="village-list">
+            <ul>
+              <li>北部圏域の高齢化率は27〜28%で沖縄県平均（23.5%）を上回る</li>
+              <li>過疎化・人口減少により、地域のつながりが薄れつつある</li>
+              <li>独居高齢者が増加し、日常的に人と接する機会が減っている</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 説明文 -->
+        <p class="body-text">
+          沖縄には古くから「ユイマール」という助け合いの精神が根付いていますが、過疎化・核家族化・若者の流出により、地域のつながりが薄れています。大宜味村は高齢化率が42%を超え、独居高齢者が増加しています。
+        </p>
+        <p class="body-text">
+          隣に誰も住んでいない、話し相手がいない、外出の機会がない——そんな状況が静かに広がっています。孤立・孤独は、心身の健康にも深刻な影響をもたらします。
+        </p>
+        <p class="data-source">※内閣府「孤独・孤立の実態把握に関する全国調査」、国立社会保障・人口問題研究所、住民基本台帳より</p>
       </div>
     </section>
 
-    <!-- セクション2：取り組み -->
-    <section class="issue-section">
+    <!-- ─────────────────────────────
+         セクション2：チェックリスト
+    ────────────────────────────── -->
+    <section class="issue-section" aria-labelledby="checklist-heading">
       <div class="issue-container">
-        <p class="section-eyebrow">OUR APPROACH</p>
-        <h2 class="section-heading">社協の取り組み</h2>
-        <div class="service-list">
-          <div class="service-item">
-            <div class="service-item-icon">🏡</div>
-            <div>
-              <div class="service-item-title">くがにサロン</div>
-              <div class="service-item-desc">地域の集いの場として、高齢者が気軽に交流できるサロンを各地区で開催。孤立を防ぎ、仲間づくりをサポートします。</div>
+        <p class="section-eyebrow">CHECKLIST</p>
+        <h2 class="section-heading" id="checklist-heading">このような状況はありませんか？</h2>
+
+        <div class="checklist" role="list">
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">一人で食事をすることが多い</span>
           </div>
-          <div class="service-item">
-            <div class="service-item-icon">🏠</div>
-            <div>
-              <div class="service-item-title">訪問・見守り活動</div>
-              <div class="service-item-desc">地域住民グループ「たんぽぽの会」と連携し、独居高齢者への定期訪問・安否確認を行います。</div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">話し相手がいない・相談できる人がいない</span>
           </div>
-          <div class="service-item">
-            <div class="service-item-icon">💬</div>
-            <div>
-              <div class="service-item-title">生活支援コーディネーター</div>
-              <div class="service-item-desc">地域の支え合いをつなぐ生活支援コーディネーターが、必要な支援と住民をマッチングします。</div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">外出する機会がほとんどない</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">地域の行事に参加していない</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">家族や知人と連絡をとることが少なくなった</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">誰かと一緒に何かをしたいと思っている</span>
           </div>
         </div>
+
+        <p class="checklist-note">
+          一つでも当てはまる方は、大宜味村社協にご相談ください。<br>
+          相談は無料・秘密厳守・匿名でも大丈夫です。
+        </p>
       </div>
     </section>
 
-    <!-- セクション3：関連リンク -->
-    <section class="issue-section">
+    <!-- ─────────────────────────────
+         セクション3：社協の取組み
+    ────────────────────────────── -->
+    <section class="issue-section" aria-labelledby="support-heading">
       <div class="issue-container">
-        <p class="section-eyebrow">RELATED</p>
-        <h2 class="section-heading">関連サービス・参加方法</h2>
-        <div class="link-grid">
-          <a href="service.html" class="link-card">
-            <span class="link-card-icon">📋</span>
-            <span class="link-card-text">事業・サービス一覧</span>
-          </a>
-          <a href="volunteer.html" class="link-card">
-            <span class="link-card-icon">🤝</span>
-            <span class="link-card-text">ボランティアで参加</span>
-          </a>
+        <p class="section-eyebrow">OUR SUPPORT</p>
+        <h2 class="section-heading" id="support-heading">大宜味村社協では、つながりを守る活動をしています</h2>
+
+        <div class="support-list">
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🌺</span>
+              <div>
+                <div class="support-card-title">くがにサロン事業<span class="support-card-badge">毎週火曜日</span></div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              毎週火曜日の午前中、地域の居場所として開催。基本チェックリスト該当者・要支援1〜2の方が対象です。引きこもりがちな高齢者に寄り添い、笑顔で集える場を提供します。
+            </p>
+            <p class="support-card-desc" style="font-size:.83em;color:#888;">※要介護認定の方は対象外</p>
+            <span class="support-card-meta">問合せ：大宜味村地域包括支援センター　TEL 0980-44-3011</span>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🧘</span>
+              <div>
+                <div class="support-card-title">がんじゅう教室事業</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              介護予防・健康づくりのための教室。地域の皆さんが集まり、一緒に体を動かす機会を提供します。「がんじゅう」は沖縄の言葉で「元気・健康」。仲間と一緒に続けることで、孤立防止にもつながります。
+            </p>
+            <span class="support-card-meta">問合せ：大宜味村社会福祉協議会　TEL 0980-44-3800</span>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🏠</span>
+              <div>
+                <div class="support-card-title">見守り活動支援</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              民生委員・児童委員や地域住民と連携して、独居高齢者などの見守り活動を支援します。定期的な訪問・声かけを通じて、異変を早期に発見し、必要な支援につなげます。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🏪</span>
+              <div>
+                <div class="support-card-title">共同店ネットワーク事業</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              地域の共同売店を福祉の拠点として活用し、住民同士がつながれる場づくりを進めています。買い物のついでに立ち寄れる「地域の縁側」として、孤立を防ぐ仕組みを育てます。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">💬</span>
+              <div>
+                <div class="support-card-title">心配ごと相談<span class="support-card-badge">予約不要・匿名可</span></div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              一人で抱え込まず、まずはお電話ください。生活のこと、家族のこと、体のこと——どんな悩みでも、専門員が無料でお受けします。
+            </p>
+            <span class="support-card-meta">TEL：0980-44-3800　平日 9:00〜17:15</span>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- セクション4：CTA -->
-    <section class="issue-section">
+    <!-- ─────────────────────────────
+         セクション4：CTA
+    ────────────────────────────── -->
+    <section class="issue-section" aria-label="ご相談のご案内">
       <div class="issue-container">
         <div class="cta-box">
-          <p class="cta-box-title">ご相談・お問い合わせ</p>
-          <p class="cta-box-sub">孤立・孤独に関するご相談は、お電話またはお問い合わせフォームからお気軽にどうぞ。<br>TEL：0980-44-3800（平日 9:00〜17:15）</p>
-          <div class="cta-box-btns">
-            <a href="contact.html" class="cta-box-btn-primary">お問い合わせ</a>
-            <a href="tel:0980-44-3800" class="cta-box-btn-secondary">電話で相談する</a>
+          <p class="cta-box-title">一人で悩まず、まずご連絡ください</p>
+          <p class="cta-box-lead">「話せる場所がほしい」「誰かに聞いてほしい」<br>そんな気持ちだけで十分です。お気軽にどうぞ。</p>
+          <span class="cta-tel"><a href="tel:0980443800">0980-44-3800</a></span>
+          <p class="cta-hours">受付時間：平日 9:00〜17:15（土・日・祝除く）</p>
+          <p class="cta-note">大宜味村社会福祉協議会<br>〒905-1303 沖縄県国頭郡大宜味村字喜如嘉320番地</p>
+          <div class="cta-btns">
+            <a href="contact.html" class="cta-btn-primary">お問い合わせフォーム</a>
+            <a href="tel:0980443800" class="cta-btn-secondary">電話で相談する</a>
           </div>
         </div>
       </div>
