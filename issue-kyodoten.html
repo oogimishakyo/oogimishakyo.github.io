@@ -3,68 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="大宜味村の共同売店（共同店）の現状と、地域のつながりを守る大宜味村社会福祉協議会の取り組みをご紹介します。">
+  <meta name="description" content="大宜味村の共同売店の現状と、大宜味村社会福祉協議会の取り組みについてご紹介します。共同店ネットワーク事業やリンクワーカー育成など、地域の拠点である共同売店を守り、暮らしと福祉をつなぎます。">
   <title>共同売店を守る | 地域の課題 | 大宜味村社会福祉協議会</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    /* ─── 共通ページスタイル ─── */
     .breadcrumb{background:#f5f7f5;padding:12px 0;font-size:.82em;color:#666}
     .breadcrumb-inner{max-width:1200px;margin:0 auto;padding:0 24px}
     .breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;margin:0;padding:0}
     .breadcrumb li+li::before{content:"›";margin:0 8px;color:#aaa}
     .breadcrumb a{color:var(--primary);text-decoration:none}
-    .page-hero{background:linear-gradient(135deg,var(--primary) 0%,#1a5c38 100%);color:var(--white);padding:64px 24px;text-align:center}
-    .page-hero-label{font-size:.8em;letter-spacing:.15em;opacity:.8;margin-bottom:10px}
-    .page-hero-title{font-size:clamp(1.6em,4vw,2.4em);font-weight:900;line-height:1.3;margin:0}
-    .page-hero-sub{font-size:1.05em;opacity:.85;margin-top:12px;line-height:1.6}
-    .issue-section{padding:64px 0}
+    .page-hero{background:linear-gradient(135deg,#1a5c38 0%,#2d7a4f 60%,#3a9060 100%);color:var(--white);padding:72px 24px;text-align:center}
+    .page-hero-label{font-size:.78em;letter-spacing:.18em;opacity:.75;margin-bottom:12px;text-transform:uppercase}
+    .page-hero-title{font-size:clamp(1.8em,5vw,2.8em);font-weight:900;line-height:1.25;margin:0 0 14px}
+    .page-hero-sub{font-size:1.05em;opacity:.88;margin:0;line-height:1.7}
+    .issue-section{padding:72px 0}
     .issue-section:nth-child(even){background:#f8faf8}
-    .issue-container{max-width:900px;margin:0 auto;padding:0 24px}
-    .section-eyebrow{font-size:.75em;font-weight:700;letter-spacing:.15em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
-    .section-heading{font-size:clamp(1.2em,3vw,1.7em);font-weight:900;color:var(--text);margin:0 0 24px;line-height:1.4}
+    .issue-container{max-width:920px;margin:0 auto;padding:0 24px}
+    .section-eyebrow{font-size:.72em;font-weight:700;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
+    .section-heading{font-size:clamp(1.25em,3vw,1.8em);font-weight:900;color:var(--text);margin:0 0 28px;line-height:1.4}
     .section-heading::after{content:"";display:block;width:40px;height:4px;background:var(--primary);margin-top:12px;border-radius:2px}
-    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
-    .stat-box{background:var(--white);border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);border-top:3px solid var(--primary)}
-    .stat-box-num{font-size:1.6em;font-weight:900;color:var(--primary-dark)}
-    .stat-box-label{font-size:.8em;color:var(--text-mid);margin-top:4px}
     .body-text{color:var(--text-mid);line-height:2;margin-bottom:16px;font-size:.95em}
-    .service-list{display:flex;flex-direction:column;gap:12px;margin-top:16px}
-    .service-item{background:var(--white);border-radius:10px;padding:20px 24px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:16px;border-left:4px solid var(--primary)}
-    .service-item-icon{font-size:1.6em;flex-shrink:0;margin-top:2px}
-    .service-item-title{font-size:1em;font-weight:800;color:var(--text);margin-bottom:6px}
-    .service-item-desc{font-size:.88em;color:var(--text-mid);line-height:1.8}
-    .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
-    .link-card{background:var(--white);border-radius:8px;padding:16px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06);text-decoration:none;color:var(--text);border:1px solid #e0eee4;transition:all .2s;display:flex;align-items:center;gap:10px}
-    .link-card:hover{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
-    .link-card-icon{font-size:1.3em;flex-shrink:0}
-    .link-card-text{font-size:.9em;font-weight:700}
-    .cta-box{background:linear-gradient(135deg,var(--primary) 0%,#1a5c38 100%);color:var(--white);border-radius:16px;padding:40px 36px;text-align:center}
-    .cta-box-title{font-size:1.2em;font-weight:900;margin-bottom:12px}
-    .cta-box-sub{font-size:.9em;opacity:.88;margin-bottom:24px;line-height:1.8}
-    .cta-box-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-    .cta-box-btn-primary{background:var(--white);color:var(--primary);padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
-    .cta-box-btn-secondary{border:2px solid var(--white);color:var(--white);padding:10px 26px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em}
-    .kyodoten-highlight {
-      background: linear-gradient(135deg, #e8f5ee, #f0faf4);
-      border-radius: 12px;
-      padding: 24px 28px;
-      border: 1px solid #c8e8d4;
-      margin: 20px 0;
-    }
-    .kyodoten-highlight-title {
-      font-size: 1em;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-    }
-    .kyodoten-highlight-text {
-      font-size: .9em;
-      color: var(--text-mid);
-      line-height: 1.9;
-    }
+
+    /* ─── データカード（全国・沖縄） ─── */
+    .data-block{margin-bottom:36px}
+    .data-block-label{font-size:.78em;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;padding:6px 14px;border-radius:4px;display:inline-block}
+    .data-block-label.national{background:#e8f0fe;color:#1a56a0}
+    .data-block-label.okinawa{background:#fff3e0;color:#b45309}
+    .data-grid{display:grid;gap:12px;margin-bottom:8px}
+    .data-grid.col3{grid-template-columns:repeat(3,1fr)}
+    .data-grid.col2{grid-template-columns:repeat(2,1fr)}
+    .data-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+    .data-card.national{border-top:3px solid #1a56a0}
+    .data-card.okinawa{border-top:3px solid #d97706}
+    .data-card-num{font-size:1.55em;font-weight:900;line-height:1.2;margin-bottom:6px}
+    .data-card.national .data-card-num{color:#1a56a0}
+    .data-card.okinawa .data-card-num{color:#b45309}
+    .data-card-label{font-size:.78em;color:var(--text-mid);line-height:1.5}
+    .data-card-sub{font-size:.72em;color:#999;margin-top:3px}
+
+    /* テキストリスト（沖縄データの補足） */
+    .okinawa-list{background:linear-gradient(135deg,#fff8ee,#fffdf5);border:1px solid #fcd88a;border-radius:12px;padding:20px 24px;margin-bottom:8px}
+    .okinawa-list ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+    .okinawa-list ul li{font-size:.9em;color:#78350f;padding-left:22px;position:relative;line-height:1.7}
+    .okinawa-list ul li::before{content:"▸";position:absolute;left:0;color:#d97706;font-weight:700}
+
+    .data-source{font-size:.75em;color:#999;margin-top:10px;padding-top:10px;border-top:1px solid #eee}
+
+    /* ─── チェックリスト ─── */
+    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    .checklist-item{background:var(--white);border-radius:10px;padding:16px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:14px;border-left:4px solid #dc2626}
+    .checklist-icon{width:22px;height:22px;border-radius:5px;background:#dc2626;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+    .checklist-icon svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .checklist-text{font-size:.93em;color:var(--text);font-weight:600;line-height:1.6}
+    .checklist-note{background:#fff5f5;border:1px solid #fca5a5;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:.88em;color:#991b1b;line-height:1.8;text-align:center}
+
+    /* ─── 支援カード ─── */
+    .support-list{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+    .support-card{background:var(--white);border-radius:12px;padding:24px 28px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-left:5px solid var(--primary)}
+    .support-card-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+    .support-card-icon{font-size:1.7em;flex-shrink:0;line-height:1}
+    .support-card-title{font-size:1em;font-weight:900;color:var(--text)}
+    .support-card-badge{display:inline-block;font-size:.7em;font-weight:700;background:var(--primary-light);color:var(--primary-dark);border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+    .support-card-desc{font-size:.9em;color:var(--text-mid);line-height:1.9;margin-bottom:12px}
+    .support-card-link{display:inline-flex;align-items:center;gap:6px;font-size:.85em;font-weight:700;color:var(--primary);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+    .support-card-link:hover{border-bottom-color:var(--primary)}
+    .support-card-link::after{content:"→"}
+
+    /* ─── CTA ─── */
+    .cta-box{background:linear-gradient(135deg,#1a5c38 0%,#2d7a4f 100%);color:var(--white);border-radius:16px;padding:44px 40px;text-align:center}
+    .cta-box-title{font-size:1.3em;font-weight:900;margin-bottom:10px}
+    .cta-box-lead{font-size:.95em;opacity:.9;margin-bottom:6px;line-height:1.7}
+    .cta-tel{font-size:2em;font-weight:900;letter-spacing:.05em;display:block;margin:16px 0 4px}
+    .cta-tel a{color:var(--white);text-decoration:none}
+    .cta-hours{font-size:.82em;opacity:.8;margin-bottom:24px}
+    .cta-note{font-size:.85em;opacity:.85;margin-bottom:28px;line-height:1.8}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .cta-btn-primary{background:var(--white);color:var(--primary);padding:13px 32px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em;transition:opacity .15s}
+    .cta-btn-primary:hover{opacity:.9}
+    .cta-btn-secondary{border:2px solid rgba(255,255,255,.7);color:var(--white);padding:11px 30px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.9em;transition:border-color .15s}
+    .cta-btn-secondary:hover{border-color:var(--white)}
+
     @media(max-width:640px){
-      .stat-row{grid-template-columns:1fr 1fr}
-      .link-grid{grid-template-columns:1fr}
-      .cta-box{padding:28px 20px}
+      .data-grid.col3{grid-template-columns:1fr 1fr}
+      .data-grid.col2{grid-template-columns:1fr}
+      .cta-box{padding:32px 20px}
+      .cta-tel{font-size:1.6em}
+      .support-card{padding:20px 18px}
     }
   </style>
 </head>
@@ -89,112 +114,215 @@
     <section class="page-hero">
       <p class="page-hero-label">COMMUNITY ISSUES</p>
       <h1 class="page-hero-title">共同売店を守る</h1>
-      <p class="page-hero-sub">地域の命綱・共同売店ネットワークを次の世代へ</p>
+      <p class="page-hero-sub">地域の拠点・共同売店が、大宜味の暮らしと福祉をつなぐ</p>
     </section>
 
-    <!-- セクション1：現状 -->
+    <!-- ─────────────────────────────
+         セクション1：全国・沖縄・大宜味村の現状
+    ────────────────────────────── -->
     <section class="issue-section" aria-labelledby="situation-heading">
       <div class="issue-container">
         <p class="section-eyebrow">CURRENT SITUATION</p>
-        <h2 class="section-heading" id="situation-heading">大宜味村での現状</h2>
+        <h2 class="section-heading" id="situation-heading">地域の命綱である共同売店の危機</h2>
 
-        <div class="stat-row">
-          <div class="stat-box">
-            <div class="stat-box-num">2,902<span style="font-size:.6em">人</span></div>
-            <div class="stat-box-label">村の人口</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-num">42%<span style="font-size:.6em">超</span></div>
-            <div class="stat-box-label">高齢化率</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-num">1,697<span style="font-size:.6em">世帯</span></div>
-            <div class="stat-box-label">総世帯数</div>
+        <!-- 全国データ -->
+        <div class="data-block">
+          <span class="data-block-label national">全国データ</span>
+          <div class="data-grid col3">
+            <div class="data-card national">
+              <div class="data-card-num">約900<span style="font-size:.55em">万人</span></div>
+              <div class="data-card-label">全国の「買い物難民」</div>
+              <div class="data-card-sub">経済産業省推計</div>
+            </div>
+            <div class="data-card national">
+              <div class="data-card-num">約4<span style="font-size:.55em">割</span></div>
+              <div class="data-card-label">過疎地の小売店が<br>この20年で閉店</div>
+            </div>
+            <div class="data-card national">
+              <div class="data-card-num" style="font-size:1.1em;padding-top:6px">極めて希少</div>
+              <div class="data-card-label">住民共同経営の店舗<br>「共同売店」</div>
+              <div class="data-card-sub">沖縄北部に現存</div>
+            </div>
           </div>
         </div>
 
+        <!-- 沖縄・大宜味村データ -->
+        <div class="data-block">
+          <span class="data-block-label okinawa">沖縄・大宜味村の現状</span>
+          <div class="data-grid col2" style="margin-bottom:12px">
+            <div class="data-card okinawa">
+              <div class="data-card-num">42<span style="font-size:.55em">%超</span></div>
+              <div class="data-card-label">大宜味村の高齢化率</div>
+              <div class="data-card-sub">人口2,902人</div>
+            </div>
+            <div class="data-card okinawa">
+              <div class="data-card-num" style="font-size:1.1em;padding-top:6px">深刻な経営難</div>
+              <div class="data-card-label">村内の共同売店<br>担い手不足が加速</div>
+            </div>
+          </div>
+          <div class="okinawa-list">
+            <ul>
+              <li>大宜味村の高齢化率：42%超・人口2,902人</li>
+              <li>村内の共同売店：複数存在するが担い手不足・経営難が深刻化</li>
+              <li>車がない高齢者にとって共同売店は唯一の買い物場所</li>
+              <li>共同売店は商店機能だけでなく、住民の見守り・交流の場として機能</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 説明文 -->
         <p class="body-text">
-          大宜味村の共同売店（共同店）は、村民が出資・運営する住民協同の商店であり、日本に現存する最古の住民協同組合型店舗として世界的にも注目されています。買い物の場であるだけでなく、高齢者の見守り・交流・地域情報の発信拠点として、村の福祉を支える「社会インフラ」でもあります。
+          大宜味村には住民が共同で運営する「共同売店」が地域の拠点として根付いています。しかし過疎化・高齢化の進行により担い手不足や経営難が深刻化しています。
         </p>
         <p class="body-text">
-          しかし、過疎化・高齢化・後継者不足により、各地区の共同売店は運営存続の危機に直面しています。共同売店がなくなることは、買い物の場を失うだけでなく、地域のつながりそのものが失われることを意味します。
+          共同売店は単なる商店ではなく、高齢者の見守り・買い物支援・地域交流の場として福祉的な役割を担っており、その存続は地域福祉の重要課題です。
         </p>
-
-        <div class="kyodoten-highlight">
-          <p class="kyodoten-highlight-title">共同売店とは</p>
-          <p class="kyodoten-highlight-text">
-            大宜味村に残る共同売店は、明治時代に村民が自ら出資して設立した住民協同組合型の商店です。物資の乏しかった山間・離島の村で「村民みんなで支え合う」という精神から生まれ、現在も複数の地区で継続しています。地域の高齢者にとっては唯一の買い物場所であり、日々の安否確認の場にもなっています。
-          </p>
-        </div>
+        <p class="data-source">※経済産業省・沖縄県資料より</p>
       </div>
     </section>
 
-    <!-- セクション2：取り組み -->
-    <section class="issue-section" aria-labelledby="approach-heading">
+    <!-- ─────────────────────────────
+         セクション2：困りごとチェック
+    ────────────────────────────── -->
+    <section class="issue-section" aria-labelledby="checklist-heading">
       <div class="issue-container">
-        <p class="section-eyebrow">OUR APPROACH</p>
-        <h2 class="section-heading" id="approach-heading">社協の取り組み</h2>
-        <div class="service-list">
-          <div class="service-item">
-            <div class="service-item-icon">🏪</div>
-            <div>
-              <div class="service-item-title">共同売店ネットワーク事業</div>
-              <div class="service-item-desc">村内の共同売店をネットワーク化し、情報共有・相互支援の仕組みをつくります。売店を通じた見守り・声かけ活動を福祉活動と結びつけ、地域の支え合いを強化します。</div>
+        <p class="section-eyebrow">CHECKLIST</p>
+        <h2 class="section-heading" id="checklist-heading">このような不安はありませんか？</h2>
+
+        <div class="checklist" role="list">
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">近くに買い物できる場所がない</span>
           </div>
-          <div class="service-item">
-            <div class="service-item-icon">🛒</div>
-            <div>
-              <div class="service-item-title">買い物支援との連携</div>
-              <div class="service-item-desc">外出が困難な高齢者への買い物支援において、共同売店と連携した支援体制を整えています。在宅安心カー事業とも組み合わせ、移動困難者の生活を地域で支えます。</div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">車がなく、食料品の購入が困難</span>
           </div>
-          <div class="service-item">
-            <div class="service-item-icon">🤝</div>
-            <div>
-              <div class="service-item-title">担い手育成・後継者支援</div>
-              <div class="service-item-desc">共同売店の継続的な運営を支えるため、地域住民への啓発活動や担い手の育成を支援します。大宜味村らしい「共助」の精神を次の世代に伝えます。</div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
             </div>
+            <span class="checklist-text">地域の共同売店が閉まってしまうか心配</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">一人暮らしで、誰とも話す機会が少ない</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">災害時に食料が確保できるか不安</span>
+          </div>
+          <div class="checklist-item" role="listitem">
+            <div class="checklist-icon" aria-hidden="true">
+              <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            </div>
+            <span class="checklist-text">地域活動に参加したいが機会がない</span>
           </div>
         </div>
+
+        <p class="checklist-note">
+          共同売店は地域の大切な共有財産です。<br>
+          存続と活用に向けて、共に考えていきましょう。
+        </p>
       </div>
     </section>
 
-    <!-- セクション3：関連リンク -->
-    <section class="issue-section" aria-labelledby="related-heading">
+    <!-- ─────────────────────────────
+         セクション3：社協の取組み
+    ────────────────────────────── -->
+    <section class="issue-section" aria-labelledby="support-heading">
       <div class="issue-container">
-        <p class="section-eyebrow">RELATED</p>
-        <h2 class="section-heading" id="related-heading">関連サービス・ご相談</h2>
-        <div class="link-grid">
-          <a href="service.html" class="link-card">
-            <span class="link-card-icon">📋</span>
-            <span class="link-card-text">事業・サービス一覧</span>
-          </a>
-          <a href="volunteer.html" class="link-card">
-            <span class="link-card-icon">🤝</span>
-            <span class="link-card-text">ボランティアで参加</span>
-          </a>
-          <a href="issue-transport.html" class="link-card">
-            <span class="link-card-icon">🚐</span>
-            <span class="link-card-text">移動困難の課題を見る</span>
-          </a>
-          <a href="contact.html" class="link-card">
-            <span class="link-card-icon">✉️</span>
-            <span class="link-card-text">お問い合わせ</span>
-          </a>
+        <p class="section-eyebrow">OUR SUPPORT</p>
+        <h2 class="section-heading" id="support-heading">大宜味村社協の共同売店支援</h2>
+
+        <div class="support-list">
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🏪</span>
+              <div>
+                <div class="support-card-title">共同店ネットワーク事業</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              共同売店・個人商店との連携による買い物支援・食料支援の仕組みづくりを行っています。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🤝</span>
+              <div>
+                <div class="support-card-title">リンクワーカー育成</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              地域と福祉をつなぐ人材を育成。共同売店を拠点とした、きめ細やかな支援を展開します。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">📍</span>
+              <div>
+                <div class="support-card-title">地域づくり拠点化</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              共同売店を住民交流・福祉サービスの拠点として活用する取組みを推進しています。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">💰</span>
+              <div>
+                <div class="support-card-title">ボランティアポイント「おいぽ」連携</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              令和8年度中に実施予定。地域貢献活動をポイント化し、地域内での循環を生み出します。
+            </p>
+          </div>
+
+          <div class="support-card">
+            <div class="support-card-head">
+              <span class="support-card-icon">🍱</span>
+              <div>
+                <div class="support-card-title">フードバンク連携</div>
+              </div>
+            </div>
+            <p class="support-card-desc">
+              共同売店ネットワークを通じた食料支援体制の整備を進めています。
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- セクション4：CTA -->
-    <section class="issue-section" aria-label="お問い合わせ">
+    <!-- ─────────────────────────────
+         セクション4：CTA
+    ────────────────────────────── -->
+    <section class="issue-section" aria-label="ご相談のご案内">
       <div class="issue-container">
         <div class="cta-box">
-          <p class="cta-box-title">ご相談・お問い合わせ</p>
-          <p class="cta-box-sub">共同売店の支援・地域活動への参加についてのご相談は、お気軽にお問い合わせください。<br>TEL：0980-44-3800（平日 9:00〜17:15）</p>
-          <div class="cta-box-btns">
-            <a href="contact.html" class="cta-box-btn-primary">お問い合わせ</a>
-            <a href="tel:0980443800" class="cta-box-btn-secondary">電話で相談する</a>
+          <p class="cta-box-title">まずはご相談ください</p>
+          <p class="cta-box-lead">共同売店の支援や地域活動について、気になることがあれば<br>お気軽にご連絡ください。相談は無料・秘密厳守です。</p>
+          <span class="cta-tel"><a href="tel:0980443800">0980-44-3800</a></span>
+          <p class="cta-hours">受付時間：平日 9:00〜17:15（土・日・祝除く）</p>
+          <p class="cta-note">大宜味村社会福祉協議会<br>〒905-1303 沖縄県国頭郡大宜味村字喜如嘉320番地</p>
+          <div class="cta-btns">
+            <a href="contact.html" class="cta-btn-primary">お問い合わせフォーム</a>
+            <a href="tel:0980443800" class="cta-btn-secondary">電話で相談する</a>
           </div>
         </div>
       </div>
