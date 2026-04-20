@@ -1217,3 +1217,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+
+/* クイックアクセスアイコン画像 */
+.quick-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 0 white);
+}
