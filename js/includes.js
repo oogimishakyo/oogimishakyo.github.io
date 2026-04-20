@@ -38,9 +38,9 @@
 
   // ファビコンをheadに注入（全ページ共通）
   var faviconDefs = [
-    { rel: 'icon',             type: 'image/png', href: 'images/logo.png' },
-    { rel: 'shortcut icon',    type: '',          href: 'images/logo.png' },
-    { rel: 'apple-touch-icon', type: '',          href: 'images/logo.png' }
+    { rel: 'icon',             type: 'image/png', href: 'images/logo2.png' },
+    { rel: 'shortcut icon',    type: '',          href: 'images/logo2.png' },
+    { rel: 'apple-touch-icon', type: '',          href: 'images/logo2.png' }
   ];
   faviconDefs.forEach(function(def) {
     var link = document.createElement('link');
