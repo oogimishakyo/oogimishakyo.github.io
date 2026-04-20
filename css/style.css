@@ -452,31 +452,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Slide backgrounds */
 .slide-1 {
-  background:
-    linear-gradient(135deg,
-      rgba(18, 89, 52, 0.88) 0%,
-      rgba(26, 122, 78, 0.75) 50%,
-      rgba(45, 168, 112, 0.65) 100%
-    ),
-    radial-gradient(ellipse at 70% 50%, #3ab07a 0%, #1a7a4e 60%, #0d4a2e 100%);
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_hero.jpeg') center/cover no-repeat;
 }
 .slide-2 {
-  background:
-    linear-gradient(135deg,
-      rgba(30, 60, 110, 0.88) 0%,
-      rgba(42, 114, 168, 0.78) 50%,
-      rgba(74, 155, 187, 0.65) 100%
-    ),
-    radial-gradient(ellipse at 30% 50%, #4a9abb 0%, #2a72a8 60%, #1a3e6a 100%);
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_community.jpg') center/cover no-repeat;
 }
 .slide-3 {
-  background:
-    linear-gradient(135deg,
-      rgba(180, 80, 10, 0.88) 0%,
-      rgba(220, 120, 20, 0.78) 50%,
-      rgba(245, 166, 35, 0.65) 100%
-    ),
-    radial-gradient(ellipse at 60% 50%, #f5a623 0%, #e8820c 60%, #b35208 100%);
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_tradition.jpg') center/cover no-repeat;
 }
 
 /* Decorative pattern overlay */
