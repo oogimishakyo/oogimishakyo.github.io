@@ -419,26 +419,67 @@
 
         <!-- PDFダウンロードリスト -->
         <div class="report-download-box" style="margin-top: 40px; background: #fff; border: 1px solid #e0eadd; border-radius: 12px; padding: 24px;">
-          <p style="font-weight: 800; color: var(--primary-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 1.2em;">📄</span> 資料のダウンロード（PDF）
+          <p style="font-weight: 800; color: var(--primary-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2em;">📄</span> 事業計画・事業報告書（PDF）
           </p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px;">
+          
+          <div style="display: flex; flex-direction: column; gap: 24px;">
             
-            <!-- 事業計画 -->
-            <a href="docs/reports/r6_keikaku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s; group" class="report-link">
-              <span style="font-size: 0.95em; font-weight: 700; color: var(--text-dark);">令和6年度 事業計画</span>
-              <span style="font-size: 0.75em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px;">PDF表示</span>
-            </a>
+            <!-- 令和8年度 -->
+            <div>
+              <p style="font-size: 0.85em; font-weight: 700; color: #666; margin-bottom: 10px; padding-left: 4px; border-left: 3px solid var(--primary);">令和8年度 (2026年度)</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                <a href="docs/reports/r8_keikaku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和8年度 事業計画</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+              </div>
+            </div>
 
-            <!-- 事業報告 -->
-            <a href="docs/reports/r5_houkoku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
-              <span style="font-size: 0.95em; font-weight: 700; color: var(--text-dark);">令和5年度 事業報告</span>
-              <span style="font-size: 0.75em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px;">PDF表示</span>
-            </a>
+            <!-- 令和7年度 -->
+            <div>
+              <p style="font-size: 0.85em; font-weight: 700; color: #666; margin-bottom: 10px; padding-left: 4px; border-left: 3px solid var(--primary);">令和7年度 (2025年度)</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                <a href="docs/reports/r7_keikaku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和7年度 事業計画</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 令和6年度 -->
+            <div>
+              <p style="font-size: 0.85em; font-weight: 700; color: #666; margin-bottom: 10px; padding-left: 4px; border-left: 3px solid var(--primary);">令和6年度 (2024年度)</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                <a href="docs/reports/r6_keikaku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和6年度 事業計画</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+                <a href="docs/reports/r6_houkoku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和6年度 事業報告</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 令和5年度 -->
+            <div>
+              <p style="font-size: 0.85em; font-weight: 700; color: #666; margin-bottom: 10px; padding-left: 4px; border-left: 3px solid var(--primary);">令和5年度 (2023年度)</p>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                <a href="docs/reports/r5_keikaku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和5年度 事業計画</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+                <a href="docs/reports/r5_houkoku.pdf" target="_blank" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #fafdfa; border: 1px solid #d0e8d5; border-radius: 8px; text-decoration: none; transition: all 0.2s;" class="report-link">
+                  <span style="font-size: 0.9em; font-weight: 700; color: var(--text-dark);">令和5年度 事業報告</span>
+                  <span style="font-size: 0.7em; color: var(--primary); font-weight: 700; border: 1px solid var(--primary); padding: 1px 6px; border-radius: 4px;">PDF</span>
+                </a>
+              </div>
+            </div>
 
           </div>
-          <p style="font-size: 0.82em; color: #888; margin-top: 16px; border-top: 1px solid #eee; padding-top: 12px;">
-            ※クリックすると別ウィンドウでPDFファイルが開きます。閲覧には Adobe Acrobat Reader 等が必要な場合があります。
+          <p style="font-size: 0.82em; color: #888; margin-top: 20px; border-top: 1px solid #eee; padding-top: 12px;">
+            ※クリックすると別ウィンドウでPDFファイルが開きます。
           </p>
         </div>
       </div>
