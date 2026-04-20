@@ -750,16 +750,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 .service-card-img {
-  padding-top: 32px;
-  text-align: center;
+  height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 .service-card-img img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   display: block;
-  margin: 0 auto 12px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  position: relative; z-index: 1;
 }
+/* Card color themes */
+.card-green  .service-card-img { background: linear-gradient(135deg, #1a7a4e, #3ab07a); }
+.card-blue   .service-card-img { background: linear-gradient(135deg, #1a4f8a, #3a82c8); }
+.card-orange .service-card-img { background: linear-gradient(135deg, #b35208, #e8820c); }
+.card-pink   .service-card-img { background: linear-gradient(135deg, #8a1a5a, #c84a90); }
+.card-teal   .service-card-img { background: linear-gradient(135deg, #1a6e7a, #3aaabb); }
+.card-purple .service-card-img { background: linear-gradient(135deg, #4a1a8a, #7a4ac8); }
 
 .service-card-body { padding: 22px 24px; flex: 1; }
 .service-card-tag {
