@@ -36,4 +36,18 @@
   // フッター読み込み
   inject('footer-placeholder', loadSync('includes/footer.html'));
 
+  // ファビコンをheadに注入（全ページ共通）
+  var faviconDefs = [
+    { rel: 'icon',             type: 'image/png', href: 'images/logo.png' },
+    { rel: 'shortcut icon',    type: '',          href: 'images/logo.png' },
+    { rel: 'apple-touch-icon', type: '',          href: 'images/logo.png' }
+  ];
+  faviconDefs.forEach(function(def) {
+    var link = document.createElement('link');
+    link.rel  = def.rel;
+    link.href = def.href;
+    if (def.type) link.type = def.type;
+    document.head.appendChild(link);
+  });
+
 })();
