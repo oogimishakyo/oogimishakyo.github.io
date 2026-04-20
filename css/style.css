@@ -737,39 +737,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 24px;
 }
 .service-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex; flex-direction: column;
 }
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 .service-card-img {
-  height: 180px;
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
+  padding-top: 32px;
+  text-align: center;
 }
-.service-card-img .card-icon {
-  font-size: 4em; z-index: 1;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+.service-card-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 12px;
 }
-.service-card-img::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 60%);
-}
-/* Card color themes */
-.card-green .service-card-img   { background: linear-gradient(135deg, #1a7a4e, #3ab07a); }
-.card-blue .service-card-img    { background: linear-gradient(135deg, #1a4f8a, #3a82c8); }
-.card-orange .service-card-img  { background: linear-gradient(135deg, #b35208, #e8820c); }
-.card-pink .service-card-img    { background: linear-gradient(135deg, #8a1a5a, #c84a90); }
-.card-teal .service-card-img    { background: linear-gradient(135deg, #1a6e7a, #3aaabb); }
-.card-purple .service-card-img  { background: linear-gradient(135deg, #4a1a8a, #7a4ac8); }
 
 .service-card-body { padding: 22px 24px; flex: 1; }
 .service-card-tag {
