@@ -452,13 +452,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Slide backgrounds */
 .slide-1 {
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_hero.jpeg') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../images/top_hero.jpeg') center/cover no-repeat;
 }
 .slide-2 {
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_community.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../images/top_community.jpg') center/cover no-repeat;
 }
 .slide-3 {
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('images/top_tradition.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('../images/top_tradition.jpg') center/cover no-repeat;
 }
 
 /* Decorative pattern overlay */
