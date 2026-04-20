@@ -178,11 +178,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 /* ヘッダーCTAボタン（伊賀市社協スタイル） */
 .header-cta {
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 12px; /* Increased gap for better spacing */
 }
 .btn-service, .btn-donate {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 10px 18px;
+  display: inline-flex; align-items: center; /* Ensure content is centered */
+  gap: 7px;
+  padding: 10px 18px; /* Confirmed padding */
   border-radius: 6px;
   font-size: 0.85em; font-weight: 700;
   white-space: nowrap;
