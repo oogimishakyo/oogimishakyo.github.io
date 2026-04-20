@@ -1229,7 +1229,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* クイックアクセスアイコン白背景 */
 .quick-icon img {
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 50%;
-  padding: 6px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
 }
