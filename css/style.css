@@ -756,12 +756,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
 }
 .service-card-img img {
-  width: 200px;
-  height: 200px;
+  width: auto;
+  height: 190px;
+  max-width: 90%;
   object-fit: contain;
-  display: block;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-  position: relative; z-index: 1;
 }
 /* Card color themes */
 .card-green  .service-card-img { background: linear-gradient(135deg, #1a7a4e, #3ab07a); }
