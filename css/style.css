@@ -750,14 +750,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 .service-card-img {
-  height: 180px;
+  height: 200px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
   position: relative;
 }
 .service-card-img img {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
