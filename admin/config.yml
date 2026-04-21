@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: main
+  　site_domain: oogimishakyo.or.jp
 
 media_folder: "assets/images/news"
 public_folder: "/assets/images/news"
