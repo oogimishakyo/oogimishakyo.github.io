@@ -1,15 +1,11 @@
 backend:
-  backend:
   name: github
   repo: oogimishakyo/oogimishakyo.github.io
   branch: main
-  # ここを Cloudflare の URL に変更
   base_url: https://oogimishakyo-cms-auth2.yuzi-5eb.workers.dev
   auth_endpoint: auth
-
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
-
 collections:
   - name: "news"
     label: "お知らせ"
