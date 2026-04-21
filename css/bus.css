@@ -175,6 +175,36 @@
   margin-top: 8px;
 }
 
+/* Info Table (車両情報など) */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93em;
+}
+.info-table th,
+.info-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+.info-table th {
+  width: 30%;
+  font-weight: 700;
+  color: var(--primary-green);
+  white-space: nowrap;
+}
+.info-table tr:last-child th,
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 4-step layout */
+.step-container-4 .step-item {
+  min-width: 0;
+}
+
 /* Warning Box */
 .warning-box {
   background: #fcf8e3; /* Light yellow */
