@@ -25,6 +25,8 @@
   --radius: 8px;
   --radius-lg: 16px;
   --header-h: 100px;
+  --header-top-h: 40px;
+  --header-nav-h: 60px;
   --transition: 0.25s ease;
 }
 
@@ -81,31 +83,53 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .site-header.scrolled { box-shadow: var(--shadow-md); }
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  height: 100%;
+/* ─── 2段ヘッダー構造 ─── */
+
+/* 上段：CTAバー */
+.header-top-bar {
+  height: var(--header-top-h);
+  border-bottom: 1px solid var(--border);
+}
+.header-top-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 16px;
-  gap: 12px;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* 下段：ロゴ＋ナビバー */
+.header-nav-bar {
+  height: var(--header-nav-h);
+}
+.header-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
 /* Logo */
-.header-logo { flex-shrink: 0; max-width: 180px; }
+.header-logo { flex-shrink: 0; }
 .logo-link {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 10px;
   text-decoration: none;
 }
 .logo-img {
-  height: 50px;
+  height: 42px;
   width: auto;
-  max-height: 50px;
+  max-height: 42px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
 }
-.logo-text { line-height: 1.25; }
+.logo-text { line-height: 1.3; }
 .logo-pref {
   display: block;
   font-size: 10px;
@@ -125,36 +149,32 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .global-nav { flex: 1; min-width: 0; }
 .global-nav > ul {
   display: flex; gap: 0; align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .global-nav ul li a {
-  display: block;
-  padding: 10px 6px;
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  height: var(--header-nav-h);
+  padding: 0 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
   position: relative;
-  border-radius: var(--radius);
   transition: color 0.25s ease, background-color 0.25s ease;
 }
 .global-nav ul li a::after {
   content: '';
-  position: absolute; bottom: 4px; left: 50%; right: 50%;
-  height: 2px;
+  position: absolute; bottom: 0; left: 50%; right: 50%;
+  height: 3px;
   background: var(--primary);
   transition: left 0.25s ease, right 0.25s ease;
-  border-radius: 2px;
+  border-radius: 2px 2px 0 0;
 }
 .global-nav ul li a:hover { color: var(--primary); background: var(--primary-light); }
-.global-nav ul li a:hover::after { left: 14px; right: 14px; }
+.global-nav ul li a:hover::after { left: 8px; right: 8px; }
 
-/* Header Controls */
-.header-controls {
-  flex-shrink: 0;
-  display: flex; flex-direction: column;
-  align-items: flex-end; gap: 4px;
-}
+/* 文字サイズコントロール */
 .font-size-control {
   display: flex; align-items: center; gap: 4px;
 }
@@ -176,14 +196,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--primary); color: var(--white);
   border-color: var(--primary);
 }
-/* ヘッダーCTAボタン（伊賀市社協スタイル） */
+
+/* ヘッダーCTAボタン（上段・横並び） */
 .header-cta {
-  display: flex; flex-direction: column; gap: 12px; /* Increased gap for better spacing */
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 .btn-service, .btn-donate {
   display: inline-flex; align-items: center;
   gap: 5px;
-  padding: 8px 10px;
+  padding: 6px 14px;
   border-radius: 6px;
   font-size: 13px; font-weight: 700;
   white-space: nowrap;
@@ -192,7 +215,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.3;
 }
 .btn-icon {
-  width: 16px; height: 16px;
+  width: 14px; height: 14px;
   flex-shrink: 0; fill: currentColor;
 }
 .btn-service {
@@ -1033,15 +1056,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    RESPONSIVE — Tablet
    ========================================= */
 @media (max-width: 1100px) {
-  .global-nav ul li a { padding: 8px 10px; font-size: 0.8em; }
-  .header-cta { display: none; }
-  .font-size-control { display: none; }
+  .global-nav ul li a { padding: 0 8px; font-size: 13px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
 @media (max-width: 900px) {
-  :root { --header-h: 64px; }
+  :root { --header-h: 60px; --header-top-h: 0px; --header-nav-h: 60px; }
+  .header-top-bar { display: none; }
   .global-nav { display: none; }
   .hamburger { display: flex; }
   .hero-slider { height: 480px; }
@@ -1080,14 +1102,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    SIDE FIXED BAR（画面右端固定）
    ========================================= */
 .side-fixed-bar {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 900;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: none;
 }
 
 .side-fixed-btn {
