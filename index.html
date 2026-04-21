@@ -14,6 +14,25 @@
   <link rel="icon" type="image/png" href="images/logo2.png">
   <link rel="shortcut icon" href="images/logo2.png">
   <link rel="apple-touch-icon" href="images/logo2.png">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function() {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+        // リカバリートークン・招待トークンの処理
+        const hash = window.location.hash;
+        if (hash && (hash.includes('recovery_token') || hash.includes('invite_token'))) {
+          window.netlifyIdentity.open();
+        }
+      }
+    });
+  </script>
 </head>
 <body class="font-size-medium">
 
