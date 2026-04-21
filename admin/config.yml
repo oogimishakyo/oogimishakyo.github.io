@@ -6,18 +6,19 @@ media_folder: "assets/images/news"
 public_folder: "/assets/images/news"
 
 collections:
-  - name: "news"
-    label: "お知らせ"
-    label_singular: "お知らせ項目"
-    file: "data/news.json"
-    extension: "json"
-    format: "json"
-    fields:
-      - label: "お知らせリスト"
-        name: "news"
-        widget: "list"
+  - name: "news_data"
+    label: "お知らせ管理"
+    # ここから下が重要：特定のファイルを指定する書き方です
+    files:
+      - name: "news_list"
+        label: "お知らせ一覧"
+        file: "data/news.json"
         fields:
-          - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-          - { label: "タイトル", name: "title", widget: "string" }
-          - { label: "本文", name: "body", widget: "text" }
-          - { label: "URL（任意）", name: "url", widget: "string", required: false }
+          - label: "お知らせリスト"
+            name: "news"
+            widget: "list"
+            fields:
+              - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "本文", name: "body", widget: "text" }
+              - { label: "URL（任意）", name: "url", widget: "string", required: false }
