@@ -1,25 +1,19 @@
 backend:
   name: git-gateway
   branch: main
-  site_domain: oogimishakyo.or.jp
 
-media_folder: "assets/images/news"
-public_folder: "/assets/images/news"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
-  - name: "news_data"
-    label: "お知らせ管理"
-    # ここから下が重要：特定のファイルを指定する書き方です
-    files:
-      - name: "news_list"
-        label: "お知らせ一覧"
-        file: "data/news.json"
-        fields:
-          - label: "お知らせリスト"
-            name: "news"
-            widget: "list"
-            fields:
-              - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
-              - { label: "タイトル", name: "title", widget: "string" }
-              - { label: "本文", name: "body", widget: "text" }
-              - { label: "URL（任意）", name: "url", widget: "string", required: false }
+  - name: "news"
+    label: "お知らせ"
+    folder: "data/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "日付", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "講座", "催し"] }
+      - { label: "本文", name: "body", widget: "text" }
+      - { label: "URL（任意）", name: "url", widget: "string", required: false }
