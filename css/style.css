@@ -24,9 +24,9 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
   --radius: 8px;
   --radius-lg: 16px;
-  --header-h: 100px;
-  --header-top-h: 40px;
-  --header-nav-h: 60px;
+  --header-h: 120px;
+  --header-top-h: 70px;
+  --header-nav-h: 50px;
   --transition: 0.25s ease;
 }
 
@@ -85,30 +85,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ─── 2段ヘッダー構造 ─── */
 
-/* 上段：CTAバー */
+/* 上段：ロゴ＋CTA */
 .header-top-bar {
   height: var(--header-top-h);
-  border-bottom: 1px solid var(--border);
 }
 .header-top-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
 }
 
-/* 下段：ロゴ＋ナビバー */
+/* 下段：ナビゲーション */
 .header-nav-bar {
   height: var(--header-nav-h);
+  border-top: 1px solid #e8e8e8;
 }
 .header-nav-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -118,13 +118,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Logo */
 .header-logo { flex-shrink: 0; }
 .logo-link {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
   text-decoration: none;
 }
 .logo-img {
-  height: 42px;
+  height: 60px;
   width: auto;
-  max-height: 42px;
+  max-height: 60px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
@@ -132,14 +132,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .logo-text { line-height: 1.3; }
 .logo-pref {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--text-mid);
   letter-spacing: 0.02em;
 }
 .logo-name {
   display: block;
-  font-size: 15px;
-  font-weight: 900;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--primary-dark);
   letter-spacing: 0.03em;
   white-space: nowrap;
@@ -155,13 +155,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   height: var(--header-nav-h);
-  padding: 0 12px;
-  font-size: 14px;
+  padding: 0 20px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
   position: relative;
-  transition: color 0.25s ease, background-color 0.25s ease;
+  transition: color 0.25s ease;
 }
 .global-nav ul li a::after {
   content: '';
@@ -171,8 +171,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: left 0.25s ease, right 0.25s ease;
   border-radius: 2px 2px 0 0;
 }
-.global-nav ul li a:hover { color: var(--primary); background: var(--primary-light); }
-.global-nav ul li a:hover::after { left: 8px; right: 8px; }
+.global-nav ul li a:hover { color: var(--primary); }
+.global-nav ul li a:hover::after { left: 12px; right: 12px; }
+
+/* 上段右側グループ */
+.header-top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
 /* 文字サイズコントロール */
 .font-size-control {
@@ -205,17 +212,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .btn-service, .btn-donate {
   display: inline-flex; align-items: center;
-  gap: 5px;
-  padding: 6px 14px;
+  gap: 6px;
+  padding: 10px 20px;
   border-radius: 6px;
-  font-size: 13px; font-weight: 700;
+  font-size: 14px; font-weight: 700;
   white-space: nowrap;
   letter-spacing: 0.02em;
   transition: background-color 0.25s ease;
   line-height: 1.3;
 }
 .btn-icon {
-  width: 14px; height: 14px;
+  width: 16px; height: 16px;
   flex-shrink: 0; fill: currentColor;
 }
 .btn-service {
@@ -1056,14 +1063,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    RESPONSIVE — Tablet
    ========================================= */
 @media (max-width: 1100px) {
-  .global-nav ul li a { padding: 0 8px; font-size: 13px; }
+  .global-nav ul li a { padding: 0 12px; font-size: 14px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 
 @media (max-width: 900px) {
-  :root { --header-h: 60px; --header-top-h: 0px; --header-nav-h: 60px; }
-  .header-top-bar { display: none; }
+  :root { --header-h: 70px; --header-top-h: 70px; --header-nav-h: 0px; }
+  .header-top-inner { padding: 0 16px; }
+  .header-nav-bar { display: none; }
+  .header-cta { display: none; }
+  .font-size-control { display: none; }
   .global-nav { display: none; }
   .hamburger { display: flex; }
   .hero-slider { height: 480px; }

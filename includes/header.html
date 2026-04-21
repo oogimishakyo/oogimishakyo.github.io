@@ -2,35 +2,15 @@
   <a href="#main-content" class="skip-link">本文へ移動</a>
 
   <!-- ===================================
-       HEADER（2段構成）
+       HEADER（2段構成：伊賀市社協スタイル）
+       上段：ロゴ + 文字サイズ + CTAボタン
+       下段：ナビゲーション
   ==================================== -->
   <header class="site-header" id="site-header" role="banner">
 
-    <!-- 上段：文字サイズ＋CTAバー -->
+    <!-- 上段：ロゴ・文字サイズ・CTA -->
     <div class="header-top-bar">
       <div class="header-top-inner">
-        <div class="font-size-control" role="group" aria-label="文字サイズ変更">
-          <span class="font-label">文字サイズ</span>
-          <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
-          <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
-          <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
-        </div>
-        <div class="header-cta">
-          <a href="service.html" class="btn-service">
-            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
-            サービス・支援を利用したい
-          </a>
-          <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
-            <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/></svg>
-            寄付・支援をする
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- 下段：ロゴ＋ナビゲーション -->
-    <div class="header-nav-bar">
-      <div class="header-nav-inner">
 
         <!-- ロゴ -->
         <div class="header-logo">
@@ -43,7 +23,36 @@
           </a>
         </div>
 
-        <!-- グローバルナビ（PC） -->
+        <!-- 右側：文字サイズ・CTA・ハンバーガー -->
+        <div class="header-top-right">
+          <div class="font-size-control" role="group" aria-label="文字サイズ変更">
+            <span class="font-label">文字サイズ</span>
+            <button class="font-btn" data-size="small"  aria-label="文字サイズ 小">小</button>
+            <button class="font-btn active" data-size="medium" aria-label="文字サイズ 中">中</button>
+            <button class="font-btn" data-size="large"  aria-label="文字サイズ 大">大</button>
+          </div>
+          <div class="header-cta">
+            <a href="service.html" class="btn-service">
+              <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2L2 8v10h5v-5h6v5h5V8L10 2z"/></svg>
+              サービス・支援を利用したい
+            </a>
+            <a href="https://syncable.biz/associate/oogimishakyo/donate" class="btn-donate" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 17s-7-4.5-7-9a5 5 0 0110 0c0 4.5-3 9-3 9zm0-12a3 3 0 00-3 3h2a1 1 0 012 0h2a3 3 0 00-3-3z"/></svg>
+              寄付・支援をする
+            </a>
+          </div>
+          <!-- ハンバーガー（スマホのみ表示） -->
+          <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 下段：ナビゲーション（PCのみ） -->
+    <div class="header-nav-bar">
+      <div class="header-nav-inner">
         <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション">
           <ul>
 
@@ -54,7 +63,6 @@
               </a>
               <div class="mega-menu" role="region" aria-label="地域の課題を知る メニュー">
                 <div class="mega-inner">
-
                   <div class="mega-col mega-col-featured">
                     <p class="mega-section-title">初めての方へ</p>
                     <a href="issues.html" class="mega-intro-card">
@@ -62,7 +70,6 @@
                       <span class="mega-intro-text">大宜味村社協が目指す<br>福祉のかたち</span>
                     </a>
                   </div>
-
                   <div class="mega-col mega-col-main">
                     <p class="mega-section-title">重点課題</p>
                     <ul class="mega-links mega-grid">
@@ -76,7 +83,6 @@
                       <li><a href="issue-health.html">健康寿命</a></li>
                     </ul>
                   </div>
-
                 </div>
               </div>
             </li>
@@ -88,7 +94,6 @@
               </a>
               <div class="mega-menu" role="region" aria-label="地域を支える メニュー">
                 <div class="mega-inner">
-
                   <div class="mega-col mega-col-featured">
                     <p class="mega-section-title">寄付で支える</p>
                     <ul class="mega-links">
@@ -96,7 +101,6 @@
                       <li><a href="https://syncable.biz/associate/oogimishakyo/donate/membership" target="_blank" rel="noopener noreferrer">会員になる</a></li>
                     </ul>
                   </div>
-
                   <div class="mega-col mega-col-main">
                     <p class="mega-section-title">参加して支える</p>
                     <ul class="mega-links">
@@ -104,7 +108,6 @@
                       <li><a href="faq.html">よくある質問</a></li>
                     </ul>
                   </div>
-
                 </div>
               </div>
             </li>
@@ -119,7 +122,6 @@
               </a>
               <div class="mega-menu" role="region" aria-label="社協について メニュー">
                 <div class="mega-inner">
-
                   <div class="mega-col mega-col-featured">
                     <p class="mega-section-title">法人情報</p>
                     <ul class="mega-links">
@@ -129,7 +131,6 @@
                       <li><a href="about.html#dayori">社協だより</a></li>
                     </ul>
                   </div>
-
                   <div class="mega-col mega-col-main">
                     <p class="mega-section-title">お問い合わせ・アクセス</p>
                     <ul class="mega-links">
@@ -137,7 +138,6 @@
                       <li><a href="contact.html#access">アクセス</a></li>
                     </ul>
                   </div>
-
                 </div>
               </div>
             </li>
@@ -149,7 +149,6 @@
               </a>
               <div class="mega-menu" role="region" aria-label="施設・車両 メニュー">
                 <div class="mega-inner">
-
                   <div class="mega-col mega-col-main">
                     <p class="mega-section-title">施設・車両の予約</p>
                     <ul class="mega-links">
@@ -157,19 +156,12 @@
                       <li><a href="bus.html">マイクロバス貸出</a></li>
                     </ul>
                   </div>
-
                 </div>
               </div>
             </li>
 
           </ul>
         </nav>
-
-        <!-- ハンバーガー（スマホ） -->
-        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span><span></span><span></span>
-        </button>
-
       </div>
     </div>
 
