@@ -17,3 +17,4 @@ collections:
       - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "講座", "催し"] }
       - { label: "本文", name: "body", widget: "text" }
       - { label: "URL（任意）", name: "url", widget: "string", required: false }
+      - { label: "添付PDF（任意）", name: "pdf", widget: "file", required: false }
