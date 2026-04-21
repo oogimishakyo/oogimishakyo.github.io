@@ -13,9 +13,11 @@ collections:
     extension: "json"
     format: "json"
     fields:
-      - { label: "お知らせリスト", name: "news", widget: "list", fields: [
-          { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
-          { label: "タイトル", name: "title", widget: "string" },
-          { label: "本文", name: "body", widget: "text" },
-          { label: "URL（任意）", name: "url", widget: "string", required: false }
-        ]}
+      - label: "お知らせリスト"
+        name: "news"
+        widget: "list"
+        fields:
+          - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+          - { label: "タイトル", name: "title", widget: "string" }
+          - { label: "本文", name: "body", widget: "text" }
+          - { label: "URL（任意）", name: "url", widget: "string", required: false }
