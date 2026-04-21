@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイクロバス貸出 - 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bus.css"> <!-- 専用CSSを想定 -->
+  <script src="js/includes.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    // ページ固有のJSがあればここに追加
+    document.addEventListener('DOMContentLoaded', function() {
+      // Download button setup
+      const downloadButton = document.getElementById('download-application');
+      if (downloadButton) {
+        downloadButton.addEventListener('click', function(e) {
+          // Prevent default navigation and trigger download
+          e.preventDefault();
+          // For this case, we rely on the download attribute in the HTML.
+          console.log('Download button clicked');
+        });
+      }
+
+      // Responsive step display logic
+      const stepToggles = document.querySelectorAll('.step-item > .step-number');
+      stepToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+          const stepItem = this.parentElement;
+          stepItem.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
+
+  <!-- Header will be loaded by includes.js -->
+  <header id="header-placeholder"></header>
+
+  <main id="main-content">
+    <!-- Page Header -->
+    <section class="page-header-section">
+      <div class="container">
+        <h1 class="page-title">マイクロバス貸出</h1>
+        <p class="page-subtitle">地域の活動・行事にご活用ください</p>
+      </div>
+    </section>
+
+    <section class="content-section bus-page-content">
+      <div class="container">
+
+        <!-- 2. 利用できる団体 -->
+        <div class="content-block">
+          <h2 class="section-title">ご利用いただける団体</h2>
+          <div class="card-grid">
+            <div class="service-card">
+              <div class="service-card-body">
+                <h3 class="service-card-title">対象団体</h3>
+                <ul class="service-list">
+                  <li>大宜味村社会福祉協議会の団体会員・特別会員</li>
+                  <li>大宜味村役場・大宜味村教育委員会</li>
+                  <li>大宜味小中学校・辺土名高等学校</li>
+                  <li>自治会</li>
+                  <li>その他、会長が特に必要と認めた団体</li>
+                </ul>
+              </div>
+              <div class="service-card-footer">
+                <p class="service-note">※ 団体会員・特別会員以外の方は社協への加入が必要です（下部に案内）</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 費用 -->
+        <div class="content-block">
+          <h2 class="section-title">費用</h2>
+          <div class="service-card">
+            <div class="service-card-body">
+              <p class="service-text">実費負担（利用団体が負担）</p>
+              <ul class="service-list">
+                <li>燃料費</li>
+                <li>高速道路料金</li>
+                <li>駐車料金</li>
+                <li>その他運行にかかる実費</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 申請方法 -->
+        <div class="content-block">
+          <h2 class="section-title">申請方法</h2>
+          <div class="step-container">
+            <div class="step-item">
+              <div class="step-number">STEP 1</div>
+              <div class="step-text">
+                <p>申請書をダウンロード・記入</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">STEP 2</div>
+              <div class="step-text">
+                <p>使用日の7日前までに社協窓口へ提出</p>
+                <p class="step-note">※急を要する場合はご相談ください</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">STEP 3</div>
+              <div class="step-text">
+                <p>許可書を受け取り、当日利用</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. ご利用いただけない場合 -->
+        <div class="content-block">
+          <h2 class="section-title">ご利用いただけない場合</h2>
+          <div class="warning-box">
+            <p>以下の目的での利用はできません：</p>
+            <ul class="warning-list">
+              <li>営利を目的とする活動</li>
+              <li>宗教団体の本来的活動（福祉・公益活動は除く）</li>
+              <li>特定の政党・候補者を支持する政治活動</li>
+              <li>冠婚葬祭など個人的な行事</li>
+              <li>災害・緊急事態発生時</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 6. 利用上の注意 -->
+        <div class="content-block">
+          <h2 class="section-title">ご利用上の注意</h2>
+          <ul class="service-list">
+            <li>運行前後に車両点検を実施してください</li>
+            <li>車内外の清掃・燃料補給（使用分）をして返却してください</li>
+            <li>事故が発生した場合は速やかに社協へ報告してください</li>
+            <li>車両・設備を損傷した場合は賠償が必要です</li>
+          </ul>
+        </div>
+
+        <!-- 7. 申請書ダウンロード -->
+        <div class="content-block download-section">
+          <a href="docs/microbus-application.xlsx" class="btn btn-primary btn-large download-button" id="download-application" download>
+            借用許可申請書をダウンロード（Excel）
+          </a>
+        </div>
+
+        <!-- 8. 社協団体会員への加入案内 -->
+        <div class="membership-banner">
+          <p>マイクロバスを利用するには社協の団体会員または特別会員への加入が必要です。</p>
+          <p>加入についてはお気軽にお問い合わせください。</p>
+        </div>
+
+        <!-- 9. お問い合わせ -->
+        <div class="content-block contact-section">
+          <h2 class="section-title">お問い合わせ</h2>
+          <div class="contact-info">
+            <p>大宜味村社会福祉協議会</p>
+            <p><a href="tel:0980443800" class="contact-tel">TEL：0980-44-3800</a></p>
+            <p>受付時間：平日 9:00〜17:15</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer will be loaded by includes.js -->
+  <footer id="footer-placeholder"></footer>
+</body>
+</html>
