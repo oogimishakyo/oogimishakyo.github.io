@@ -116,12 +116,12 @@
 /* Step Container */
 .step-container {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  align-items: flex-start;
+  gap: 0;
   background: var(--primary-green-light);
-  padding: 30px 20px;
+  padding: 36px 24px;
   border-radius: var(--radius-lg);
-  border: 1px solid #d0e8d8; /* Lighter green border */
+  border: 1px solid #d0e8d8;
 }
 .step-item {
   flex: 1;
@@ -130,26 +130,38 @@
   flex-direction: column;
   align-items: center;
 }
-.step-number {
-  font-size: 1.8em;
-  font-weight: 900;
+.step-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   color: var(--primary-green);
-  margin-bottom: 10px;
-  width: 50px; /* Fixed size for centering */
-  height: 50px;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+.step-number {
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 3px solid var(--primary-green);
   border-radius: 50%;
   background: var(--white);
-  transition: transform 0.3s ease;
-  cursor: pointer; /* Indicate interactivity */
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--primary-green);
+  margin-bottom: 14px;
+  line-height: 1;
 }
-.step-item.active .step-number {
-  transform: scale(1.1);
-  background: var(--primary-green);
-  color: var(--white);
+.step-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 2rem;
+  color: var(--primary-green);
+  opacity: 0.4;
+  padding: 0 4px;
+  margin-top: -20px; /* align with circle center */
 }
 .step-text {
   font-size: 0.92em;
@@ -280,13 +292,13 @@
   }
   .step-container {
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
   }
   .step-item {
     width: 100%;
   }
-  .step-number {
-    margin-bottom: 12px;
+  .step-arrow {
+    display: none;
   }
   .warning-box {
     padding: 15px 20px;
