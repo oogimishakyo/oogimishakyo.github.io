@@ -1,38 +1,35 @@
-name: Build news.json                                                         
-                                                                                
-  on:                                                       
-    push:
-      paths:                                                                    
-        - 'data/news/**'
-                                                                                
-  jobs:                                                     
-    build:
-      runs-on: ubuntu-latest
-      permissions:
-        contents: write
-      steps:                                                                    
-        - uses: actions/checkout@v3
-        - name: Build news.json                                                 
-          run: |                                            
-            python3 -c "
-            import json, os, glob
-            files = glob.glob('data/news/*.json')                               
-            news = []
-            for f in files:                                                     
-                with open(f) as fp:                         
-                    try:
-                        news.append(json.load(fp))                              
-                    except:
-                        pass                                                    
-            news.sort(key=lambda x: x.get('date',''), reverse=True)
-            with open('data/news.json', 'w', encoding='utf-8') as fp:           
-                json.dump(news, fp, ensure_ascii=False, indent=2)
-            print(f'{len(news)}件のお知らせを統合しました')                     
-            "                                               
-        - name: Commit news.json                                                
-          run: |                                            
-            git config user.name "github-actions"                               
-            git config user.email "actions@github.com"
-            git add data/news.json                                              
-            git diff --staged --quiet || git commit -m "auto: news.jsonを更新"
-            git push         
+name: Build news.json
+on:
+  push:
+    paths:
+      - 'data/news/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build news.json
+        run: |
+          python3 -c "
+          import json, glob
+          files = glob.glob('data/news/*.json')
+          news = []
+          for f in files:
+              with open(f) as fp:
+                  try:
+                      news.append(json.load(fp))
+                  except:
+                      pass
+          news.sort(key=lambda x: x.get('date',''), reverse=True)
+          with open('data/news.json', 'w', encoding='utf-8') as fp:
+              json.dump(news, fp, ensure_ascii=False, indent=2)
+          "
+      - name: Commit news.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add data/news.json
+          git diff --staged --quiet || git commit -m "auto: news.jsonを更新"
+          git push
