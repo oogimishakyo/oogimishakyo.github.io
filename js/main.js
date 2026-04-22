@@ -167,8 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // news.json を取得（相対パスで指定）
-  // ローカル(file://)・GitHub Pages 両対応。失敗時はインラインデータにフォールバック
+  // news.json を取得（配列形式）→ categoryで振り分け
   fetch('./data/news.json')
     .then(r => {
       if (!r.ok) {
@@ -177,10 +176,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return r.json();
     })
     .then(data => {
-      if (!data || typeof data !== 'object') {
-        throw new Error('news.json のデータ形式が不正です');
+      if (!Array.isArray(data)) {
+        throw new Error('news.json のデータ形式が不正です（配列を期待）');
       }
-      newsData = data;
+      const catMap = { 'お知らせ': 'news', '講座': 'kouza', '催し': 'moyooshi' };
+      newsData = { news: [], kouza: [], moyooshi: [] };
+      data.forEach(item => {
+        const key = catMap[item.category] || 'news';
+        newsData[key].push(item);
+      });
       renderNews(currentTab);
     })
     .catch(err => {
