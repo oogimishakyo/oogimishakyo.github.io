@@ -498,7 +498,20 @@
           if (!r.ok) throw new Error('fetch failed');
           return r.json();
         })
-        .then(function (data) { init(data); })
+        .then(function (data) {
+          // news.json は配列形式なのでオブジェクト形式に変換する
+          if (Array.isArray(data)) {
+            var catMap = { 'お知らせ': 'news', '講座': 'kouza', '催し': 'moyooshi' };
+            var obj = { news: [], kouza: [], moyooshi: [] };
+            data.forEach(function (item) {
+              var key = catMap[item.category] || 'news';
+              obj[key].push(item);
+            });
+            init(obj);
+          } else {
+            init(data);
+          }
+        })
         .catch(function () { init(FALLBACK_DATA); });
 
     })();
