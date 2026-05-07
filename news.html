@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="大宜味村社会福祉協議会からのお知らせ一覧。講座・催しの情報もご覧いただけます。">
-  <meta name="keywords" content="大宜味村,社会福祉協議会,お知らせ,講座,催し,イベント">
+  <meta name="description" content="大宜味村社会福祉協議会からのお知らせ一覧。事業案内・催しの情報もご覧いただけます。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,お知らせ,事業案内,催し,イベント">
   <meta property="og:title" content="お知らせ一覧 | 大宜味村社会福祉協議会">
-  <meta property="og:description" content="大宜味村社協からのお知らせ・講座・催しの情報をご案内します。">
+  <meta property="og:description" content="大宜味村社協からのお知らせ・事業案内・催しの情報をご案内します。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://oogimishakyo.or.jp/news.html">
   <title>お知らせ一覧 | 大宜味村社会福祉協議会</title>
@@ -300,7 +300,7 @@
       <div class="news-tabs-bar" role="tablist" aria-label="お知らせカテゴリ">
         <button class="news-tab-btn active" role="tab" aria-selected="true"  data-cat="all"      id="tab-all">すべて<span class="tab-count" id="count-all">0</span></button>
         <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="news"     id="tab-news">お知らせ<span class="tab-count" id="count-news">0</span></button>
-        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="kouza"    id="tab-kouza">講座<span class="tab-count" id="count-kouza">0</span></button>
+        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="kouza"    id="tab-kouza">事業案内<span class="tab-count" id="count-kouza">0</span></button>
         <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="moyooshi" id="tab-moyooshi">催し<span class="tab-count" id="count-moyooshi">0</span></button>
       </div>
 
@@ -350,12 +350,12 @@
         { date: "2026-02-28", category: "お知らせ", title: "ランドセル支給のご案内（令和8年度 新小学1年生対象）", url: "#", body: "" }
       ],
       kouza: [
-        { date: "2026-04-20", category: "講座", title: "がんじゅう教室（4月）参加者募集のお知らせ", url: "#", body: "" },
-        { date: "2026-04-15", category: "講座", title: "介護予防講座「健康体操で元気に！」開催のご案内", url: "",
+        { date: "2026-04-20", category: "事業案内", title: "がんじゅう教室（4月）参加者募集のお知らせ", url: "#", body: "" },
+        { date: "2026-04-15", category: "事業案内", title: "介護予防講座「健康体操で元気に！」開催のご案内", url: "",
           body: "健康体操で元気に！\n\n【日時】令和8年4月25日（金）10:00〜11:30\n【場所】大宜味村地域福祉センター 多目的ホール\n【内容】ストレッチ・軽体操・血圧測定\n【対象】村内在住の65歳以上の方\n【参加費】無料\n\nお申し込みは社協（0980-44-3800）まで。" },
-        { date: "2026-04-05", category: "講座", title: "ボランティア入門講座（5月開催）参加者募集", url: "#", body: "" },
-        { date: "2026-03-20", category: "講座", title: "発達相談サポート講座「子育てのヒント」開催報告", url: "#", body: "" },
-        { date: "2026-03-10", category: "講座", title: "移動支援従事者研修のご案内", url: "#", body: "" }
+        { date: "2026-04-05", category: "事業案内", title: "ボランティア入門講座（5月開催）参加者募集", url: "#", body: "" },
+        { date: "2026-03-20", category: "事業案内", title: "発達相談サポート講座「子育てのヒント」開催報告", url: "#", body: "" },
+        { date: "2026-03-10", category: "事業案内", title: "移動支援従事者研修のご案内", url: "#", body: "" }
       ],
       moyooshi: [
         { date: "2026-04-29", category: "催し", title: "くがにサロン 春の交流会のご案内", url: "",
@@ -378,7 +378,7 @@
       // カテゴリ設定
       var CAT_MAP = {
         news:     { label: 'お知らせ', cls: 'badge-news' },
-        kouza:    { label: '講座',     cls: 'badge-kouza' },
+        kouza:    { label: '事業案内', cls: 'badge-kouza' },
         moyooshi: { label: '催し',     cls: 'badge-moyooshi' }
       };
 
@@ -404,7 +404,7 @@
       // カテゴリキー取得
       function catKey(item) {
         if (item.category === 'お知らせ') return 'news';
-        if (item.category === '講座')     return 'kouza';
+        if (item.category === '事業案内') return 'kouza';
         if (item.category === '催し')     return 'moyooshi';
         return 'news';
       }
@@ -445,30 +445,47 @@
 
         var html = '';
         page.forEach(function (item) {
-          var ck  = catKey(item);
-          var cfg = CAT_MAP[ck];
+          var ck     = catKey(item);
+          var cfg    = CAT_MAP[ck];
+          var hasPdf = !!(item.pdf && item.pdf.trim());
+          var hasUrl = !isEmptyUrl(item.url);
+          var hasBody = !!(item.body && item.body.trim());
+
           var metaHtml = '<span class="news-meta">'
             + '<span class="news-date">' + fmtDate(item.date) + '</span>'
             + '<span class="news-badge ' + cfg.cls + '">' + cfg.label + '</span>'
             + '</span>';
+          var pdfBtnHtml = hasPdf
+            ? '<a href="' + escapeHtml(item.pdf) + '" class="news-pdf-btn" target="_blank" rel="noopener noreferrer">📄 PDFを見る</a>'
+            : '';
 
-          if (isEmptyUrl(item.url) && item.body) {
-            // URLなし＋本文あり → アコーディオン表示
+          if (!hasUrl && hasBody) {
+            // URLなし＋本文あり → アコーディオン（PDFボタンはヘッダーに表示）
             html += '<div class="news-item-accordion" tabindex="0" role="button" aria-expanded="false">';
             html +=   '<div class="news-accordion-header">';
             html +=     metaHtml;
             html +=     '<span class="news-title">' + escapeHtml(item.title) + '</span>';
+            html +=     pdfBtnHtml;
             html +=     '<span class="news-accordion-chevron" aria-hidden="true">▼</span>';
             html +=   '</div>';
             html +=   '<div class="news-accordion-body">' + escapeHtml(item.body) + '</div>';
             html += '</div>';
-          } else {
-            // URL付き or 本文なし → 通常リンク表示
-            var href = isEmptyUrl(item.url) ? '#' : item.url;
-            html += '<a href="' + escapeHtml(href) + '" class="news-item">';
+          } else if (hasUrl && !hasPdf) {
+            // URLあり・PDFなし → <a>で全体リンク
+            html += '<a href="' + escapeHtml(item.url) + '" class="news-item">';
             html +=   metaHtml;
             html +=   '<span class="news-title">' + escapeHtml(item.title) + '</span>';
             html += '</a>';
+          } else {
+            // PDFあり（URLの有無は問わない）or URLなし・PDFなし・本文なし
+            var titleHtml = hasUrl
+              ? '<a href="' + escapeHtml(item.url) + '" class="news-title">' + escapeHtml(item.title) + '</a>'
+              : '<span class="news-title">' + escapeHtml(item.title) + '</span>';
+            html += '<div class="news-item">';
+            html +=   metaHtml;
+            html +=   titleHtml;
+            html +=   pdfBtnHtml;
+            html += '</div>';
           }
         });
         area.innerHTML = html;
@@ -486,6 +503,11 @@
               this.setAttribute('aria-expanded', String(!expanded));
             }
           });
+        });
+
+        // アコーディオン内PDFボタンのクリックがアコーディオントグルに伝播しないようにする
+        area.querySelectorAll('.news-item-accordion .news-pdf-btn').forEach(function (btn) {
+          btn.addEventListener('click', function (e) { e.stopPropagation(); });
         });
 
         renderPagination();
@@ -593,7 +615,7 @@
         .then(function (data) {
           // news.json は配列形式なのでオブジェクト形式に変換する
           if (Array.isArray(data)) {
-            var catMap = { 'お知らせ': 'news', '講座': 'kouza', '催し': 'moyooshi' };
+            var catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi' };
             var obj = { news: [], kouza: [], moyooshi: [] };
             data.forEach(function (item) {
               var key = catMap[item.category] || 'news';

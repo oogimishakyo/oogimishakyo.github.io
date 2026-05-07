@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(data)) {
         throw new Error('news.json のデータ形式が不正です（配列を期待）');
       }
-      const catMap = { 'お知らせ': 'news', '講座': 'kouza', '催し': 'moyooshi' };
+      const catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi' };
       newsData = { news: [], kouza: [], moyooshi: [] };
       data.forEach(item => {
         const key = catMap[item.category] || 'news';
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderNews(tab) {
     if (!newsListEl || !newsData) return;
 
-    const catMap = { news: 'お知らせ', kouza: '講座', moyooshi: '催し' };
+    const catMap = { news: 'お知らせ', kouza: '事業案内', moyooshi: '催し' };
     const catClass = { news: 'cat-news', kouza: 'cat-kouza', moyooshi: 'cat-moyooshi' };
     const items = newsData[tab] || [];
 
@@ -217,14 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     newsListEl.innerHTML = items.map(item => {
-      const titleHtml = (!item.url || item.url === '#')
-        ? `<span class="news-title">${escapeHtml(item.title)}</span>`
-        : `<a href="${escapeHtml(item.url)}" class="news-title">${escapeHtml(item.title)}</a>`;
+      const hasUrl = item.url && item.url !== '#' && item.url.trim() !== '';
+      const hasPdf = !!(item.pdf && item.pdf.trim());
+      const titleHtml = hasUrl
+        ? `<a href="${escapeHtml(item.url)}" class="news-title">${escapeHtml(item.title)}</a>`
+        : `<span class="news-title">${escapeHtml(item.title)}</span>`;
+      const pdfHtml = hasPdf
+        ? `<a href="${escapeHtml(item.pdf)}" class="news-pdf-btn" target="_blank" rel="noopener noreferrer">📄 PDFを見る</a>`
+        : '';
       return `
       <li class="news-item">
         <time class="news-date" datetime="${item.date}">${formatDate(item.date)}</time>
         <span class="news-cat ${catClass[tab]}">${catMap[tab]}</span>
-        ${titleHtml}
+        ${titleHtml}${pdfHtml}
       </li>`;
     }).join('');
   }
