@@ -88,50 +88,53 @@ document.addEventListener('DOMContentLoaded', () => {
      4. ヒーロースライダー
   ───────────────────────────────────────── */
   const slidesWrapper = document.getElementById('slides-wrapper');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.slider-prev');
-  const nextBtn = document.querySelector('.slider-next');
-  const totalSlides = document.querySelectorAll('.slide').length;
 
-  let currentSlide = 0;
-  let autoSlideTimer = null;
+  if (slidesWrapper) {
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    const totalSlides = document.querySelectorAll('.slide').length;
 
-  function goToSlide(index) {
-    currentSlide = (index + totalSlides) % totalSlides;
-    slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-  }
+    let currentSlide = 0;
+    let autoSlideTimer = null;
 
-  function startAutoSlide() {
-    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 5500);
-  }
+    function goToSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
 
-  function resetAutoSlide() {
-    clearInterval(autoSlideTimer);
+    function startAutoSlide() {
+      autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 5500);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideTimer);
+      startAutoSlide();
+    }
+
+    prevBtn?.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoSlide(); });
+    nextBtn?.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoSlide(); });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goToSlide(i); resetAutoSlide(); });
+    });
+
+    // スワイプ対応
+    let touchStartX = 0;
+    slidesWrapper.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    slidesWrapper.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { goToSlide(dx < 0 ? currentSlide + 1 : currentSlide - 1); resetAutoSlide(); }
+    }, { passive: true });
+
     startAutoSlide();
+
+    // タブ非表示中はスライダーを一時停止
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { clearInterval(autoSlideTimer); }
+      else { startAutoSlide(); }
+    });
   }
-
-  prevBtn?.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoSlide(); });
-  nextBtn?.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoSlide(); });
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { goToSlide(i); resetAutoSlide(); });
-  });
-
-  // スワイプ対応
-  let touchStartX = 0;
-  slidesWrapper?.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  slidesWrapper?.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) { goToSlide(dx < 0 ? currentSlide + 1 : currentSlide - 1); resetAutoSlide(); }
-  }, { passive: true });
-
-  startAutoSlide();
-
-  // タブ非表示中はスライダーを一時停止
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { clearInterval(autoSlideTimer); }
-    else { startAutoSlide(); }
-  });
 
   /* ─────────────────────────────────────────
      5. お知らせタブ + JSON読み込み
