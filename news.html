@@ -170,6 +170,47 @@
       font-size: 0.95em;
     }
 
+    /* アコーディオンアイテム（URLなし・本文あり） */
+    .news-item-accordion {
+      padding: 18px 0;
+      border-bottom: 1px solid #e8eee8;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .news-item-accordion:first-child { border-top: 1px solid #e8eee8; }
+    .news-item-accordion:hover { background: #f8faf8; }
+    .news-item-accordion:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+    .news-accordion-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .news-accordion-chevron {
+      font-size: 0.78em;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-left: auto;
+      padding-left: 8px;
+      transition: transform 0.25s;
+    }
+    .news-item-accordion[aria-expanded="true"] .news-accordion-chevron {
+      transform: rotate(180deg);
+    }
+    .news-accordion-body {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 0 4px;
+      color: #555;
+      font-size: 0.93em;
+      line-height: 1.85;
+      white-space: pre-wrap;
+      border-top: 1px dashed #dde8de;
+    }
+    .news-item-accordion[aria-expanded="true"] .news-accordion-body {
+      display: block;
+    }
+    .news-item-accordion:hover .news-title { color: var(--primary); }
+
     /* ページネーション */
     .pagination {
       display: flex;
@@ -219,6 +260,8 @@
     @media (max-width: 600px) {
       .news-page-wrap { padding: 32px 16px 60px; }
       .news-item { flex-direction: column; gap: 6px; }
+      .news-accordion-header { flex-direction: column; gap: 6px; }
+      .news-accordion-chevron { margin-left: 0; }
       .news-meta { gap: 8px; }
       .page-hero { padding: 44px 20px; }
     }
@@ -298,25 +341,29 @@
     // ===== フォールバック用インラインデータ =====
     var FALLBACK_DATA = {
       news: [
-        { date: "2026-04-10", category: "お知らせ", title: "令和8年度 事業計画書を掲載しました", url: "#" },
-        { date: "2026-04-01", category: "お知らせ", title: "令和8年度 社協だより「おおぎみ」第1号を発行しました", url: "#" },
-        { date: "2026-03-25", category: "お知らせ", title: "在宅安心カーの利用受付を開始しました", url: "#" },
-        { date: "2026-03-15", category: "お知らせ", title: "生活福祉資金の貸付相談について（令和8年度）", url: "#" },
-        { date: "2026-02-28", category: "お知らせ", title: "ランドセル支給のご案内（令和8年度 新小学1年生対象）", url: "#" }
+        { date: "2026-04-10", category: "お知らせ", title: "令和8年度 事業計画書を掲載しました", url: "#", body: "" },
+        { date: "2026-04-01", category: "お知らせ", title: "令和8年度 社協だより「おおぎみ」第1号を発行しました", url: "#", body: "" },
+        { date: "2026-03-25", category: "お知らせ", title: "在宅安心カーの利用受付を開始しました", url: "",
+          body: "在宅安心カーの利用受付を令和8年3月25日より開始しました。\n\nご利用を希望される方は、大宜味村社会福祉協議会（TEL：0980-44-3800）までお問い合わせください。\n受付時間：平日 9:00〜17:15" },
+        { date: "2026-03-15", category: "お知らせ", title: "生活福祉資金の貸付相談について（令和8年度）", url: "",
+          body: "生活福祉資金の貸付相談を随時受け付けています。\n\n【対象】低所得世帯・障がい者世帯・高齢者世帯\n【相談窓口】大宜味村社会福祉協議会\n【電話】0980-44-3800\n【受付時間】平日 9:00〜17:15\n\n詳細はお電話にてお問い合わせください。" },
+        { date: "2026-02-28", category: "お知らせ", title: "ランドセル支給のご案内（令和8年度 新小学1年生対象）", url: "#", body: "" }
       ],
       kouza: [
-        { date: "2026-04-20", category: "講座", title: "がんじゅう教室（4月）参加者募集のお知らせ", url: "#" },
-        { date: "2026-04-15", category: "講座", title: "介護予防講座「健康体操で元気に！」開催のご案内", url: "#" },
-        { date: "2026-04-05", category: "講座", title: "ボランティア入門講座（5月開催）参加者募集", url: "#" },
-        { date: "2026-03-20", category: "講座", title: "発達相談サポート講座「子育てのヒント」開催報告", url: "#" },
-        { date: "2026-03-10", category: "講座", title: "移動支援従事者研修のご案内", url: "#" }
+        { date: "2026-04-20", category: "講座", title: "がんじゅう教室（4月）参加者募集のお知らせ", url: "#", body: "" },
+        { date: "2026-04-15", category: "講座", title: "介護予防講座「健康体操で元気に！」開催のご案内", url: "",
+          body: "健康体操で元気に！\n\n【日時】令和8年4月25日（金）10:00〜11:30\n【場所】大宜味村地域福祉センター 多目的ホール\n【内容】ストレッチ・軽体操・血圧測定\n【対象】村内在住の65歳以上の方\n【参加費】無料\n\nお申し込みは社協（0980-44-3800）まで。" },
+        { date: "2026-04-05", category: "講座", title: "ボランティア入門講座（5月開催）参加者募集", url: "#", body: "" },
+        { date: "2026-03-20", category: "講座", title: "発達相談サポート講座「子育てのヒント」開催報告", url: "#", body: "" },
+        { date: "2026-03-10", category: "講座", title: "移動支援従事者研修のご案内", url: "#", body: "" }
       ],
       moyooshi: [
-        { date: "2026-04-29", category: "催し", title: "くがにサロン 春の交流会のご案内", url: "#" },
-        { date: "2026-04-18", category: "催し", title: "フードパントリー（食料支援）配布会 4月のお知らせ", url: "#" },
-        { date: "2026-04-12", category: "催し", title: "大宜味共同店ネットワーク 春まつり参加のご案内", url: "#" },
-        { date: "2026-03-22", category: "催し", title: "地域福祉活動 ボランティア清掃イベント 開催報告", url: "#" },
-        { date: "2026-03-05", category: "催し", title: "令和7年度 社協総会 開催のご案内", url: "#" }
+        { date: "2026-04-29", category: "催し", title: "くがにサロン 春の交流会のご案内", url: "",
+          body: "くがにサロン 春の交流会を開催します。\n\n【日時】令和8年4月29日（火・祝）13:00〜15:00\n【場所】くがに地区集会所\n【内容】茶話会・季節の手芸・昔遊び体験\n【対象】どなたでも\n【参加費】無料\n\n当日直接お越しください。詳細は社協（0980-44-3800）まで。" },
+        { date: "2026-04-18", category: "催し", title: "フードパントリー（食料支援）配布会 4月のお知らせ", url: "#", body: "" },
+        { date: "2026-04-12", category: "催し", title: "大宜味共同店ネットワーク 春まつり参加のご案内", url: "#", body: "" },
+        { date: "2026-03-22", category: "催し", title: "地域福祉活動 ボランティア清掃イベント 開催報告", url: "#", body: "" },
+        { date: "2026-03-05", category: "催し", title: "令和7年度 社協総会 開催のご案内", url: "#", body: "" }
       ]
     };
 
@@ -338,6 +385,20 @@
       // YYYY-MM-DD → YYYY.MM.DD
       function fmtDate(d) {
         return d.replace(/-/g, '.');
+      }
+
+      // HTML特殊文字エスケープ
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      // URLが空かどうか判定
+      function isEmptyUrl(url) {
+        return !url || url === '#' || url.trim() === '';
       }
 
       // カテゴリキー取得
@@ -386,15 +447,46 @@
         page.forEach(function (item) {
           var ck  = catKey(item);
           var cfg = CAT_MAP[ck];
-          html += '<a href="' + item.url + '" class="news-item">';
-          html +=   '<span class="news-meta">';
-          html +=     '<span class="news-date">' + fmtDate(item.date) + '</span>';
-          html +=     '<span class="news-badge ' + cfg.cls + '">' + cfg.label + '</span>';
-          html +=   '</span>';
-          html +=   '<span class="news-title">' + item.title + '</span>';
-          html += '</a>';
+          var metaHtml = '<span class="news-meta">'
+            + '<span class="news-date">' + fmtDate(item.date) + '</span>'
+            + '<span class="news-badge ' + cfg.cls + '">' + cfg.label + '</span>'
+            + '</span>';
+
+          if (isEmptyUrl(item.url) && item.body) {
+            // URLなし＋本文あり → アコーディオン表示
+            html += '<div class="news-item-accordion" tabindex="0" role="button" aria-expanded="false">';
+            html +=   '<div class="news-accordion-header">';
+            html +=     metaHtml;
+            html +=     '<span class="news-title">' + escapeHtml(item.title) + '</span>';
+            html +=     '<span class="news-accordion-chevron" aria-hidden="true">▼</span>';
+            html +=   '</div>';
+            html +=   '<div class="news-accordion-body">' + escapeHtml(item.body) + '</div>';
+            html += '</div>';
+          } else {
+            // URL付き or 本文なし → 通常リンク表示
+            var href = isEmptyUrl(item.url) ? '#' : item.url;
+            html += '<a href="' + escapeHtml(href) + '" class="news-item">';
+            html +=   metaHtml;
+            html +=   '<span class="news-title">' + escapeHtml(item.title) + '</span>';
+            html += '</a>';
+          }
         });
         area.innerHTML = html;
+
+        // アコーディオンのトグル処理
+        area.querySelectorAll('.news-item-accordion').forEach(function (el) {
+          el.addEventListener('click', function () {
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+          });
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              var expanded = this.getAttribute('aria-expanded') === 'true';
+              this.setAttribute('aria-expanded', String(!expanded));
+            }
+          });
+        });
 
         renderPagination();
       }
