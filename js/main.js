@@ -216,13 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    newsListEl.innerHTML = items.map(item => `
+    newsListEl.innerHTML = items.map(item => {
+      const titleHtml = (!item.url || item.url === '#')
+        ? `<span class="news-title">${escapeHtml(item.title)}</span>`
+        : `<a href="${escapeHtml(item.url)}" class="news-title">${escapeHtml(item.title)}</a>`;
+      return `
       <li class="news-item">
         <time class="news-date" datetime="${item.date}">${formatDate(item.date)}</time>
         <span class="news-cat ${catClass[tab]}">${catMap[tab]}</span>
-        <a href="${escapeHtml(item.url)}" class="news-title">${escapeHtml(item.title)}</a>
-      </li>
-    `).join('');
+        ${titleHtml}
+      </li>`;
+    }).join('');
   }
 
   function formatDate(dateStr) {
