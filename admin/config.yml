@@ -12,6 +12,8 @@ collections:
     label: "お知らせ"
     folder: "data/news"
     create: true
+    extension: json
+    format: json
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
