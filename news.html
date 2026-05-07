@@ -302,6 +302,7 @@
         <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="news"     id="tab-news">お知らせ<span class="tab-count" id="count-news">0</span></button>
         <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="kouza"    id="tab-kouza">事業案内<span class="tab-count" id="count-kouza">0</span></button>
         <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="moyooshi" id="tab-moyooshi">催し<span class="tab-count" id="count-moyooshi">0</span></button>
+        <button class="news-tab-btn"        role="tab" aria-selected="false" data-cat="report"   id="tab-report">報告・資料<span class="tab-count" id="count-report">0</span></button>
       </div>
 
       <!-- お知らせリスト -->
@@ -344,9 +345,9 @@
         { date: "2026-04-10", category: "お知らせ", title: "令和8年度 事業計画書を掲載しました", url: "#", body: "" },
         { date: "2026-04-01", category: "お知らせ", title: "令和8年度 社協だより「おおぎみ」第1号を発行しました", url: "#", body: "" },
         { date: "2026-03-25", category: "お知らせ", title: "在宅安心カーの利用受付を開始しました", url: "",
-          body: "在宅安心カーの利用受付を令和8年3月25日より開始しました。\n\nご利用を希望される方は、大宜味村社会福祉協議会（TEL：0980-44-3800）までお問い合わせください。\n受付時間：平日 9:00〜17:15" },
+          body: "在宅安心カーの利用受付を令和8年3月25日より開始しました。\n\nご利用を希望される方は、大宜味村社会福祉協議会（TEL：0980-44-3800）までお問い合わせください。\n受付時間：平日 9:00〜17:00" },
         { date: "2026-03-15", category: "お知らせ", title: "生活福祉資金の貸付相談について（令和8年度）", url: "",
-          body: "生活福祉資金の貸付相談を随時受け付けています。\n\n【対象】低所得世帯・障がい者世帯・高齢者世帯\n【相談窓口】大宜味村社会福祉協議会\n【電話】0980-44-3800\n【受付時間】平日 9:00〜17:15\n\n詳細はお電話にてお問い合わせください。" },
+          body: "生活福祉資金の貸付相談を随時受け付けています。\n\n【対象】低所得世帯・障がい者世帯・高齢者世帯\n【相談窓口】大宜味村社会福祉協議会\n【電話】0980-44-3800\n【受付時間】平日 9:00〜17:00\n\n詳細はお電話にてお問い合わせください。" },
         { date: "2026-02-28", category: "お知らせ", title: "ランドセル支給のご案内（令和8年度 新小学1年生対象）", url: "#", body: "" }
       ],
       kouza: [
@@ -379,7 +380,8 @@
       var CAT_MAP = {
         news:     { label: 'お知らせ', cls: 'badge-news' },
         kouza:    { label: '事業案内', cls: 'badge-kouza' },
-        moyooshi: { label: '催し',     cls: 'badge-moyooshi' }
+        moyooshi: { label: '催し',     cls: 'badge-moyooshi' },
+        report:   { label: '報告・資料', cls: 'badge-report' }
       };
 
       // YYYY-MM-DD → YYYY.MM.DD
@@ -406,6 +408,7 @@
         if (item.category === 'お知らせ') return 'news';
         if (item.category === '事業案内') return 'kouza';
         if (item.category === '催し')     return 'moyooshi';
+        if (item.category === '報告・資料') return 'report';
         return 'news';
       }
 
@@ -615,8 +618,8 @@
         .then(function (data) {
           // news.json は配列形式なのでオブジェクト形式に変換する
           if (Array.isArray(data)) {
-            var catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi' };
-            var obj = { news: [], kouza: [], moyooshi: [] };
+            var catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi', '報告・資料': 'report' };
+            var obj = { news: [], kouza: [], moyooshi: [], report: [] };
             data.forEach(function (item) {
               var key = catMap[item.category] || 'news';
               obj[key].push(item);

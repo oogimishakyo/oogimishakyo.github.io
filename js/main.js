@@ -182,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(data)) {
         throw new Error('news.json のデータ形式が不正です（配列を期待）');
       }
-      const catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi' };
-      newsData = { news: [], kouza: [], moyooshi: [] };
+      const catMap = { 'お知らせ': 'news', '事業案内': 'kouza', '催し': 'moyooshi', '報告・資料': 'report' };
+      newsData = { news: [], kouza: [], moyooshi: [], report: [] };
       data.forEach(item => {
         const key = catMap[item.category] || 'news';
         newsData[key].push(item);
@@ -207,8 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderNews(tab) {
     if (!newsListEl || !newsData) return;
 
-    const catMap = { news: 'お知らせ', kouza: '事業案内', moyooshi: '催し' };
-    const catClass = { news: 'cat-news', kouza: 'cat-kouza', moyooshi: 'cat-moyooshi' };
+    const catMap = { news: 'お知らせ', kouza: '事業案内', moyooshi: '催し', report: '報告・資料' };
+    const catClass = { news: 'cat-news', kouza: 'cat-kouza', moyooshi: 'cat-moyooshi', report: 'cat-report' };
     const items = newsData[tab] || [];
 
     if (items.length === 0) {
