@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="社協と連携する各種団体（老人クラブ連合会・民生委員児童委員協議会・身体障害者協会・母子寡婦福祉会）のご案内。">
+  <meta property="og:title" content="各種団体 | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="大宜味村社協と連携する各種団体の活動内容やお知らせをご案内します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/organizations.html">
+  <title>各種団体 | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before {
+      content: "›";
+      margin: 0 8px;
+      color: #aaa;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label {
+      font-size: 0.8em;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0 0 16px;
+    }
+    .page-hero-sub {
+      font-size: 0.95em;
+      opacity: 0.85;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .section-nav {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 2px solid #e0ebe2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .section-nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .section-nav-inner::-webkit-scrollbar { display: none; }
+    .section-nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 16px 20px;
+      font-size: 0.88em;
+      font-weight: 700;
+      color: #555;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .section-nav-btn:hover,
+    .section-nav-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .section-nav-icon { font-size: 1.1em; }
+
+    .org-page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* 各団体セクション */
+    .org-section {
+      margin-bottom: 80px;
+      scroll-margin-top: calc(var(--header-h) + 56px);
+    }
+    .org-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e0ebe2;
+    }
+    .org-section-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary) 0%, #2da870 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }
+    .org-section-label {
+      font-size: 0.72em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .org-section-title {
+      font-size: 1.3em;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .org-section-title small {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-left: 6px;
+    }
+
+    /* 本文グリッド（左:詳細 / 右:お知らせ） */
+    .org-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* 概要・活動カード */
+    .org-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      border-top: 4px solid var(--primary);
+    }
+    .org-overview {
+      color: var(--text-mid);
+      font-size: 0.93em;
+      line-height: 1.85;
+      margin: 0 0 20px;
+    }
+    .org-subheading {
+      font-size: 0.9em;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0 0 10px;
+      padding-left: 10px;
+      border-left: 3px solid var(--primary);
+    }
+    .org-activity-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .org-activity-list li {
+      font-size: 0.88em;
+      color: var(--text-mid);
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+    }
+    .org-activity-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.85em;
+    }
+
+    /* 連絡先カード */
+    .org-contact-card {
+      background: var(--primary-light);
+      border-radius: 12px;
+      padding: 18px 24px;
+      border: 1px solid #c8e8d4;
+    }
+    .org-contact-label {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .org-contact-name {
+      font-size: 0.9em;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .org-tel {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.15em;
+      font-weight: 900;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    .org-tel:hover { color: var(--primary); text-decoration: underline; }
+    .org-hours {
+      font-size: 0.78em;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* お知らせサイドバー */
+    .org-news-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+      padding: 20px 22px;
+      border-top: 4px solid var(--accent);
+    }
+    .org-news-heading {
+      font-size: 0.88em;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .org-news-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .org-news-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .org-news-item:last-child { border-bottom: none; }
+    .org-news-date {
+      display: block;
+      font-size: 0.75em;
+      color: #999;
+      margin-bottom: 2px;
+    }
+    .org-news-item a {
+      font-size: 0.84em;
+      color: var(--text);
+      line-height: 1.6;
+      text-decoration: none;
+    }
+    .org-news-item a:hover { color: var(--primary); }
+    .org-news-item span {
+      font-size: 0.84em;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .org-news-empty {
+      font-size: 0.84em;
+      color: #aaa;
+      padding: 10px 0;
+      margin: 0;
+    }
+    .org-news-loading {
+      font-size: 0.84em;
+      color: #aaa;
+      margin: 0;
+    }
+    .org-news-more {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.8em;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .org-news-more:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      .org-detail-grid {
+        grid-template-columns: 1fr;
+      }
+      .page-hero { padding: 44px 20px; }
+    }
+    @media (max-width: 600px) {
+      .org-page-wrap { padding: 40px 16px 60px; }
+      .section-nav-btn { padding: 14px 14px; font-size: 0.82em; }
+      .org-card { padding: 18px 18px; }
+    }
+  </style>
+</head>
+<body class="font-size-medium">
+
+  <div id="header-placeholder"></div>
+
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="index.html">トップ</a></li>
+          <li aria-current="page">各種団体</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">ORGANIZATIONS</p>
+      <h1 class="page-hero-title">各種団体</h1>
+      <p class="page-hero-sub">社協と連携して大宜味村の地域福祉を担う各種団体をご紹介します。</p>
+    </div>
+
+    <!-- セクションナビ -->
+    <nav class="section-nav" aria-label="団体カテゴリ">
+      <div class="section-nav-inner">
+        <a href="#rojin" class="section-nav-btn active" data-nav="rojin">
+          <span class="section-nav-icon" aria-hidden="true">🏘</span>老人クラブ連合会
+        </a>
+        <a href="#minjiren" class="section-nav-btn" data-nav="minjiren">
+          <span class="section-nav-icon" aria-hidden="true">🤝</span>民生委員・児童委員
+        </a>
+        <a href="#shinshin" class="section-nav-btn" data-nav="shinshin">
+          <span class="section-nav-icon" aria-hidden="true">🌸</span>身体障害者協会
+        </a>
+        <a href="#boshi" class="section-nav-btn" data-nav="boshi">
+          <span class="section-nav-icon" aria-hidden="true">👨‍👧</span>母子寡婦福祉会
+        </a>
+      </div>
+    </nav>
+
+    <div class="org-page-wrap">
+
+      <!-- ─────────────────────────────
+           1. 大宜味村老人クラブ連合会
+      ────────────────────────────── -->
+      <section class="org-section" id="rojin" aria-labelledby="rojin-heading">
+        <div class="org-section-header">
+          <div class="org-section-icon" aria-hidden="true">🏘</div>
+          <div>
+            <span class="org-section-label">SENIOR CLUB FEDERATION</span>
+            <h2 class="org-section-title" id="rojin-heading">
+              大宜味村老人クラブ連合会<small>（村老連）</small>
+            </h2>
+          </div>
+        </div>
+
+        <div class="org-detail-grid">
+          <div>
+            <div class="org-card">
+              <p class="org-overview">
+                大宜味村内の老人クラブが連携し、高齢者が生きがいを持って地域社会に参加できる環境づくりを推進しています。健康増進・仲間づくり・地域貢献を通じて、長寿の村にふさわしい高齢者の活躍を支えます。
+              </p>
+              <h3 class="org-subheading">主な活動内容</h3>
+              <ul class="org-activity-list">
+                <li>生きがい活動・仲間づくりの推進</li>
+                <li>健康増進（体操・スポーツ大会等）</li>
+                <li>地域清掃・環境美化活動</li>
+                <li>世代間交流事業</li>
+                <li>敬老行事への参加・運営</li>
+                <li>県・市町村老人クラブ大会への参加</li>
+              </ul>
+            </div>
+            <div class="org-contact-card">
+              <p class="org-contact-label">担当窓口</p>
+              <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
+              <a href="tel:0980443800" class="org-tel">📞 0980-44-3800</a>
+              <p class="org-hours">受付時間：平日 9:00〜17:15</p>
+            </div>
+          </div>
+
+          <aside class="org-news-card" aria-label="村老連からのお知らせ">
+            <h3 class="org-news-heading">村老連からのお知らせ</h3>
+            <div id="news-rojin"><p class="org-news-loading">読み込み中…</p></div>
+            <a href="news.html" class="org-news-more">お知らせ一覧を見る →</a>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────
+           2. 大宜味村民生委員児童委員協議会
+      ────────────────────────────── -->
+      <section class="org-section" id="minjiren" aria-labelledby="minjiren-heading">
+        <div class="org-section-header">
+          <div class="org-section-icon" aria-hidden="true">🤝</div>
+          <div>
+            <span class="org-section-label">WELFARE COMMISSIONER ASSOCIATION</span>
+            <h2 class="org-section-title" id="minjiren-heading">
+              大宜味村民生委員児童委員協議会<small>（民児協）</small>
+            </h2>
+          </div>
+        </div>
+
+        <div class="org-detail-grid">
+          <div>
+            <div class="org-card">
+              <p class="org-overview">
+                地域住民の立場から生活・子育てに関する相談・支援を行い、行政や専門機関への橋渡し役を担います。高齢者・障がい者・ひとり親家庭・子どもたちが安心して暮らせる地域づくりに取り組んでいます。
+              </p>
+              <h3 class="org-subheading">主な活動内容</h3>
+              <ul class="org-activity-list">
+                <li>日常的な相談・支援活動</li>
+                <li>高齢者・障がい者の見守り活動</li>
+                <li>子育て・児童福祉に関する支援</li>
+                <li>要援護者の実態把握</li>
+                <li>行政・関係機関との連携</li>
+                <li>研修・情報交換活動</li>
+              </ul>
+            </div>
+            <div class="org-contact-card">
+              <p class="org-contact-label">担当窓口</p>
+              <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
+              <a href="tel:0980443800" class="org-tel">📞 0980-44-3800</a>
+              <p class="org-hours">受付時間：平日 9:00〜17:15</p>
+            </div>
+          </div>
+
+          <aside class="org-news-card" aria-label="民児協からのお知らせ">
+            <h3 class="org-news-heading">民児協からのお知らせ</h3>
+            <div id="news-minjiren"><p class="org-news-loading">読み込み中…</p></div>
+            <a href="news.html" class="org-news-more">お知らせ一覧を見る →</a>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────
+           3. 大宜味村身体障害者協会
+      ────────────────────────────── -->
+      <section class="org-section" id="shinshin" aria-labelledby="shinshin-heading">
+        <div class="org-section-header">
+          <div class="org-section-icon" aria-hidden="true">🌸</div>
+          <div>
+            <span class="org-section-label">PHYSICAL DISABILITY ASSOCIATION</span>
+            <h2 class="org-section-title" id="shinshin-heading">
+              大宜味村身体障害者協会<small>（村身協）</small>
+            </h2>
+          </div>
+        </div>
+
+        <div class="org-detail-grid">
+          <div>
+            <div class="org-card">
+              <p class="org-overview">
+                身体に障がいのある方々が、地域の一員として自立した生活を営めるよう相互支援と社会参加の促進に努めています。障がい者スポーツや交流活動を通じ、福祉の向上と啓発活動を行います。
+              </p>
+              <h3 class="org-subheading">主な活動内容</h3>
+              <ul class="org-activity-list">
+                <li>会員相互の親睦・交流活動</li>
+                <li>障がい者スポーツ・レクリエーション</li>
+                <li>福祉制度に関する情報提供・相談</li>
+                <li>県・市町村大会等への参加</li>
+                <li>当事者の声を行政に届ける活動</li>
+              </ul>
+            </div>
+            <div class="org-contact-card">
+              <p class="org-contact-label">担当窓口</p>
+              <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
+              <a href="tel:0980443800" class="org-tel">📞 0980-44-3800</a>
+              <p class="org-hours">受付時間：平日 9:00〜17:15</p>
+            </div>
+          </div>
+
+          <aside class="org-news-card" aria-label="村身協からのお知らせ">
+            <h3 class="org-news-heading">村身協からのお知らせ</h3>
+            <div id="news-shinshin"><p class="org-news-loading">読み込み中…</p></div>
+            <a href="news.html" class="org-news-more">お知らせ一覧を見る →</a>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ─────────────────────────────
+           4. 大宜味村母子寡婦福祉会
+      ────────────────────────────── -->
+      <section class="org-section" id="boshi" aria-labelledby="boshi-heading">
+        <div class="org-section-header">
+          <div class="org-section-icon" aria-hidden="true">👨‍👧</div>
+          <div>
+            <span class="org-section-label">SINGLE PARENT WELFARE ASSOCIATION</span>
+            <h2 class="org-section-title" id="boshi-heading">
+              大宜味村母子寡婦福祉会<small>（村母子会）</small>
+            </h2>
+          </div>
+        </div>
+
+        <div class="org-detail-grid">
+          <div>
+            <div class="org-card">
+              <p class="org-overview">
+                ひとり親家庭（母子・父子・寡婦）の方々が互いに支え合い、経済的自立と生活の安定を図ることを目的としています。子育て支援や会員相互の交流活動を通じ、安心して暮らせる環境づくりを推進します。
+              </p>
+              <h3 class="org-subheading">主な活動内容</h3>
+              <ul class="org-activity-list">
+                <li>会員相互の親睦・交流活動</li>
+                <li>生活支援・相談活動</li>
+                <li>自立促進・研修活動</li>
+                <li>子どもの健全育成支援</li>
+                <li>行政・関係機関との連携</li>
+              </ul>
+            </div>
+            <div class="org-contact-card">
+              <p class="org-contact-label">担当窓口</p>
+              <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
+              <a href="tel:0980443800" class="org-tel">📞 0980-44-3800</a>
+              <p class="org-hours">受付時間：平日 9:00〜17:15</p>
+            </div>
+          </div>
+
+          <aside class="org-news-card" aria-label="村母子会からのお知らせ">
+            <h3 class="org-news-heading">村母子会からのお知らせ</h3>
+            <div id="news-boshi"><p class="org-news-loading">読み込み中…</p></div>
+            <a href="news.html" class="org-news-more">お知らせ一覧を見る →</a>
+          </aside>
+        </div>
+      </section>
+
+    </div><!-- /org-page-wrap -->
+
+    <!-- CTAバナー -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-banner-inner">
+          <h2 class="cta-banner-title" id="cta-heading">まずは、お気軽にご相談ください</h2>
+          <p class="cta-banner-sub">
+            各種団体へのご加入・お問い合わせは、大宜味村社会福祉協議会事務局が窓口です。<br>
+            どんなことでもお気軽にご連絡ください。
+          </p>
+          <div class="cta-banner-btns">
+            <a href="tel:0980443800" class="cta-btn-primary">📞 お電話でのお問い合わせ</a>
+            <a href="mailto:info@oogimishakyo.or.jp" class="cta-btn-secondary">✉ メールでお問い合わせ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/includes.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    /* セクションナビ アクティブ切り替え */
+    (function () {
+      var ids = ['rojin', 'minjiren', 'shinshin', 'boshi'];
+      var navBtns = document.querySelectorAll('.section-nav-btn');
+      var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 120;
+
+      function onScroll() {
+        var scrollY = window.scrollY + headerH + 70;
+        var current = ids[0];
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) current = id;
+        });
+        navBtns.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-nav') === current);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    /* 各団体のお知らせを data/news.json から取得して表示 */
+    (function () {
+      var ORG_CAT = {
+        rojin:    '村老連',
+        minjiren: '民児協',
+        shinshin: '村身協',
+        boshi:    '村母子会'
+      };
+
+      function fmtDate(d) { return d.replace(/-/g, '.'); }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function renderOrgNews(id, allItems) {
+        var el = document.getElementById('news-' + id);
+        if (!el) return;
+        var cat = ORG_CAT[id];
+        var filtered = allItems.filter(function (item) { return item.category === cat; });
+        filtered.sort(function (a, b) { return b.date.localeCompare(a.date); });
+        filtered = filtered.slice(0, 3);
+
+        if (filtered.length === 0) {
+          el.innerHTML = '<p class="org-news-empty">現在お知らせはありません。</p>';
+          return;
+        }
+
+        var html = '<ul class="org-news-list">';
+        filtered.forEach(function (item) {
+          var hasUrl = item.url && item.url !== '#' && item.url.trim() !== '';
+          var titleHtml = hasUrl
+            ? '<a href="' + escapeHtml(item.url) + '">' + escapeHtml(item.title) + '</a>'
+            : '<span>' + escapeHtml(item.title) + '</span>';
+          html += '<li class="org-news-item">'
+                + '<span class="org-news-date">' + fmtDate(item.date) + '</span>'
+                + titleHtml
+                + '</li>';
+        });
+        html += '</ul>';
+        el.innerHTML = html;
+      }
+
+      function showEmpty() {
+        ['rojin', 'minjiren', 'shinshin', 'boshi'].forEach(function (id) {
+          var el = document.getElementById('news-' + id);
+          if (el) el.innerHTML = '<p class="org-news-empty">現在お知らせはありません。</p>';
+        });
+      }
+
+      fetch('data/news.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error('fetch failed');
+          return r.json();
+        })
+        .then(function (data) {
+          var items = Array.isArray(data) ? data : [];
+          ['rojin', 'minjiren', 'shinshin', 'boshi'].forEach(function (id) {
+            renderOrgNews(id, items);
+          });
+        })
+        .catch(showEmpty);
+    })();
+  </script>
+</body>
+</html>

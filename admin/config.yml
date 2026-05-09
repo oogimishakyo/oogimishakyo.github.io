@@ -18,7 +18,7 @@ collections:
     fields:
       - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "タイトル", name: "title", widget: "string" }
-      - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "事業案内", "催し", "報告・資料"] }
+      - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "事業案内", "催し", "報告・資料", "村老連", "民児協", "村身協", "村母子会"] }
       - { label: "本文", name: "body", widget: "text" }
       - { label: "URL（任意）", name: "url", widget: "string", required: false }
       - { label: "添付PDF（任意）", name: "pdf", widget: "file", required: false }
