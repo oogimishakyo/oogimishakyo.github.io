@@ -208,6 +208,35 @@
       font-size: 0.85em;
     }
 
+    /* 資料ダウンロードカード */
+    .org-download-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .org-download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--primary-dark);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: var(--primary-light);
+      border: 1px solid #c8e8d4;
+      transition: background 0.2s;
+    }
+    .org-download-link:hover { background: #c8e8d4; }
+    .org-download-empty {
+      font-size: 0.84em;
+      color: #aaa;
+      margin: 0;
+    }
+
     /* 連絡先カード */
     .org-contact-card {
       background: var(--primary-light);
@@ -397,6 +426,14 @@
                 <li>県・市町村老人クラブ大会への参加</li>
               </ul>
             </div>
+            <div class="org-card">
+              <h3 class="org-subheading">資料ダウンロード</h3>
+              <ul class="org-download-list">
+                <li>
+                  <a href="https://drive.google.com/file/d/1DpieRWwddJl-G4lPzq9JVc4aEayMOJ6n/view?usp=sharing" target="_blank" rel="noopener" class="org-download-link">📄 令和7年度 年間行事計画（PDF）</a>
+                </li>
+              </ul>
+            </div>
             <div class="org-contact-card">
               <p class="org-contact-label">担当窓口</p>
               <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
@@ -443,6 +480,10 @@
                 <li>研修・情報交換活動</li>
               </ul>
             </div>
+            <div class="org-card">
+              <h3 class="org-subheading">資料ダウンロード</h3>
+              <p class="org-download-empty">現在準備中です。</p>
+            </div>
             <div class="org-contact-card">
               <p class="org-contact-label">担当窓口</p>
               <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
@@ -488,6 +529,10 @@
                 <li>当事者の声を行政に届ける活動</li>
               </ul>
             </div>
+            <div class="org-card">
+              <h3 class="org-subheading">資料ダウンロード</h3>
+              <p class="org-download-empty">現在準備中です。</p>
+            </div>
             <div class="org-contact-card">
               <p class="org-contact-label">担当窓口</p>
               <p class="org-contact-name">大宜味村社会福祉協議会（事務局）</p>
@@ -532,6 +577,10 @@
                 <li>子どもの健全育成支援</li>
                 <li>行政・関係機関との連携</li>
               </ul>
+            </div>
+            <div class="org-card">
+              <h3 class="org-subheading">資料ダウンロード</h3>
+              <p class="org-download-empty">現在準備中です。</p>
             </div>
             <div class="org-contact-card">
               <p class="org-contact-label">担当窓口</p>
