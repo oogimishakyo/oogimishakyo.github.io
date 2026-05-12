@@ -257,6 +257,23 @@
       margin-left: 8px;
     }
 
+    /* 団体絞り込みバナー */
+    .org-filter-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--primary-light);
+      border: 1px solid #c8e8d4;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-size: 0.9em;
+    }
+    .org-filter-title { font-weight: 700; color: var(--primary-dark); }
+    .org-filter-clear { font-size: 0.82em; color: var(--primary); text-decoration: none; white-space: nowrap; font-weight: 600; }
+    .org-filter-clear:hover { text-decoration: underline; }
+
     @media (max-width: 600px) {
       .news-page-wrap { padding: 32px 16px 60px; }
       .news-item { flex-direction: column; gap: 6px; }
@@ -295,6 +312,12 @@
     </div>
 
     <div class="news-page-wrap">
+
+      <!-- 団体絞り込みバナー（URLパラメータがある場合にJSで表示） -->
+      <div id="org-filter-banner" class="org-filter-banner" style="display:none" aria-live="polite">
+        <span class="org-filter-title" id="org-filter-title"></span>
+        <a href="news.html" class="org-filter-clear">× 絞り込みを解除</a>
+      </div>
 
       <!-- カテゴリタブ -->
       <div class="news-tabs-bar" role="tablist" aria-label="お知らせカテゴリ">
@@ -372,9 +395,24 @@
     (function () {
       var PER_PAGE = 10;
       var allItems  = [];
+      var orgBaseItems = [];
       var filtered  = [];
       var currentCat  = 'all';
       var currentPage = 1;
+
+      // 団体マップ
+      var ORG_MAP = {
+        minjikyo:    '民生委員・児童委員協議会',
+        rojinkurabu: '老人クラブ連合会',
+        shinsho:     '身体障害者協会',
+        boshi:       '母子寡婦福祉会'
+      };
+
+      // URLパラメータから org を取得
+      var orgParam = (function () {
+        var m = window.location.search.match(/[?&]org=([^&]*)/);
+        return m ? decodeURIComponent(m[1]) : '';
+      }());
 
       // カテゴリ設定
       var CAT_MAP = {
@@ -586,8 +624,8 @@
         currentCat  = cat;
         currentPage = 1;
         filtered = cat === 'all'
-          ? allItems.slice()
-          : allItems.filter(function (item) { return catKey(item) === cat; });
+          ? orgBaseItems.slice()
+          : orgBaseItems.filter(function (item) { return catKey(item) === cat; });
 
         document.querySelectorAll('.news-tab-btn').forEach(function (btn) {
           var active = btn.dataset.cat === cat;
@@ -606,7 +644,23 @@
       // データ読み込み
       function init(data) {
         allItems = flatten(data);
-        updateCounts(allItems);
+
+        // 団体フィルタ適用
+        if (orgParam && ORG_MAP[orgParam]) {
+          orgBaseItems = allItems.filter(function (item) {
+            return (item.organization || '') === orgParam;
+          });
+          var banner = document.getElementById('org-filter-banner');
+          var bannerTitle = document.getElementById('org-filter-title');
+          if (banner && bannerTitle) {
+            bannerTitle.textContent = ORG_MAP[orgParam] + ' のお知らせ';
+            banner.style.display = 'flex';
+          }
+        } else {
+          orgBaseItems = allItems.slice();
+        }
+
+        updateCounts(orgBaseItems);
         setTab('all');
       }
 

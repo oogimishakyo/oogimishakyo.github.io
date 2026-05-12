@@ -19,6 +19,17 @@ collections:
       - { label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "カテゴリ", name: "category", widget: "select", options: ["お知らせ", "事業案内", "催し", "報告・資料", "村老連", "民児協", "村身協", "村母子会", "共同店"] }
+      - label: "関連団体"
+        name: "organization"
+        widget: "select"
+        required: false
+        default: ""
+        options:
+          - { label: "（なし）", value: "" }
+          - { label: "民生委員・児童委員協議会（民児協）", value: "minjikyo" }
+          - { label: "老人クラブ連合会", value: "rojinkurabu" }
+          - { label: "身体障害者協会", value: "shinsho" }
+          - { label: "母子寡婦福祉会", value: "boshi" }
       - { label: "本文", name: "body", widget: "text" }
       - { label: "URL（任意）", name: "url", widget: "string", required: false }
       - { label: "添付PDF（任意）", name: "pdf", widget: "file", required: false }
