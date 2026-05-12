@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社協による共同店関連の事業報告書・資料を掲載しています。共同店ネットワーク事業の取り組みや成果をご確認いただけます。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,共同店,共同売店,事業報告,資料">
+  <meta property="og:title" content="共同店 資料・情報 | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="大宜味村社協による共同店関連の事業報告書・資料を掲載しています。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/kyodoten.html">
+  <title>共同店 資料・情報 | 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ─── 共通ページスタイル ─── */
+    .breadcrumb{background:#f5f7f5;padding:12px 0;font-size:.82em;color:#666}
+    .breadcrumb-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+    .breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;margin:0;padding:0}
+    .breadcrumb li+li::before{content:"›";margin:0 8px;color:#aaa}
+    .breadcrumb a{color:var(--primary);text-decoration:none}
+    .breadcrumb a:hover{text-decoration:underline}
+
+    .page-hero{background:linear-gradient(135deg,#1a5c38 0%,#2d7a4f 60%,#3a9060 100%);color:var(--white);padding:72px 24px;text-align:center}
+    .page-hero-label{font-size:.78em;letter-spacing:.18em;opacity:.75;margin-bottom:12px;text-transform:uppercase}
+    .page-hero-title{font-size:clamp(1.8em,5vw,2.8em);font-weight:900;line-height:1.25;margin:0 0 14px}
+    .page-hero-sub{font-size:1.05em;opacity:.88;margin:0;line-height:1.7}
+
+    .page-wrap{max-width:920px;margin:0 auto;padding:56px 24px 80px}
+
+    .section-eyebrow{font-size:.72em;font-weight:700;letter-spacing:.18em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
+    .section-heading{font-size:clamp(1.2em,2.8vw,1.65em);font-weight:900;color:var(--text);margin:0 0 24px;line-height:1.4}
+    .section-heading::after{content:"";display:block;width:40px;height:4px;background:var(--primary);margin-top:10px;border-radius:2px}
+
+    .intro-text{color:var(--text-mid);line-height:2;font-size:.95em;margin-bottom:0}
+
+    /* ─── 資料ダウンロード ─── */
+    .doc-section{margin-bottom:64px}
+    .doc-grid{display:flex;flex-direction:column;gap:16px}
+    .doc-card{background:var(--white);border-radius:14px;box-shadow:0 2px 14px rgba(0,0,0,.07);border-left:5px solid var(--primary);padding:24px 28px;display:flex;gap:20px;align-items:flex-start}
+    .doc-card-icon{font-size:2em;flex-shrink:0;margin-top:2px;line-height:1}
+    .doc-card-body{flex:1;min-width:0}
+    .doc-card-year{font-size:.75em;font-weight:700;color:var(--primary);margin:0 0 4px;letter-spacing:.05em}
+    .doc-card-title{font-size:1.05em;font-weight:900;color:var(--text);margin:0 0 8px}
+    .doc-card-desc{font-size:.88em;color:var(--text-mid);line-height:1.8;margin:0 0 16px}
+    .doc-download-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88em;font-weight:700;color:var(--white);background:var(--primary);padding:9px 20px;border-radius:7px;text-decoration:none;transition:background .15s}
+    .doc-download-btn:hover{background:var(--primary-dark)}
+
+    /* ─── 関連ニュース ─── */
+    .news-section{margin-bottom:64px}
+    .kyodoten-news-list{display:flex;flex-direction:column;gap:0;border:1px solid #eee;border-radius:12px;overflow:hidden;background:var(--white)}
+    .kyodoten-news-item{padding:16px 22px;border-bottom:1px solid #f0f0f0;display:flex;flex-direction:column;gap:4px}
+    .kyodoten-news-item:last-child{border-bottom:none}
+    .kyodoten-news-date{font-size:.75em;color:#999}
+    .kyodoten-news-title{font-size:.9em;color:var(--text);line-height:1.6;text-decoration:none}
+    a.kyodoten-news-title:hover{color:var(--primary)}
+    .kyodoten-news-empty{font-size:.9em;color:#aaa;padding:32px;text-align:center;margin:0;background:var(--white);border-radius:12px;border:1px solid #eee}
+    .kyodoten-news-loading{font-size:.9em;color:#aaa;padding:32px;text-align:center;margin:0}
+
+    @media(max-width:640px){
+      .doc-card{flex-direction:column;gap:12px;padding:20px 18px}
+      .page-wrap{padding:40px 16px 60px}
+    }
+  </style>
+  <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/logo.png">
+</head>
+<body class="font-size-medium">
+
+  <div id="header-placeholder"></div>
+
+  <main id="main-content" style="margin-top:var(--header-h);">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="issue-kyodoten.html">共同売店を守る</a></li>
+          <li aria-current="page">共同店 資料・情報</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヒーロー -->
+    <section class="page-hero">
+      <p class="page-hero-label">KYODOTEN DOCUMENTS</p>
+      <h1 class="page-hero-title">共同店 資料・情報</h1>
+      <p class="page-hero-sub">共同店ネットワーク事業の報告書・関連資料をまとめています</p>
+    </section>
+
+    <div class="page-wrap">
+
+      <!-- イントロ -->
+      <section style="margin-bottom:56px" aria-labelledby="intro-heading">
+        <p class="section-eyebrow">ABOUT</p>
+        <h2 class="section-heading" id="intro-heading">共同店が地域に果たす役割</h2>
+        <p class="intro-text">
+          大宜味村の共同店（共同売店）は、住民が共同で運営する商店として、食料品の購入が困難な高齢者の買い物を支える重要な生活インフラです。
+          単なる商店機能にとどまらず、住民同士が顔を合わせ、日常的な見守りや交流が生まれる地域福祉の拠点としても機能しています。
+          大宜味村社協は共同店ネットワーク事業を通じて、この地域資源を守り、暮らしと福祉をつなぐ取り組みを進めています。
+        </p>
+      </section>
+
+      <!-- 資料ダウンロード -->
+      <section class="doc-section" aria-labelledby="doc-heading">
+        <p class="section-eyebrow">DOCUMENTS</p>
+        <h2 class="section-heading" id="doc-heading">資料ダウンロード</h2>
+        <div class="doc-grid">
+
+          <div class="doc-card">
+            <div class="doc-card-icon" aria-hidden="true">📄</div>
+            <div class="doc-card-body">
+              <p class="doc-card-year">令和7年度</p>
+              <h3 class="doc-card-title">食品アクセス事業報告書</h3>
+              <p class="doc-card-desc">共同店ネットワークを通じた食品アクセス支援事業の実績・課題・今後の展望をまとめた報告書です。</p>
+              <a href="#" class="doc-download-btn" target="_blank" rel="noopener">📥 ダウンロード（PDF）</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 関連ニュース -->
+      <section class="news-section" aria-labelledby="news-heading">
+        <p class="section-eyebrow">NEWS</p>
+        <h2 class="section-heading" id="news-heading">共同店からのお知らせ</h2>
+        <div id="kyodoten-news-area">
+          <p class="kyodoten-news-loading">読み込み中…</p>
+        </div>
+      </section>
+
+    </div><!-- /page-wrap -->
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/includes.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    (function () {
+      var area = document.getElementById('kyodoten-news-area');
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function render(items) {
+        if (items.length === 0) {
+          area.innerHTML = '<p class="kyodoten-news-empty">現在「共同店」カテゴリのお知らせはありません。</p>';
+          return;
+        }
+        var html = '<ul class="kyodoten-news-list" role="list">';
+        items.forEach(function (item) {
+          var dateStr = item.date.replace(/-/g, '.');
+          var hasUrl = item.url && item.url !== '#' && item.url.trim() !== '';
+          html += '<li class="kyodoten-news-item">';
+          html += '<span class="kyodoten-news-date">' + escapeHtml(dateStr) + '</span>';
+          if (hasUrl) {
+            html += '<a href="' + escapeHtml(item.url) + '" class="kyodoten-news-title" target="_blank" rel="noopener">' + escapeHtml(item.title) + '</a>';
+          } else {
+            html += '<span class="kyodoten-news-title">' + escapeHtml(item.title) + '</span>';
+          }
+          html += '</li>';
+        });
+        html += '</ul>';
+        area.innerHTML = html;
+      }
+
+      fetch('data/news.json')
+        .then(function (r) {
+          if (!r.ok) throw new Error('fetch failed');
+          return r.json();
+        })
+        .then(function (data) {
+          var arr = Array.isArray(data) ? data : [];
+          var filtered = arr.filter(function (item) { return item.category === '共同店'; });
+          filtered.sort(function (a, b) { return b.date.localeCompare(a.date); });
+          render(filtered);
+        })
+        .catch(function () {
+          area.innerHTML = '<p class="kyodoten-news-empty">現在「共同店」カテゴリのお知らせはありません。</p>';
+        });
+    })();
+  </script>
+</body>
+</html>
