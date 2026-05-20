@@ -231,6 +231,90 @@
       .booking-card { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
       .booking-tel { font-size: 1.4em; }
     }
+
+    /* ダウンロードセクション */
+    .download-section {
+      padding: 60px 0;
+      background: #f8fdf9;
+    }
+
+    .download-card {
+      display: flex;
+      gap: 24px;
+      background: #fff;
+      border: 2px solid #2d7a4f;
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+      align-items: flex-start;
+    }
+
+    .download-card__icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .download-card__title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #1a3a2a;
+      margin-bottom: 12px;
+    }
+
+    .download-card__notes {
+      margin: 0 0 20px;
+      padding-left: 1.4em;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #2d7a4f;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-download:hover {
+      background: #1e5c39;
+    }
+
+    .btn-download__icon {
+      font-size: 1.2rem;
+    }
+
+    .info-box--contact {
+      background: #f0f7f4;
+      border-left: 4px solid #2d7a4f;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-top: 20px;
+    }
+
+    .info-box--contact h3 {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #2d7a4f;
+      margin-bottom: 8px;
+    }
+
+    .info-box--contact p {
+      line-height: 1.9;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .download-card {
+        flex-direction: column;
+      }
+    }
   </style>
   <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
   <link rel="apple-touch-icon" href="images/logo.png">
@@ -322,7 +406,41 @@
       </section>
 
       <!-- ──────────────────────────────
-           3. 予約・お問い合わせ
+           3. 使用許可申請書
+      ─────────────────────────────── -->
+      <!-- ダウンロードセクション -->
+      <section class="download-section">
+        <div class="container">
+          <h2 class="section-title">使用許可申請書</h2>
+          <p>つどい室を利用するには、事前に使用許可申請書を社協窓口へ提出してください。</p>
+
+          <div class="download-card">
+            <div class="download-card__icon">📄</div>
+            <div class="download-card__body">
+              <h3 class="download-card__title">旧学校施設（つどい室）使用許可申請書</h3>
+              <ul class="download-card__notes">
+                <li>使用日の<strong>7日前まで</strong>に社協窓口へご提出ください</li>
+                <li>村などが主催・共催する公共イベント等を優先とし、予約の調整を行う場合があります</li>
+                <li>記入不要欄（※印）は空欄のままご提出ください</li>
+              </ul>
+              <a href="docs/tsudoi-application.docx" download class="btn-download">
+                <span class="btn-download__icon">⬇</span>
+                申請書をダウンロード（Word）
+              </a>
+            </div>
+          </div>
+
+          <div class="info-box info-box--contact">
+            <h3>お問い合わせ・申請書の提出先</h3>
+            <p>大宜味村社会福祉協議会<br>
+            TEL：0980-44-3800<br>
+            受付時間：平日 9:00〜17:15</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──────────────────────────────
+           4. 予約・お問い合わせ
       ─────────────────────────────── -->
       <section class="cal-section" id="booking" aria-labelledby="booking-heading">
         <h2 class="cal-section-title" id="booking-heading">
