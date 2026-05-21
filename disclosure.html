@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="大宜味村社会福祉協議会の情報公開ページ。財務情報、事業計画・報告書、定款・各種規程、役員名簿を掲載しています。">
+  <meta name="keywords" content="大宜味村,社会福祉協議会,情報公開,財務諸表,事業計画,定款,役員名簿">
+  <meta property="og:title" content="情報公開 | 大宜味村社会福祉協議会">
+  <meta property="og:description" content="大宜味村社会福祉協議会の財務情報・事業計画・定款・役員名簿などの公開情報をご覧いただけます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oogimishakyo.or.jp/disclosure.html">
+  <title>情報公開 ｜ 大宜味村社会福祉協議会</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ===== ページ固有スタイル ===== */
+
+    /* パンくずリスト */
+    .breadcrumb {
+      background: #f5f7f5;
+      padding: 12px 0;
+      font-size: 0.82em;
+      color: #666;
+    }
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 0; padding: 0;
+    }
+    .breadcrumb li + li::before {
+      content: "›";
+      margin: 0 8px;
+      color: #aaa;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ページヘッダー */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a5c38 100%);
+      color: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .page-hero-label {
+      font-size: 0.8em;
+      letter-spacing: 0.15em;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+    .page-hero-title {
+      font-size: clamp(1.6em, 4vw, 2.4em);
+      font-weight: 900;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    /* セクション共通 */
+    .disclosure-section {
+      padding: 64px 0;
+      border-top: 1px solid #e0eadd;
+    }
+    .disclosure-section:first-of-type {
+      border-top: none;
+    }
+    .disclosure-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-size: clamp(1.3em, 3vw, 1.8em);
+      font-weight: 900;
+      color: var(--text-dark);
+      margin: 0 0 24px;
+      line-height: 1.4;
+    }
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      background: var(--primary);
+      margin-top: 14px;
+      border-radius: 2px;
+    }
+    .section-desc {
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    /* 財務情報カード（about.html#finance 流用） */
+    .wam-link-box {
+      background: #f0f7ff;
+      border: 1px solid #c2d9ff;
+      border-radius: 12px;
+      padding: 30px;
+      margin-top: 24px;
+      text-align: center;
+    }
+    .wam-link-box p.wam-title {
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .wam-link-box .wam-note {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 16px;
+    }
+    .btn-wam {
+      display: inline-block;
+      background: #1a56a0;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .btn-wam:hover { opacity: 0.85; }
+
+    /* 準備中バッジ */
+    .badge-pending {
+      display: inline-block;
+      background: #e8f4f8;
+      color: #555;
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.8em;
+      font-weight: 600;
+    }
+
+    /* 事業計画テーブル */
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 0.93em;
+    }
+    .doc-table th {
+      background: #f0f8f2;
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 10px 14px;
+      text-align: left;
+      border: 1px solid #d0e8d5;
+    }
+    .doc-table td {
+      padding: 10px 14px;
+      border: 1px solid #e0eadd;
+      color: var(--text-mid);
+      vertical-align: middle;
+    }
+    .doc-table tr:nth-child(even) td {
+      background: #fafcfa;
+    }
+    .doc-table a.doc-link {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .doc-table a.doc-link:hover { text-decoration: underline; }
+
+    /* 定款・規程リスト */
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rules-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid #e0eadd;
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+    .rules-list li span.rules-name {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* 役員名簿 */
+    .officers-box {
+      background: #fafcfa;
+      border: 1px solid #e0eadd;
+      border-radius: 10px;
+      padding: 28px 24px;
+      margin-top: 20px;
+      text-align: center;
+      color: #888;
+      font-size: 0.95em;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 760px) {
+      .page-hero { padding: 44px 20px; }
+      .doc-table { font-size: 0.85em; }
+      .doc-table th, .doc-table td { padding: 8px 10px; }
+    }
+  </style>
+  <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/logo.png">
+</head>
+<body class="font-size-medium">
+
+  <div id="header-placeholder"></div>
+
+  <!-- ===================================
+       MAIN
+  ==================================== -->
+  <main id="main-content">
+
+    <!-- パンくずリスト -->
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <div class="breadcrumb-inner">
+        <ol>
+          <li><a href="/">トップ</a></li>
+          <li><a href="about.html">社協について</a></li>
+          <li aria-current="page">情報公開</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- ページヘッダー -->
+    <div class="page-hero">
+      <p class="page-hero-label">DISCLOSURE</p>
+      <h1 class="page-hero-title">情報公開</h1>
+    </div>
+
+    <!-- ──────────────────────────────
+         1. 財務情報
+    ─────────────────────────────── -->
+    <section class="disclosure-section" id="finance" aria-labelledby="finance-heading">
+      <div class="disclosure-container">
+        <p class="section-eyebrow">FINANCE</p>
+        <h2 class="section-heading" id="finance-heading">財務情報（財務諸表・事業報告）</h2>
+        <p class="section-desc">
+          大宜味村社会福祉協議会の現況報告書および計算書類（財務諸表）は、独立行政法人福祉医療機構（WAM）が運営する「社会福祉法人の財務諸表等電子開示システム」で公表しています。
+        </p>
+
+        <div class="wam-link-box">
+          <p class="wam-title">財務諸表等電子開示システム（WAM NET）で詳細を見る</p>
+          <a href="#" class="btn-wam">大宜味村社会福祉協議会 公表ページへ</a>
+          <p class="wam-note">
+            ※上記リンクより、最新年度および過去の現況報告書・計算書類（貸借対照表、収支計算書等）を閲覧・ダウンロードいただけます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         2. 事業計画・事業報告
+    ─────────────────────────────── -->
+    <section class="disclosure-section" id="plan" aria-labelledby="plan-heading">
+      <div class="disclosure-container">
+        <p class="section-eyebrow">PLAN &amp; REPORT</p>
+        <h2 class="section-heading" id="plan-heading">事業計画・事業報告</h2>
+        <p class="section-desc">
+          各年度の事業計画書・事業報告書をPDFで公開しています。
+        </p>
+
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th>年度</th>
+              <th>種別</th>
+              <th>ファイル名</th>
+              <th>リンク</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>令和8年度</td>
+              <td>事業計画書</td>
+              <td>令和8年度大社協事業計画書.pdf</td>
+              <td><a href="documents/令和8年度大社協事業計画書.pdf" class="doc-link" target="_blank" rel="noopener noreferrer">PDFを開く</a></td>
+            </tr>
+            <tr>
+              <td>令和7年度以前</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="badge-pending">準備中</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         3. 定款・各種規程
+    ─────────────────────────────── -->
+    <section class="disclosure-section" id="rules" aria-labelledby="rules-heading">
+      <div class="disclosure-container">
+        <p class="section-eyebrow">RULES</p>
+        <h2 class="section-heading" id="rules-heading">定款・各種規程</h2>
+        <p class="section-desc">
+          社会福祉法人として公開が求められる定款および各種規程を掲載しています。
+        </p>
+
+        <ul class="rules-list">
+          <li>
+            <span class="rules-name">定款</span>
+            <span class="badge-pending">準備中</span>
+          </li>
+          <li>
+            <span class="rules-name">個人情報保護方針</span>
+            <span class="badge-pending">準備中</span>
+          </li>
+          <li>
+            <span class="rules-name">苦情解決に関する規程</span>
+            <span class="badge-pending">準備中</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         4. 役員名簿
+    ─────────────────────────────── -->
+    <section class="disclosure-section" id="officers" aria-labelledby="officers-heading">
+      <div class="disclosure-container">
+        <p class="section-eyebrow">OFFICERS</p>
+        <h2 class="section-heading" id="officers-heading">役員名簿</h2>
+        <p class="section-desc">
+          現在の役員名簿は以下からご確認いただけます。
+        </p>
+
+        <div class="officers-box">
+          <span class="badge-pending">準備中</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ──────────────────────────────
+         CTAバナー
+    ─────────────────────────────── -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-banner-inner">
+          <h2 class="cta-banner-title" id="cta-heading">まずは、お気軽にご相談ください</h2>
+          <p class="cta-banner-sub">
+            サービスのご利用方法・各種手続き・生活上のお悩みなど、どんなことでもお声がけください。<br>
+            大宜味村社協のスタッフが丁寧にご案内します。
+          </p>
+          <div class="cta-banner-btns">
+            <a href="tel:0980443800" class="cta-btn-primary">
+              📞 お電話でのお問い合わせ
+            </a>
+            <a href="mailto:info@oogimishakyo.or.jp" class="cta-btn-secondary">
+              ✉ メールでお問い合わせ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/includes.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
