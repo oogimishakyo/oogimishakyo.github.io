@@ -153,6 +153,7 @@
     .badge-news    { background: #e8f5ee; color: #1a6b3a; }
     .badge-kouza   { background: #e8f0fa; color: #1a4a8a; }
     .badge-moyooshi { background: #fff0e0; color: #a05a00; }
+    .badge-report  { background: #f0ece8; color: #7a4a1a; }
 
     .news-title {
       font-size: 0.97em;
@@ -453,7 +454,7 @@
       // データをフラット化して日付降順ソート
       function flatten(data) {
         var arr = [];
-        ['news', 'kouza', 'moyooshi'].forEach(function (k) {
+        ['news', 'kouza', 'moyooshi', 'report'].forEach(function (k) {
           if (Array.isArray(data[k])) {
             data[k].forEach(function (item) { arr.push(item); });
           }
@@ -464,12 +465,13 @@
 
       // カウントバッジ更新
       function updateCounts(items) {
-        var counts = { news: 0, kouza: 0, moyooshi: 0 };
+        var counts = { news: 0, kouza: 0, moyooshi: 0, report: 0 };
         items.forEach(function (item) { counts[catKey(item)]++; });
         document.getElementById('count-all').textContent    = items.length;
         document.getElementById('count-news').textContent   = counts.news;
         document.getElementById('count-kouza').textContent  = counts.kouza;
         document.getElementById('count-moyooshi').textContent = counts.moyooshi;
+        document.getElementById('count-report').textContent  = counts.report;
       }
 
       // リスト描画
