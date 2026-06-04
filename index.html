@@ -404,6 +404,17 @@
 
   <div id="footer-placeholder"></div>
 
+  <!-- お知らせ全文モーダル -->
+  <div id="news-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:8px; padding:2rem; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; position:relative;">
+      <button id="news-modal-close" style="position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#666;">✕</button>
+      <p id="news-modal-date" style="font-size:0.85rem; color:#888; margin-bottom:0.5rem;"></p>
+      <h2 id="news-modal-title" style="font-size:1.1rem; font-weight:bold; margin-bottom:1rem; line-height:1.6;"></h2>
+      <div id="news-modal-body" style="font-size:0.95rem; line-height:1.8; white-space:pre-wrap;"></div>
+      <div id="news-modal-link" style="margin-top:1.5rem;"></div>
+    </div>
+  </div>
+
   <script src="js/includes.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>

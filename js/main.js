@@ -204,6 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  if (newsListEl) {
+    newsListEl.addEventListener('click', e => {
+      if (e.target.closest('.news-pdf-btn')) return;
+      const li = e.target.closest('li[data-news-idx]');
+      if (!li) return;
+      const idx = parseInt(li.dataset.newsIdx, 10);
+      const items = (newsData || FALLBACK_NEWS)[currentTab] || [];
+      if (items[idx]) openNewsModal(items[idx]);
+    });
+  }
+
   function renderNews(tab) {
     if (!newsListEl || !newsData) return;
 
@@ -216,17 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    newsListEl.innerHTML = items.map(item => {
-      const hasUrl = item.url && item.url !== '#' && item.url.trim() !== '';
+    newsListEl.innerHTML = items.map((item, idx) => {
       const hasPdf = !!(item.pdf && item.pdf.trim());
-      const titleHtml = hasUrl
-        ? `<a href="${escapeHtml(item.url)}" class="news-title">${escapeHtml(item.title)}</a>`
-        : `<span class="news-title">${escapeHtml(item.title)}</span>`;
+      const titleHtml = `<span class="news-title" style="cursor:pointer">${escapeHtml(item.title)}</span>`;
       const pdfHtml = hasPdf
         ? `<a href="${escapeHtml(item.pdf)}" class="news-pdf-btn" target="_blank" rel="noopener noreferrer">📄 PDFを見る</a>`
         : '';
       return `
-      <li class="news-item">
+      <li class="news-item" data-news-idx="${idx}" style="cursor:pointer">
         <time class="news-date" datetime="${item.date}">${formatDate(item.date)}</time>
         <span class="news-cat ${catClass[tab]}">${catMap[tab]}</span>
         ${titleHtml}${pdfHtml}
@@ -368,6 +376,37 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.transition = `opacity 0.55s ease ${i * 0.06}s, transform 0.55s ease ${i * 0.06}s`;
       observer.observe(el);
     });
+  }
+
+  /* ─────────────────────────────────────────
+     お知らせモーダル
+  ───────────────────────────────────────── */
+  function openNewsModal(item) {
+    document.getElementById('news-modal-date').textContent = item.date || '';
+    document.getElementById('news-modal-title').textContent = item.title || '';
+    document.getElementById('news-modal-body').textContent = item.body || item.content || '';
+    const linkEl = document.getElementById('news-modal-link');
+    const href = item.url && item.url !== '#' && item.url.trim() !== '' ? item.url : '';
+    if (href) {
+      linkEl.innerHTML = `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="color:#1a73e8;">詳細・関連リンク →</a>`;
+    } else {
+      linkEl.innerHTML = '';
+    }
+    const modal = document.getElementById('news-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNewsModal() {
+    document.getElementById('news-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  const newsModal = document.getElementById('news-modal');
+  if (newsModal) {
+    document.getElementById('news-modal-close').addEventListener('click', closeNewsModal);
+    newsModal.addEventListener('click', e => { if (e.target === newsModal) closeNewsModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNewsModal(); });
   }
 
 });
