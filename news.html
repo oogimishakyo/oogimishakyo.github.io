@@ -437,6 +437,14 @@
           .replace(/"/g, '&quot;');
       }
 
+      // URL自動リンク化（escapeHtml済みテキストに適用）
+      function linkify(text) {
+        return text.replace(
+          /(https?:\/\/[^\s　）)]+)/g,
+          '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+        );
+      }
+
       // URLが空かどうか判定
       function isEmptyUrl(url) {
         return !url || url === '#' || url.trim() === '';
@@ -511,7 +519,7 @@
             html +=     pdfBtnHtml;
             html +=     '<span class="news-accordion-chevron" aria-hidden="true">▼</span>';
             html +=   '</div>';
-            html +=   '<div class="news-accordion-body">' + escapeHtml(item.body) + '</div>';
+            html +=   '<div class="news-accordion-body">' + linkify(escapeHtml(item.body)) + '</div>';
             html += '</div>';
           } else if (hasUrl && !hasPdf) {
             // URLあり・PDFなし → <a>で全体リンク

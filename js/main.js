@@ -259,6 +259,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/'/g, '&#039;');
   }
 
+  // URL自動リンク化（escapeHtml済みテキストに適用）
+  function linkify(text) {
+    return text.replace(
+      /(https?:\/\/[^\s　）)]+)/g,
+      '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+  }
+
   /* ─────────────────────────────────────────
      6. 村の人口データ（village.json）
   ───────────────────────────────────────── */
@@ -384,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openNewsModal(item) {
     document.getElementById('news-modal-date').textContent = item.date || '';
     document.getElementById('news-modal-title').textContent = item.title || '';
-    document.getElementById('news-modal-body').textContent = item.body || item.content || '';
+    document.getElementById('news-modal-body').innerHTML = linkify(escapeHtml(item.body || item.content || ''));
     const linkEl = document.getElementById('news-modal-link');
     const href = item.url && item.url !== '#' && item.url.trim() !== '' ? item.url : '';
     if (href) {
