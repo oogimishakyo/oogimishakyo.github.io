@@ -815,6 +815,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .card-pink   .service-card-img { background: linear-gradient(135deg, #8a1a5a, #c84a90); }
 .card-teal   .service-card-img { background: linear-gradient(135deg, #1a6e7a, #3aaabb); }
 .card-purple .service-card-img { background: linear-gradient(135deg, #4a1a8a, #7a4ac8); }
+.card-amber  .service-card-img { background: linear-gradient(135deg, #7a4a1a, #c87a30); }
 
 .service-card-body { padding: 22px 24px; flex: 1; }
 .service-card-tag {
@@ -828,6 +829,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .card-pink   .service-card-tag { background: #fce8f3;              color: #9c2d6a; }
 .card-teal   .service-card-tag { background: #e5f5f7;              color: #1a7080; }
 .card-purple .service-card-tag { background: #f0e8ff;              color: #5a2a9a; }
+.card-amber  .service-card-tag { background: #fef3e2;              color: #7a4010; }
 
 .service-card-title {
   font-size: 1.05em; font-weight: 800;
@@ -1075,6 +1077,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .page-top:hover { background: var(--primary-dark); color: var(--white); transform: translateY(-3px); }
 .page-top-arrow { font-size: 1.4em; line-height: 1; }
 
+/* 最終行に1枚だけ残るカードを中央寄せ（7枚構成対応） */
+@media (min-width: 1101px) {
+  .services-grid > article:last-child:nth-child(3n+1) {
+    grid-column: 2;
+  }
+}
+
 /* =========================================
    RESPONSIVE — Tablet
    ========================================= */
@@ -1082,6 +1091,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .global-nav ul li a { padding: 0 12px; font-size: 14px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 1100px) and (min-width: 601px) {
+  .services-grid > article:last-child:nth-child(2n+1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: calc(50% - 12px);
+  }
 }
 
 @media (max-width: 900px) {
