@@ -261,10 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // URL自動リンク化（escapeHtml済みテキストに適用）
   function linkify(text) {
-    // [テキスト](URL) 形式を先に処理
-    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    // [テキスト](URL) 形式を先に処理（escapeHtml後でも [ ] ( ) はそのまま残る）
+    text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    // 相対パス /path 形式のMarkdownリンクにも対応
+    text = text.replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, '<a href="$2">$1</a>');
     // 残った裸のURLを自動リンク化
-    text = text.replace(/(?<!\]\()(https?:\/\/[^\s　）)<"]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    text = text.replace(/(https?:\/\/[^\s　<"）)]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
     return text;
   }
 
