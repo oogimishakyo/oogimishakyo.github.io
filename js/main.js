@@ -265,8 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
     text = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a class="news-link" href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     // 相対パス /path 形式のMarkdownリンクにも対応
     text = text.replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, '<a class="news-link" href="$2">$1</a>');
-    // 残った裸のURLを自動リンク化
-    text = text.replace(/(https?:\/\/[^\s　<"）)]+)/g, '<a class="news-link" href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    // 残った裸のURLを自動リンク化（HTMLタグ内のURLは二重リンク化しない）
+    text = text.replace(/(<[^>]+>)|(https?:\/\/[^\s　<"）)]+)/g, (_, tag, url) => {
+      if (tag) return tag;
+      return `<a class="news-link" href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
     return text;
   }
 
