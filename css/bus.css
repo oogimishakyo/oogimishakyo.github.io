@@ -130,6 +130,19 @@
   flex-direction: column;
   align-items: center;
 }
+.step-link {
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background-color var(--transition);
+}
+.step-link:hover,
+.step-link:focus-visible {
+  background-color: rgba(45, 122, 79, 0.08);
+}
+.step-link:hover .step-text p {
+  text-decoration: underline;
+}
 .step-label {
   display: block;
   font-size: 0.7rem;

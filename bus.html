@@ -11,17 +11,6 @@
   <script>
     // ページ固有のJSがあればここに追加
     document.addEventListener('DOMContentLoaded', function() {
-      // Download button setup
-      const downloadButton = document.getElementById('download-application');
-      if (downloadButton) {
-        downloadButton.addEventListener('click', function(e) {
-          // Prevent default navigation and trigger download
-          e.preventDefault();
-          // For this case, we rely on the download attribute in the HTML.
-          console.log('Download button clicked');
-        });
-      }
-
       // Responsive step display logic
       const stepToggles = document.querySelectorAll('.step-item > .step-number');
       stepToggles.forEach(toggle => {
@@ -93,13 +82,13 @@
         <div class="content-block">
           <h2 class="section-title">申請方法</h2>
           <div class="step-container">
-            <div class="step-item">
+            <a class="step-item step-link" href="documents/microbus-application.xls" download="マイクロバス借用許可申請書.xls">
               <span class="step-label">STEP</span>
               <div class="step-number">1</div>
               <div class="step-text">
                 <p>申請書をダウンロード・記入</p>
               </div>
-            </div>
+            </a>
             <div class="step-arrow" aria-hidden="true">›</div>
             <div class="step-item">
               <span class="step-label">STEP</span>
@@ -148,7 +137,7 @@
 
         <!-- 7. 申請書ダウンロード -->
         <div class="content-block download-section">
-          <a href="documents/マイクロバス借用許可申請書.xls" class="btn btn-primary btn-large download-button" id="download-application" download>
+          <a href="documents/microbus-application.xls" class="btn btn-primary btn-large download-button" id="download-application" download="マイクロバス借用許可申請書.xls">
             借用許可申請書をダウンロード（Excel）
           </a>
         </div>
